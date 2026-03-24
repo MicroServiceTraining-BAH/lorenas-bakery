@@ -1,0 +1,108 @@
+import Link from 'next/link';
+
+export default function AboutSection() {
+  return (
+    <section className="section-padding bg-white" aria-labelledby="about-heading">
+      <div className="max-w-7xl mx-auto container-padding">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          {/* Left — Visual */}
+          <div className="relative order-2 lg:order-1">
+            <div className="relative">
+              {/* Main visual */}
+              <div
+                className="rounded-[2.5rem] overflow-hidden shadow-warm"
+                style={{
+                  background: 'linear-gradient(145deg, #FDE8C5 0%, #F5C5A3 40%, #E8A89A 70%, #D4908A 100%)',
+                  aspectRatio: '4/5',
+                }}
+                role="img"
+                aria-label="Lorena and family in the bakery kitchen"
+              >
+                <div className="h-full flex flex-col items-center justify-center text-center px-10">
+                  <div className="font-script text-5xl text-white/70 mb-6">Con Amor</div>
+                  <div className="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center mb-4">
+                    <span className="text-4xl">👩‍🍳</span>
+                  </div>
+                  <p className="font-sans text-white/80 text-sm leading-relaxed max-w-xs">
+                    &ldquo;Every piece of bread carries the warmth of home and the pride of our heritage.&rdquo;
+                  </p>
+                  <p className="font-serif text-white/90 font-semibold mt-3">— Lorena</p>
+                </div>
+              </div>
+
+              {/* Accent card */}
+              <div className="absolute -bottom-8 -right-6 lg:-right-10 bg-teal-sage rounded-2xl px-6 py-5 shadow-float text-white">
+                <div className="font-script text-3xl mb-1">15+</div>
+                <div className="font-sans text-xs opacity-80 leading-snug">Years of serving<br />our community</div>
+              </div>
+
+              {/* Decorative element */}
+              <div
+                className="absolute -top-6 -right-6 w-24 h-24 rounded-full border-4 border-gold/40 flex items-center justify-center"
+                aria-hidden="true"
+              >
+                <div className="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#F4C27A" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right — Copy */}
+          <div className="order-1 lg:order-2">
+            <div className="section-label mb-6">Our Story</div>
+            <h2
+              id="about-heading"
+              className="font-serif text-4xl md:text-5xl font-bold text-stone-900 leading-tight mb-6"
+            >
+              A Family Tradition,{' '}
+              <span className="italic text-rose-blush">Baked with Love</span>
+            </h2>
+
+            <div className="space-y-5 font-sans text-stone-600 leading-relaxed text-base">
+              <p>
+                Lorena&apos;s Bakery was born from a simple dream: to bring the authentic flavors of
+                El Salvador to the heart of Manassas, Virginia. What started as Lorena baking
+                conchas and semitas for neighbors has grown into a beloved community gathering
+                place — but the recipes, and the love, remain exactly the same.
+              </p>
+              <p>
+                Every morning before sunrise, our family is in the kitchen hand-crafting each
+                pastry, rolling each empanada, and brewing our signature coffee blend. We use
+                traditional Salvadoran techniques passed down through three generations —
+                because real pan dulce can&apos;t be rushed.
+              </p>
+              <p>
+                When you walk through our doors, you&apos;re not just a customer — you&apos;re
+                family. Pull up a chair, let the aroma of fresh bread wrap around you, and stay
+                a while. This is what home tastes like.
+              </p>
+            </div>
+
+            <div className="mt-10 grid grid-cols-2 gap-6">
+              {[
+                { value: '15+', label: 'Years Baking', color: 'bg-rose-pale' },
+                { value: '30+', label: 'Fresh Items Daily', color: 'bg-teal-pale' },
+                { value: '200+', label: '5-Star Reviews', color: 'bg-gold-light' },
+                { value: '100%', label: 'Made From Scratch', color: 'bg-rose-pale' },
+              ].map(({ value, label, color }) => (
+                <div key={label} className={`${color} rounded-2xl p-5`}>
+                  <div className="font-serif text-3xl font-bold text-stone-900">{value}</div>
+                  <div className="font-sans text-sm text-stone-600 mt-1">{label}</div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10">
+              <Link href="/about" className="btn-teal">
+                Meet the Family
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
