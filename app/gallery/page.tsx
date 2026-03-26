@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -10,63 +11,38 @@ export const metadata: Metadata = {
 type GalleryItem = {
   label: string;
   caption: string;
-  gradient: string;
+  src: string;
   span?: string;
 };
 
 const GALLERY: GalleryItem[] = [
   {
-    label: 'Pan Dulce Variety',
-    caption: 'Conchas, cuernos, and semitas — baked fresh every morning',
-    gradient: 'linear-gradient(145deg, #F9E3C7 0%, #F5C99A 50%, #F0AE70 100%)',
+    label: 'Pan Dulce & Pastries',
+    caption: 'A full spread of freshly baked pan dulce, pastries, and sweet breads',
+    src: '/bakery-full.jpg',
     span: 'sm:col-span-2 sm:row-span-2',
   },
   {
-    label: 'Pastelitos',
-    caption: 'Golden flaky hand pies, sweet and savory',
-    gradient: 'linear-gradient(145deg, #FDE8EE 0%, #F5C5D0 60%, #E88FA3 100%)',
+    label: 'Fruit Tarts',
+    caption: 'Custard tarts topped with fresh strawberries, kiwi, and blueberries',
+    src: '/fruit-tarts-closeup.jpg',
   },
   {
-    label: 'Café de Olla',
-    caption: 'Brewed with cinnamon and piloncillo',
-    gradient: 'linear-gradient(145deg, #F5E8D6 0%, #C49A72 60%, #8B5E3C 100%)',
+    label: 'Bakery Display',
+    caption: 'Our daily selection of flaky pastries, cakes, and breads',
+    src: '/bakery-display.jpg',
   },
   {
-    label: 'Tres Leches',
-    caption: 'Soaked in three milks, topped with cream',
-    gradient: 'linear-gradient(145deg, #E8F5F4 0%, #A8C5C2 60%, #5F8F8A 100%)',
-  },
-  {
-    label: 'Empanadas Dulces',
-    caption: 'Fried custard empanadas rolled in cinnamon sugar',
-    gradient: 'linear-gradient(145deg, #FFF3D6 0%, #FAE4B8 50%, #F4C27A 100%)',
+    label: 'Fruit Tarts & Desserts',
+    caption: 'Individual fruit tarts and cream desserts — made fresh daily',
+    src: '/fruit-tarts-case.jpg',
     span: 'sm:col-span-2',
   },
   {
-    label: 'Quinceañera Cake',
-    caption: 'Custom tiered cakes for your special day',
-    gradient: 'linear-gradient(145deg, #F9E8F5 0%, #E8C5E0 60%, #C8A0D8 100%)',
-  },
-  {
-    label: 'Horchata de Morro',
-    caption: 'Authentic Salvadoran horchata — unlike anything else',
-    gradient: 'linear-gradient(145deg, #EDF8F7 0%, #C5E5E2 60%, #8FC0BC 100%)',
-  },
-  {
-    label: 'Quesadilla Salvadoreña',
-    caption: 'Rice flour cake with parmesan and sesame seeds',
-    gradient: 'linear-gradient(145deg, #FDE8C5 0%, #F5C078 60%, #E8A84A 100%)',
+    label: 'Conchas & Cookies',
+    caption: 'Our signature conchas and butter cookies with colorful sprinkles',
+    src: '/conchas-display.jpg',
     span: 'sm:col-span-2',
-  },
-  {
-    label: 'Atol de Elote',
-    caption: 'Traditional warm corn drink — the taste of home',
-    gradient: 'linear-gradient(145deg, #FDEEC5 0%, #F5D478 60%, #D4A830 100%)',
-  },
-  {
-    label: 'Birthday Cakes',
-    caption: 'Custom decorated for any celebration',
-    gradient: 'linear-gradient(145deg, #F9E8EE 0%, #F0B8C8 60%, #E88FA3 100%)',
   },
 ];
 
@@ -117,14 +93,17 @@ export default function GalleryPage() {
               <figure
                 key={item.label}
                 role="listitem"
-                className={`${item.span ?? ''} rounded-3xl overflow-hidden group cursor-pointer relative`}
-                style={{ background: item.gradient }}
+                className={`${item.span ?? ''} rounded-3xl overflow-hidden group cursor-pointer relative bg-stone-100`}
               >
-                <div className="h-full flex flex-col items-center justify-center p-6 text-center">
-                  <span className="font-script text-2xl text-white/60">{item.label}</span>
-                </div>
+                <Image
+                  src={item.src}
+                  alt={item.caption}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 640px) 50vw, 25vw"
+                />
                 {/* Hover caption */}
-                <figcaption className="absolute inset-0 bg-stone-900/0 group-hover:bg-stone-900/30 transition-all duration-300 rounded-3xl flex flex-col items-center justify-end p-5 opacity-0 group-hover:opacity-100">
+                <figcaption className="absolute inset-0 bg-stone-900/0 group-hover:bg-stone-900/40 transition-all duration-300 rounded-3xl flex flex-col items-center justify-end p-5 opacity-0 group-hover:opacity-100">
                   <p className="font-serif text-base font-bold text-white drop-shadow text-center">
                     {item.label}
                   </p>

@@ -1,41 +1,34 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 type GalleryCell = {
   label: string;
-  gradient: string;
+  src: string;
   span?: string;
 };
 
 const GALLERY_CELLS: GalleryCell[] = [
   {
-    label: 'Conchas y Pan Dulce',
-    gradient: 'linear-gradient(145deg, #F9E3C7 0%, #F0AE70 100%)',
+    label: 'Pan Dulce & Pastries',
+    src: '/bakery-full.jpg',
     span: 'col-span-2 row-span-2',
   },
   {
-    label: 'Pastelitos frescos',
-    gradient: 'linear-gradient(145deg, #FDE8EE 0%, #E88FA3 100%)',
+    label: 'Fruit Tarts',
+    src: '/fruit-tarts-closeup.jpg',
   },
   {
-    label: 'Café de Olla',
-    gradient: 'linear-gradient(145deg, #F5E8D6 0%, #A0704A 100%)',
+    label: 'Fresh Display',
+    src: '/bakery-display.jpg',
   },
   {
-    label: 'Pastel de Queso',
-    gradient: 'linear-gradient(145deg, #E8F5F4 0%, #5F8F8A 100%)',
-  },
-  {
-    label: 'Empanadas Dulces',
-    gradient: 'linear-gradient(145deg, #FFF3D6 0%, #F4C27A 100%)',
+    label: 'Conchas & Cookies',
+    src: '/conchas-display.jpg',
     span: 'col-span-2',
   },
   {
-    label: 'Tortas de Boda',
-    gradient: 'linear-gradient(145deg, #F9E8F5 0%, #D4A0C8 100%)',
-  },
-  {
-    label: 'Quesadilla Salvadoreña',
-    gradient: 'linear-gradient(145deg, #FDE8C5 0%, #E8A84A 100%)',
+    label: 'Fruit Tarts & Desserts',
+    src: '/fruit-tarts-case.jpg',
   },
 ];
 
@@ -81,14 +74,17 @@ export default function GalleryGrid() {
             <div
               key={cell.label}
               role="listitem"
-              className={`${cell.span ?? ''} rounded-3xl overflow-hidden group cursor-pointer relative`}
-              style={{ background: cell.gradient }}
+              className={`${cell.span ?? ''} rounded-3xl overflow-hidden group cursor-pointer relative bg-stone-100`}
             >
-              <div className="h-full flex flex-col items-center justify-center p-4">
-                <span className="font-script text-2xl text-white/60 text-center">{cell.label}</span>
-              </div>
+              <Image
+                src={cell.src}
+                alt={cell.label}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 768px) 50vw, 25vw"
+              />
               {/* Hover overlay */}
-              <div className="absolute inset-0 bg-stone-900/0 group-hover:bg-stone-900/20 transition-all duration-300 rounded-3xl flex items-end p-4 opacity-0 group-hover:opacity-100">
+              <div className="absolute inset-0 bg-stone-900/0 group-hover:bg-stone-900/40 transition-all duration-300 rounded-3xl flex items-end p-4 opacity-0 group-hover:opacity-100">
                 <span className="font-sans text-sm font-semibold text-white drop-shadow">
                   {cell.label}
                 </span>

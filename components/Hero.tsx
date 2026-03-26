@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Hero() {
@@ -140,23 +141,14 @@ export default function Hero() {
             <div className="relative w-full max-w-md">
               {/* Primary card */}
               <div className="relative rounded-[2.5rem] overflow-hidden shadow-float animate-fade-up-delay-2">
-                <div
-                  className="w-full aspect-[4/5] flex flex-col items-center justify-center"
-                  style={{
-                    background: 'linear-gradient(145deg, #F9E8C0 0%, #F5C5A3 30%, #EDA89A 60%, #E88FA3 100%)',
-                  }}
-                  role="img"
-                  aria-label="Beautiful assortment of freshly baked Salvadoran pastries"
-                >
-                  {/* Decorative bakery illustration */}
-                  <div className="text-center px-8">
-                    <div className="font-script text-7xl text-white/80 leading-none mb-4">
-                      Pan Dulce
-                    </div>
-                    <p className="font-sans text-sm text-white/80 tracking-wide">
-                      Baked fresh every morning
-                    </p>
-                  </div>
+                <div className="w-full aspect-[4/5] relative">
+                  <Image
+                    src="/bakery-full.jpg"
+                    alt="Lorena's Bakery display case filled with fresh pan dulce, pastries, and baked goods"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
                 </div>
 
                 {/* Overlay badge */}
