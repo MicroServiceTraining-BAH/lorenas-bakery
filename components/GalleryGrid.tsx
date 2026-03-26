@@ -1,5 +1,8 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useLanguage } from '@/lib/language-context';
 
 type GalleryCell = {
   label: string;
@@ -8,48 +11,34 @@ type GalleryCell = {
 };
 
 const GALLERY_CELLS: GalleryCell[] = [
-  {
-    label: 'Pan Dulce & Pastries',
-    src: '/bakery-full.jpg',
-    span: 'col-span-2 row-span-2',
-  },
-  {
-    label: 'Fruit Tarts',
-    src: '/fruit-tarts-closeup.jpg',
-  },
-  {
-    label: 'Fresh Display',
-    src: '/bakery-display.jpg',
-  },
-  {
-    label: 'Conchas & Cookies',
-    src: '/conchas-display.jpg',
-    span: 'col-span-2',
-  },
-  {
-    label: 'Fruit Tarts & Desserts',
-    src: '/fruit-tarts-case.jpg',
-  },
+  { label: 'Pan Dulce & Pastries', src: '/bakery-full.jpg', span: 'col-span-2 row-span-2' },
+  { label: 'Fruit Tarts', src: '/fruit-tarts-closeup.jpg' },
+  { label: 'Fresh Display', src: '/bakery-display.jpg' },
+  { label: 'Conchas & Cookies', src: '/conchas-display.jpg', span: 'col-span-2' },
+  { label: 'Fruit Tarts & Desserts', src: '/fruit-tarts-case.jpg' },
 ];
 
 export default function GalleryGrid() {
+  const { t } = useLanguage();
+  const g = t.gallery;
+
   return (
     <section className="section-padding bg-white" aria-labelledby="gallery-heading">
       <div className="max-w-7xl mx-auto container-padding">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div>
-            <div className="section-label mb-4">Instagram Gallery</div>
+            <div className="section-label mb-4">{g.label}</div>
             <h2
               id="gallery-heading"
               className="font-serif text-4xl md:text-5xl font-bold text-stone-900 leading-tight"
             >
-              Made with{' '}
-              <span className="italic text-rose-blush">Heart</span>
+              {g.heading1}{' '}
+              <span className="italic text-rose-blush">{g.heading2}</span>
             </h2>
           </div>
           <p className="font-sans text-stone-600 max-w-xs leading-relaxed sm:text-right">
-            Every piece tells a story. Follow us{' '}
+            {g.followText}{' '}
             <a
               href="https://www.instagram.com/lorenasbakery.us/"
               className="text-rose-blush font-medium hover:underline"
@@ -59,7 +48,7 @@ export default function GalleryGrid() {
             >
               @lorenasbakery.us
             </a>{' '}
-            for daily bakes and specials.
+            {g.followSuffix}
           </p>
         </div>
 
@@ -96,7 +85,7 @@ export default function GalleryGrid() {
         {/* CTA */}
         <div className="text-center mt-10">
           <Link href="/gallery" className="btn-outline text-sm px-8 py-3">
-            View Full Gallery
+            {g.viewFull}
           </Link>
         </div>
       </div>

@@ -5,19 +5,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-
-const NAV_LINKS = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/menu', label: 'Menu' },
-  { href: '/gallery', label: 'Gallery' },
-  { href: '/contact', label: 'Contact' },
-];
+import { useLanguage } from '@/lib/language-context';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { lang, toggle, t } = useLanguage();
+
+  const NAV_LINKS = [
+    { href: '/', label: t.nav.home },
+    { href: '/about', label: t.nav.about },
+    { href: '/menu', label: t.nav.menu },
+    { href: '/gallery', label: t.nav.gallery },
+    { href: '/contact', label: t.nav.contact },
+  ];
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
@@ -83,8 +85,19 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* Desktop CTA */}
+          {/* Desktop CTA + Language toggle */}
           <div className="hidden md:flex items-center gap-3">
+            {/* Language toggle */}
+            <button
+              onClick={toggle}
+              aria-label={lang === 'en' ? 'Switch to Spanish' : 'Cambiar a inglés'}
+              className="flex items-center gap-1 rounded-full border border-stone-200 bg-white px-3 py-1.5 text-xs font-semibold text-stone-600 hover:border-rose-blush hover:text-rose-blush transition-colors duration-200"
+            >
+              <span className={lang === 'en' ? 'text-rose-blush' : 'text-stone-400'}>EN</span>
+              <span className="text-stone-300">/</span>
+              <span className={lang === 'es' ? 'text-rose-blush' : 'text-stone-400'}>ES</span>
+            </button>
+
             <a
               href="tel:7039280838"
               className="font-sans text-sm text-stone-600 hover:text-rose-blush transition-colors duration-200"
@@ -93,7 +106,7 @@ export default function Navbar() {
               (703) 928-0838
             </a>
             <Link href="/contact" className="btn-primary text-sm px-5 py-2.5">
-              Order Now
+              {t.nav.orderNow}
             </Link>
           </div>
 
@@ -161,19 +174,29 @@ export default function Navbar() {
 
           <div className="mt-10 flex flex-col gap-3">
             <Link href="/contact" className="btn-primary justify-center text-base py-4">
-              Order Now
+              {t.nav.orderNow}
             </Link>
             <a
               href="tel:7039280838"
               className="btn-outline justify-center text-base py-4"
               aria-label="Call us"
             >
-              Call (703) 928-0838
+              {t.nav.call} (703) 928-0838
             </a>
+            {/* Language toggle mobile */}
+            <button
+              onClick={toggle}
+              aria-label={lang === 'en' ? 'Switch to Spanish' : 'Cambiar a inglés'}
+              className="flex items-center justify-center gap-2 rounded-2xl border border-stone-200 py-4 text-base font-semibold text-stone-600 hover:border-rose-blush hover:text-rose-blush transition-colors duration-200"
+            >
+              <span className={lang === 'en' ? 'text-rose-blush' : 'text-stone-400'}>EN</span>
+              <span className="text-stone-300">/</span>
+              <span className={lang === 'es' ? 'text-rose-blush' : 'text-stone-400'}>ES</span>
+            </button>
           </div>
 
           <p className="mt-8 text-center font-sans text-sm text-stone-500">
-            5443 Wellington Rd, Manassas, VA 20110
+            {t.nav.address}
           </p>
         </div>
       </div>

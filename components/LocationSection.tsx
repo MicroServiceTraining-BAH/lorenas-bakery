@@ -1,24 +1,25 @@
+'use client';
+
+import { useLanguage } from '@/lib/language-context';
+
 export default function LocationSection() {
+  const { t } = useLanguage();
+  const l = t.location;
+
   return (
-    <section
-      className="section-padding bg-warm-gradient"
-      aria-labelledby="location-heading"
-    >
+    <section className="section-padding bg-warm-gradient" aria-labelledby="location-heading">
       <div className="max-w-7xl mx-auto container-padding">
         {/* Header */}
         <div className="text-center max-w-xl mx-auto mb-14">
-          <div className="section-label justify-center mb-5">Find Us</div>
+          <div className="section-label justify-center mb-5">{l.label}</div>
           <h2
             id="location-heading"
             className="font-serif text-4xl md:text-5xl font-bold text-stone-900 leading-tight"
           >
-            Come Visit{' '}
-            <span className="italic text-rose-blush">Our Bakery</span>
+            {l.heading1}{' '}
+            <span className="italic text-rose-blush">{l.heading2}</span>
           </h2>
-          <p className="mt-4 font-sans text-stone-600 leading-relaxed">
-            We&apos;re in the heart of Manassas. Come for the bread, stay for the
-            warmth.
-          </p>
+          <p className="mt-4 font-sans text-stone-600 leading-relaxed">{l.body}</p>
         </div>
 
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-10 items-start">
@@ -34,7 +35,7 @@ export default function LocationSection() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-serif text-lg font-bold text-stone-900 mb-1">Address</h3>
+                  <h3 className="font-serif text-lg font-bold text-stone-900 mb-1">{l.address}</h3>
                   <address className="not-italic font-sans text-stone-600 leading-relaxed text-sm">
                     5443 Wellington Rd<br />
                     Manassas, VA 20110
@@ -46,7 +47,7 @@ export default function LocationSection() {
                     className="mt-2 inline-block font-sans text-sm text-teal-sage font-medium hover:underline"
                     aria-label="Get directions to Lorena's Bakery on Google Maps"
                   >
-                    Get Directions →
+                    {l.getDirections}
                   </a>
                 </div>
               </div>
@@ -62,12 +63,12 @@ export default function LocationSection() {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-serif text-lg font-bold text-stone-900 mb-3">Hours</h3>
+                  <h3 className="font-serif text-lg font-bold text-stone-900 mb-3">{l.hours}</h3>
                   <dl className="space-y-1.5">
                     {[
-                      { day: 'Monday – Friday', hours: '7:00 AM – 7:00 PM' },
-                      { day: 'Saturday', hours: '6:00 AM – 8:00 PM' },
-                      { day: 'Sunday', hours: '7:00 AM – 5:00 PM' },
+                      { day: l.days.weekdays, hours: '7:00 AM – 7:00 PM' },
+                      { day: l.days.saturday, hours: '6:00 AM – 8:00 PM' },
+                      { day: l.days.sunday, hours: '7:00 AM – 5:00 PM' },
                     ].map(({ day, hours }) => (
                       <div key={day} className="flex justify-between gap-4">
                         <dt className="font-sans text-sm text-stone-600">{day}</dt>
@@ -88,7 +89,7 @@ export default function LocationSection() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-serif text-lg font-bold text-stone-900 mb-2">Contact</h3>
+                  <h3 className="font-serif text-lg font-bold text-stone-900 mb-2">{l.contact}</h3>
                   <a
                     href="tel:7039280838"
                     className="block font-sans text-sm text-stone-600 hover:text-rose-blush transition-colors"
@@ -126,12 +127,8 @@ export default function LocationSection() {
         {/* Bottom CTA strip */}
         <div className="mt-10 bg-rose-blush rounded-3xl px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
-            <h3 className="font-serif text-2xl font-bold text-white">
-              Can&apos;t make it in? We take orders!
-            </h3>
-            <p className="font-sans text-rose-light/90 text-sm mt-1">
-              Call ahead or use our contact form for custom orders and pickups.
-            </p>
+            <h3 className="font-serif text-2xl font-bold text-white">{l.cantMakeIt}</h3>
+            <p className="font-sans text-rose-light/90 text-sm mt-1">{l.cantMakeItDesc}</p>
           </div>
           <a
             href="tel:7039280838"
@@ -141,7 +138,7 @@ export default function LocationSection() {
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 12 19.79 19.79 0 011.61 3.4 2 2 0 013.6 1.22h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 8.77a16 16 0 006.32 6.32l.97-1.97a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="#E88FA3" strokeWidth="2" />
             </svg>
-            Call (703) 928-0838
+            {l.callUs}
           </a>
         </div>
       </div>

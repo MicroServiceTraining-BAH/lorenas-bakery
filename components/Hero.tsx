@@ -1,7 +1,13 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useLanguage } from '@/lib/language-context';
 
 export default function Hero() {
+  const { t } = useLanguage();
+  const h = t.hero;
+
   return (
     <section
       className="relative min-h-screen flex items-center overflow-hidden bg-hero-gradient"
@@ -9,51 +15,22 @@ export default function Hero() {
     >
       {/* Decorative background elements */}
       <div className="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
-        {/* Large soft circle top right */}
         <div className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-rose-light/20 blur-3xl" />
-        {/* Medium circle bottom left */}
         <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-gold-light/30 blur-3xl" />
-        {/* Teal accent */}
         <div className="absolute top-1/3 -right-10 w-[280px] h-[280px] rounded-full bg-teal-pale blur-2xl" />
 
-        {/* Decorative dots grid */}
-        <svg
-          className="absolute top-24 right-16 opacity-20"
-          width="120"
-          height="120"
-          viewBox="0 0 120 120"
-          fill="none"
-        >
+        <svg className="absolute top-24 right-16 opacity-20" width="120" height="120" viewBox="0 0 120 120" fill="none">
           {Array.from({ length: 6 }).map((_, row) =>
             Array.from({ length: 6 }).map((_, col) => (
-              <circle
-                key={`${row}-${col}`}
-                cx={col * 24 + 12}
-                cy={row * 24 + 12}
-                r="2.5"
-                fill="#E88FA3"
-              />
+              <circle key={`${row}-${col}`} cx={col * 24 + 12} cy={row * 24 + 12} r="2.5" fill="#E88FA3" />
             ))
           )}
         </svg>
 
-        {/* Decorative dots grid bottom */}
-        <svg
-          className="absolute bottom-32 left-10 opacity-15"
-          width="80"
-          height="80"
-          viewBox="0 0 80 80"
-          fill="none"
-        >
+        <svg className="absolute bottom-32 left-10 opacity-15" width="80" height="80" viewBox="0 0 80 80" fill="none">
           {Array.from({ length: 4 }).map((_, row) =>
             Array.from({ length: 4 }).map((_, col) => (
-              <circle
-                key={`${row}-${col}`}
-                cx={col * 20 + 10}
-                cy={row * 20 + 10}
-                r="2"
-                fill="#5F8F8A"
-              />
+              <circle key={`${row}-${col}`} cx={col * 20 + 10} cy={row * 20 + 10} r="2" fill="#5F8F8A" />
             ))
           )}
         </svg>
@@ -63,29 +40,25 @@ export default function Hero() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left — Copy */}
           <div>
-            <div className="section-label animate-fade-up mb-6">
-              Manassas, Virginia · Since 2010
-            </div>
+            <div className="section-label animate-fade-up mb-6">{h.label}</div>
 
             <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold text-stone-900 leading-[1.06] tracking-tight animate-fade-up-delay-1">
-              Fresh Pan Dulce{' '}
-              <span className="italic text-rose-blush">&amp; Pastries</span>
+              {h.heading1}{' '}
+              <span className="italic text-rose-blush">{h.heading2}</span>
               <br />
-              Made Daily
+              {h.heading3}
             </h1>
 
             <p className="mt-6 text-lg text-stone-600 leading-relaxed max-w-md font-sans animate-fade-up-delay-2">
-              Authentic Salvadoran sweet bread, handcrafted pastries, and rich coffee — baked
-              fresh every morning with love and tradition. Taste the difference of family recipes
-              passed down through generations.
+              {h.body}
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4 animate-fade-up-delay-3">
               <Link href="/menu" className="btn-primary text-base px-8 py-4">
-                View Our Menu
+                {h.viewMenu}
               </Link>
               <Link href="/contact" className="btn-outline text-base px-8 py-4">
-                Order Now
+                {h.orderNow}
               </Link>
             </div>
 
@@ -98,8 +71,8 @@ export default function Hero() {
                   </svg>
                 </div>
                 <div>
-                  <div className="font-serif text-base font-semibold text-stone-800">4.9 Rating</div>
-                  <div className="font-sans text-xs text-stone-500">200+ Google Reviews</div>
+                  <div className="font-serif text-base font-semibold text-stone-800">{h.rating}</div>
+                  <div className="font-sans text-xs text-stone-500">{h.ratingDesc}</div>
                 </div>
               </div>
 
@@ -113,8 +86,8 @@ export default function Hero() {
                   </svg>
                 </div>
                 <div>
-                  <div className="font-serif text-base font-semibold text-stone-800">Family Owned</div>
-                  <div className="font-sans text-xs text-stone-500">15+ years in Manassas</div>
+                  <div className="font-serif text-base font-semibold text-stone-800">{h.familyOwned}</div>
+                  <div className="font-sans text-xs text-stone-500">{h.familyDesc}</div>
                 </div>
               </div>
 
@@ -128,8 +101,8 @@ export default function Hero() {
                   </svg>
                 </div>
                 <div>
-                  <div className="font-serif text-base font-semibold text-stone-800">Baked Fresh</div>
-                  <div className="font-sans text-xs text-stone-500">Every morning by 7am</div>
+                  <div className="font-serif text-base font-semibold text-stone-800">{h.bakedFresh}</div>
+                  <div className="font-sans text-xs text-stone-500">{h.bakedDesc}</div>
                 </div>
               </div>
             </div>
@@ -137,7 +110,6 @@ export default function Hero() {
 
           {/* Right — Visual */}
           <div className="relative flex items-center justify-center lg:justify-end">
-            {/* Main visual card */}
             <div className="relative w-full max-w-md">
               {/* Primary card */}
               <div className="relative rounded-[2.5rem] overflow-hidden shadow-float animate-fade-up-delay-2">
@@ -153,8 +125,8 @@ export default function Hero() {
 
                 {/* Overlay badge */}
                 <div className="absolute top-5 right-5 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-warm">
-                  <div className="font-script text-rose-blush text-xl leading-none">Fresh Today</div>
-                  <div className="font-sans text-xs text-stone-500 mt-0.5">Ready by 7am</div>
+                  <div className="font-script text-rose-blush text-xl leading-none">{h.freshToday}</div>
+                  <div className="font-sans text-xs text-stone-500 mt-0.5">{h.readyBy}</div>
                 </div>
               </div>
 
@@ -196,18 +168,8 @@ export default function Hero() {
 
       {/* Bottom wave */}
       <div className="absolute bottom-0 left-0 right-0" aria-hidden="true">
-        <svg
-          viewBox="0 0 1440 60"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0 60V30C240 0 480 60 720 30C960 0 1200 60 1440 30V60H0Z"
-            fill="white"
-            fillOpacity="0.6"
-          />
+        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full" preserveAspectRatio="none">
+          <path d="M0 60V30C240 0 480 60 720 30C960 0 1200 60 1440 30V60H0Z" fill="white" fillOpacity="0.6" />
         </svg>
       </div>
     </section>

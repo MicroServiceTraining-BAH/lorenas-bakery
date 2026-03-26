@@ -1,15 +1,22 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
-
-const NAV_LINKS = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/menu', label: 'Menu' },
-  { href: '/gallery', label: 'Gallery' },
-  { href: '/contact', label: 'Contact' },
-];
+import { useLanguage } from '@/lib/language-context';
 
 export default function Footer() {
+  const { t } = useLanguage();
+  const f = t.footer;
+  const nav = t.nav;
+
+  const NAV_LINKS = [
+    { href: '/', label: nav.home },
+    { href: '/about', label: nav.about },
+    { href: '/menu', label: nav.menu },
+    { href: '/gallery', label: nav.gallery },
+    { href: '/contact', label: nav.contact },
+  ];
+
   return (
     <footer className="bg-stone-950 text-white" aria-label="Footer">
       {/* Upper footer */}
@@ -27,8 +34,7 @@ export default function Footer() {
               />
             </Link>
             <p className="font-sans text-sm text-stone-400 leading-relaxed max-w-xs mt-4">
-              Authentic Salvadoran pan dulce, pastries, and coffee — baked fresh daily in
-              Manassas, Virginia. Family-owned since 2010.
+              {f.tagline}
             </p>
             <div className="mt-6 flex items-center gap-3">
               <a
@@ -61,7 +67,7 @@ export default function Footer() {
           {/* Navigation */}
           <div>
             <h3 className="font-sans text-xs font-semibold tracking-[0.18em] uppercase text-stone-400 mb-6">
-              Navigation
+              {f.navigation}
             </h3>
             <ul className="space-y-3" role="list">
               {NAV_LINKS.map(({ href, label }) => (
@@ -80,7 +86,7 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <h3 className="font-sans text-xs font-semibold tracking-[0.18em] uppercase text-stone-400 mb-6">
-              Visit Us
+              {f.visitUs}
             </h3>
             <dl className="space-y-4">
               <div>
@@ -115,10 +121,9 @@ export default function Footer() {
                 </dd>
               </div>
               <div>
-                <dt className="font-sans text-xs text-stone-500 mb-1">Hours</dt>
-                <dd className="font-sans text-sm text-stone-300">
-                  Mon – Fri: 7am – 7pm<br />
-                  Sat: 6am – 8pm · Sun: 7am – 5pm
+                <dt className="font-sans text-xs text-stone-500 mb-1">{f.hours}</dt>
+                <dd className="font-sans text-sm text-stone-300 whitespace-pre-line">
+                  {f.hoursValue}
                 </dd>
               </div>
             </dl>
@@ -134,10 +139,10 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="max-w-7xl mx-auto container-padding py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
         <p className="font-sans text-xs text-stone-500">
-          © {new Date().getFullYear()} Lorena&apos;s Bakery · Manassas, VA · All rights reserved.
+          © {new Date().getFullYear()} Lorena&apos;s Bakery · Manassas, VA · {f.rights}
         </p>
         <p className="font-sans text-xs text-stone-500">
-          Website by{' '}
+          {f.websiteBy}{' '}
           <a
             href="https://lvluplocal.co"
             target="_blank"
