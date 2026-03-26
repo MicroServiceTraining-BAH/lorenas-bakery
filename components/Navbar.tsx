@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
@@ -45,13 +46,15 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
         <nav className="flex items-center justify-between h-16 md:h-20" aria-label="Main navigation">
           {/* Logo */}
-          <Link href="/" className="flex flex-col leading-none group" aria-label="Lorena's Bakery home">
-            <span className="font-script text-2xl md:text-3xl text-rose-blush transition-colors duration-200 group-hover:text-rose-400">
-              Lorena&apos;s
-            </span>
-            <span className="font-sans text-[9px] tracking-[0.22em] uppercase text-stone-600 -mt-0.5">
-              Bakery
-            </span>
+          <Link href="/" className="flex items-center" aria-label="Lorena's Bakery home">
+            <Image
+              src="/lorenas-logo.webp"
+              alt="Lorena's Bakery"
+              width={110}
+              height={55}
+              className="h-12 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop Nav */}

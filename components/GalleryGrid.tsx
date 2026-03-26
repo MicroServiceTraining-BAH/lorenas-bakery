@@ -2,7 +2,6 @@ import Link from 'next/link';
 
 type GalleryCell = {
   label: string;
-  emoji: string;
   gradient: string;
   span?: string;
 };
@@ -10,39 +9,32 @@ type GalleryCell = {
 const GALLERY_CELLS: GalleryCell[] = [
   {
     label: 'Conchas y Pan Dulce',
-    emoji: '🍞',
     gradient: 'linear-gradient(145deg, #F9E3C7 0%, #F0AE70 100%)',
     span: 'col-span-2 row-span-2',
   },
   {
     label: 'Pastelitos frescos',
-    emoji: '🥐',
     gradient: 'linear-gradient(145deg, #FDE8EE 0%, #E88FA3 100%)',
   },
   {
     label: 'Café de Olla',
-    emoji: '☕',
     gradient: 'linear-gradient(145deg, #F5E8D6 0%, #A0704A 100%)',
   },
   {
     label: 'Pastel de Queso',
-    emoji: '🍰',
     gradient: 'linear-gradient(145deg, #E8F5F4 0%, #5F8F8A 100%)',
   },
   {
     label: 'Empanadas Dulces',
-    emoji: '🧁',
     gradient: 'linear-gradient(145deg, #FFF3D6 0%, #F4C27A 100%)',
     span: 'col-span-2',
   },
   {
     label: 'Tortas de Boda',
-    emoji: '🎂',
     gradient: 'linear-gradient(145deg, #F9E8F5 0%, #D4A0C8 100%)',
   },
   {
     label: 'Quesadilla Salvadoreña',
-    emoji: '🍮',
     gradient: 'linear-gradient(145deg, #FDE8C5 0%, #E8A84A 100%)',
   },
 ];
@@ -66,13 +58,13 @@ export default function GalleryGrid() {
           <p className="font-sans text-stone-600 max-w-xs leading-relaxed sm:text-right">
             Every piece tells a story. Follow us{' '}
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/lorenasbakery.us/"
               className="text-rose-blush font-medium hover:underline"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Follow Lorena's Bakery on Instagram"
             >
-              @lorenasbakery
+              @lorenasbakery.us
             </a>{' '}
             for daily bakes and specials.
           </p>
@@ -93,12 +85,7 @@ export default function GalleryGrid() {
               style={{ background: cell.gradient }}
             >
               <div className="h-full flex flex-col items-center justify-center p-4">
-                <span
-                  className="text-5xl md:text-6xl transition-transform duration-500 group-hover:scale-110"
-                  aria-hidden="true"
-                >
-                  {cell.emoji}
-                </span>
+                <span className="font-script text-2xl text-white/60 text-center">{cell.label}</span>
               </div>
               {/* Hover overlay */}
               <div className="absolute inset-0 bg-stone-900/0 group-hover:bg-stone-900/20 transition-all duration-300 rounded-3xl flex items-end p-4 opacity-0 group-hover:opacity-100">

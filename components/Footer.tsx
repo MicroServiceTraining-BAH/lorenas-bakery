@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 const NAV_LINKS = [
@@ -16,9 +17,14 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-12 lg:gap-16">
           {/* Brand */}
           <div>
-            <Link href="/" className="inline-flex flex-col leading-none mb-4" aria-label="Lorena's Bakery home">
-              <span className="font-script text-3xl text-rose-blush">Lorena&apos;s</span>
-              <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-stone-400 -mt-0.5">Bakery</span>
+            <Link href="/" className="inline-flex mb-4" aria-label="Lorena's Bakery home">
+              <Image
+                src="/lorenas-logo.webp"
+                alt="Lorena's Bakery"
+                width={120}
+                height={60}
+                className="h-14 w-auto"
+              />
             </Link>
             <p className="font-sans text-sm text-stone-400 leading-relaxed max-w-xs mt-4">
               Authentic Salvadoran pan dulce, pastries, and coffee — baked fresh daily in
@@ -26,7 +32,7 @@ export default function Footer() {
             </p>
             <div className="mt-6 flex items-center gap-3">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/lorenasbakery.us/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-xl bg-stone-800 hover:bg-rose-blush flex items-center justify-center transition-colors duration-200"

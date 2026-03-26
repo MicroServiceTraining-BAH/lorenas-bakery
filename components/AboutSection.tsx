@@ -21,7 +21,9 @@ export default function AboutSection() {
                 <div className="h-full flex flex-col items-center justify-center text-center px-10">
                   <div className="font-script text-5xl text-white/70 mb-6">Con Amor</div>
                   <div className="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center mb-4">
-                    <span className="text-4xl">👩‍🍳</span>
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 2C9.24 2 7 4.24 7 7c0 1.9.99 3.56 2.47 4.5C6.92 12.7 5 15.16 5 18v1h14v-1c0-2.84-1.92-5.3-4.47-6.5C15.01 10.56 16 8.9 16 7c0-2.76-2.24-5-4-5z" fill="white" fillOpacity="0.7" />
+                    </svg>
                   </div>
                   <p className="font-sans text-white/80 text-sm leading-relaxed max-w-xs">
                     &ldquo;Every piece of bread carries the warmth of home and the pride of our heritage.&rdquo;

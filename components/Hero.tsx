@@ -153,19 +153,6 @@ export default function Hero() {
                     <div className="font-script text-7xl text-white/80 leading-none mb-4">
                       Pan Dulce
                     </div>
-                    <div className="flex justify-center gap-3 mb-4">
-                      {['🥐', '🍞', '☕', '🍰', '🧁'].map((emoji, i) => (
-                        <span
-                          key={i}
-                          className="text-3xl"
-                          style={{
-                            animation: `float ${4 + i * 0.5}s ease-in-out ${i * 0.3}s infinite`,
-                          }}
-                        >
-                          {emoji}
-                        </span>
-                      ))}
-                    </div>
                     <p className="font-sans text-sm text-white/80 tracking-wide">
                       Baked fresh every morning
                     </p>
