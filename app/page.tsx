@@ -1,3 +1,5 @@
+'use client';
+
 import Hero from '@/components/Hero';
 import AboutSection from '@/components/AboutSection';
 import MenuPreview from '@/components/MenuPreview';
