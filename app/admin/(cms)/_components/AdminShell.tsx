@@ -9,11 +9,12 @@ type AdminShellProps = {
 };
 
 const NAV = [
-  { href: '/admin', label: 'Dashboard', exact: true },
-  { href: '/admin/menu', label: 'Menu Items', exact: false },
-  { href: '/admin/business', label: 'Business Info', exact: false },
-  { href: '/admin/home', label: 'Homepage', exact: false },
-  { href: '/admin/gallery', label: 'Gallery', exact: false },
+  { href: '/admin', label: 'Dashboard', exact: true, roles: ['admin', 'editor'] },
+  { href: '/admin/menu', label: 'Menu Items', exact: false, roles: ['admin', 'editor'] },
+  { href: '/admin/business', label: 'Business Info', exact: false, roles: ['admin', 'editor'] },
+  { href: '/admin/home', label: 'Homepage', exact: false, roles: ['admin', 'editor'] },
+  { href: '/admin/gallery', label: 'Gallery', exact: false, roles: ['admin', 'editor'] },
+  { href: '/admin/users', label: 'Users', exact: false, roles: ['admin'] },
 ];
 
 export default function AdminShell({ user, children }: AdminShellProps) {
@@ -25,6 +26,8 @@ export default function AdminShell({ user, children }: AdminShellProps) {
     router.push('/admin/login');
     router.refresh();
   }
+
+  const visibleNav = NAV.filter((item) => item.roles.includes(user.role));
 
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden">
@@ -38,9 +41,10 @@ export default function AdminShell({ user, children }: AdminShellProps) {
         </div>
 
         <nav className="flex-1 p-3 space-y-0.5" aria-label="CMS navigation">
-          {NAV.map(({ href, label, exact }) => {
-            const active = exact ? pathname === href : pathname.startsWith(href) && href !== '/admin';
-            const isActive = exact ? pathname === href : active || (href === '/admin' && pathname === '/admin');
+          {visibleNav.map(({ href, label, exact }) => {
+            const isActive = exact
+              ? pathname === href
+              : pathname.startsWith(href) && href !== '/admin';
             return (
               <Link
                 key={href}
@@ -48,7 +52,7 @@ export default function AdminShell({ user, children }: AdminShellProps) {
                 className={`flex items-center px-3 py-2 rounded-lg text-sm transition-colors ${
                   isActive
                     ? 'bg-stone-100 text-stone-900 font-medium'
-                    : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                    : 'text-gray-500 hover:bg-gray-100 hover:text-gray-900'
                 }`}
               >
                 {label}
@@ -58,13 +62,18 @@ export default function AdminShell({ user, children }: AdminShellProps) {
         </nav>
 
         <div className="p-4 border-t border-gray-100">
-          <div className="text-sm font-medium text-gray-900 truncate">{user.name}</div>
-          <div className="text-xs text-gray-400 truncate">
-            @{user.username} · {user.role}
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-7 h-7 rounded-full bg-stone-100 flex items-center justify-center text-xs font-bold text-stone-600 flex-shrink-0">
+              {user.name.charAt(0).toUpperCase()}
+            </div>
+            <div className="min-w-0">
+              <div className="text-sm font-medium text-gray-900 truncate leading-tight">{user.name}</div>
+              <div className="text-xs text-gray-400 truncate">{user.role}</div>
+            </div>
           </div>
           <button
             onClick={handleLogout}
-            className="mt-3 text-xs text-gray-400 hover:text-red-500 transition-colors"
+            className="text-xs text-gray-400 hover:text-red-500 transition-colors"
           >
             Sign out →
           </button>

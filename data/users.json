@@ -1,3 +1,12 @@
 {
-  "users": []
+  "users": [
+    {
+      "id": "71eb2445-0ab5-4755-99f9-c1147cab54e5",
+      "username": "gabriel",
+      "passwordHash": "4e814c141e8c9039461ddb024557e7ed94c303143f3ff70f59bcbacdf0242981132f2c631b4a862f827e60c6e25cd4503f9a58729d1f543539fe7f94e138617a",
+      "salt": "d3aa6ee591f4fb0c7c67f958aa7e645c",
+      "role": "admin",
+      "name": "Gabriel"
+    }
+  ]
 }

@@ -1,3 +1,34 @@
 {
-  "images": []
+  "images": [
+    {
+      "id": "bakery-full",
+      "src": "/bakery-full.jpg",
+      "alt": "Lorena's Bakery display case filled with fresh pan dulce, pastries, and baked goods",
+      "caption": "Pan Dulce & Pastries"
+    },
+    {
+      "id": "fruit-tarts-closeup",
+      "src": "/fruit-tarts-closeup.jpg",
+      "alt": "Close-up of fresh fruit tarts",
+      "caption": "Fruit Tarts"
+    },
+    {
+      "id": "bakery-display",
+      "src": "/bakery-display.jpg",
+      "alt": "Fresh bakery display",
+      "caption": "Fresh Display"
+    },
+    {
+      "id": "conchas-display",
+      "src": "/conchas-display.jpg",
+      "alt": "Conchas and cookies on display",
+      "caption": "Conchas & Cookies"
+    },
+    {
+      "id": "fruit-tarts-case",
+      "src": "/fruit-tarts-case.jpg",
+      "alt": "Fruit tarts and desserts in the display case",
+      "caption": "Fruit Tarts & Desserts"
+    }
+  ]
 }

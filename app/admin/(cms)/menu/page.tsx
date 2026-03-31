@@ -1,8 +1,23 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 
 import type { MenuCategory, MenuData, MenuItem } from '@/types/cms';
+
+// ─── Emoji picker data ────────────────────────────────────────────────────────
+
+const FOOD_EMOJIS = [
+  '🍞','🥖','🥐','🧁','🍰','🎂','🍮','🥧','🍩','🍪',
+  '🫓','🥨','🧇','🥞','🧈','🍫','🍬','🍭','🍯','🍡',
+  '🥙','🫔','🌮','🌯','🥗','🥘','🍲','🍛','🫕','🍜',
+  '🥚','🧆','🌽','🥕','🧄','🧅','🥦','🌿','🌱','🫙',
+  '☕','🍵','🧋','🥤','🧃','🍹','🥛','🍺','🍷','🫖',
+  '🍓','🍇','🍊','🍋','🍌','🍑','🍒','🍎','🥝','🥭',
+  '⭐','👑','🎉','🌸','✨','❤️','🌟','🏅','🎊','🫶',
+];
+
+// ─── Types ────────────────────────────────────────────────────────────────────
 
 const EMPTY_ITEM: Omit<MenuItem, 'id'> = {
   name: '',
@@ -10,6 +25,7 @@ const EMPTY_ITEM: Omit<MenuItem, 'id'> = {
   price: '',
   tag: '',
   emoji: '🍞',
+  image: '',
 };
 
 type ModalState =
@@ -19,11 +35,13 @@ type ModalState =
   | { mode: 'add-category' }
   | { mode: 'edit-category'; categoryId: string; currentName: string };
 
+// ─── Main page ────────────────────────────────────────────────────────────────
+
 export default function MenuPage() {
   const [data, setData] = useState<MenuData>({ categories: [] });
   const [loading, setLoading] = useState(true);
   const [modal, setModal] = useState<ModalState>({ mode: 'closed' });
-  const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  const [expanded, setExpanded] = useState<Set<string>>(new Set<string>());
 
   useEffect(() => {
     fetch('/api/menu')
@@ -164,7 +182,6 @@ export default function MenuPage() {
         ))}
       </div>
 
-      {/* Modals */}
       {modal.mode === 'add-item' && (
         <ItemModal
           title="Add item"
@@ -198,7 +215,7 @@ export default function MenuPage() {
   );
 }
 
-// ─── Sub-components ───────────────────────────────────────────────────────────
+// ─── Category block ───────────────────────────────────────────────────────────
 
 type CategoryBlockProps = {
   category: MenuCategory;
@@ -223,7 +240,6 @@ function CategoryBlock({
 }: CategoryBlockProps) {
   return (
     <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-      {/* Category header */}
       <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
         <button
           onClick={onToggle}
@@ -261,7 +277,6 @@ function CategoryBlock({
         </div>
       </div>
 
-      {/* Items list */}
       {expanded && (
         <div>
           {category.items.length === 0 ? (
@@ -273,7 +288,21 @@ function CategoryBlock({
                   key={item.id}
                   className="flex items-center gap-4 px-5 py-3 hover:bg-gray-50 transition-colors"
                 >
-                  <span className="text-xl flex-shrink-0">{item.emoji}</span>
+                  {/* Thumbnail: image or emoji */}
+                  <div className="w-9 h-9 flex-shrink-0 rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
+                    {item.image ? (
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        width={36}
+                        height={36}
+                        className="object-cover w-full h-full"
+                      />
+                    ) : (
+                      <span className="text-xl">{item.emoji}</span>
+                    )}
+                  </div>
+
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
                       <span className="text-sm font-medium text-gray-900 truncate">
@@ -287,6 +316,7 @@ function CategoryBlock({
                     </div>
                     <span className="text-xs text-gray-500">{item.price}</span>
                   </div>
+
                   <div className="flex items-center gap-2 flex-shrink-0">
                     <button
                       onClick={() => onEditItem(item)}
@@ -322,6 +352,8 @@ function CategoryBlock({
   );
 }
 
+// ─── Item modal ───────────────────────────────────────────────────────────────
+
 type ItemModalProps = {
   title: string;
   initialValues: Omit<MenuItem, 'id'> & { id?: string };
@@ -330,11 +362,35 @@ type ItemModalProps = {
 };
 
 function ItemModal({ title, initialValues, onSave, onClose }: ItemModalProps) {
-  const [form, setForm] = useState({ ...EMPTY_ITEM, ...initialValues });
+  const [form, setForm] = useState<Omit<MenuItem, 'id'>>({ ...EMPTY_ITEM, ...initialValues });
   const [saving, setSaving] = useState(false);
+  const [emojiOpen, setEmojiOpen] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState('');
+  const fileRef = useRef<HTMLInputElement>(null);
 
-  function update(field: keyof typeof EMPTY_ITEM, value: string) {
+  function update<K extends keyof typeof form>(field: K, value: (typeof form)[K]) {
     setForm((prev) => ({ ...prev, [field]: value }));
+  }
+
+  async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    setUploadError('');
+    try {
+      const fd = new FormData();
+      fd.append('file', file);
+      const res = await fetch('/api/upload', { method: 'POST', body: fd });
+      const d = (await res.json()) as { url?: string; error?: string };
+      if (!res.ok || !d.url) throw new Error(d.error ?? 'Upload failed.');
+      update('image', d.url);
+    } catch (err) {
+      setUploadError(err instanceof Error ? err.message : 'Upload failed.');
+    } finally {
+      setUploading(false);
+      if (fileRef.current) fileRef.current.value = '';
+    }
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -346,21 +402,64 @@ function ItemModal({ title, initialValues, onSave, onClose }: ItemModalProps) {
 
   return (
     <ModalOverlay onClose={onClose}>
-      <h2 className="text-lg font-semibold text-gray-900 mb-6">{title}</h2>
+      <h2 className="text-lg font-semibold text-gray-900 mb-5">{title}</h2>
+
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="flex gap-3">
-          <div className="w-20">
-            <label htmlFor="item-emoji" className="block text-sm font-medium text-gray-700 mb-1">
-              Emoji
-            </label>
-            <input
-              id="item-emoji"
-              type="text"
-              value={form.emoji}
-              onChange={(e) => update('emoji', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-center focus:outline-none focus:ring-2 focus:ring-stone-300"
-            />
+        {/* Emoji picker + Name */}
+        <div className="flex gap-3 items-start">
+          {/* Emoji */}
+          <div className="flex-shrink-0">
+            <label className="block text-sm font-medium text-gray-700 mb-1">Emoji</label>
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setEmojiOpen((o) => !o)}
+                className="w-16 h-10 border border-gray-300 rounded-lg text-2xl flex items-center justify-center hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-stone-300"
+                aria-label="Pick an emoji"
+                aria-expanded={emojiOpen}
+              >
+                {form.emoji || '＋'}
+              </button>
+
+              {emojiOpen && (
+                <div className="absolute left-0 top-full mt-1 z-10 bg-white rounded-xl border border-gray-200 shadow-lg p-2 w-64">
+                  <div
+                    className="grid grid-cols-10 gap-0.5 max-h-40 overflow-y-auto"
+                    role="listbox"
+                    aria-label="Choose an emoji"
+                  >
+                    {FOOD_EMOJIS.map((em) => (
+                      <button
+                        key={em}
+                        type="button"
+                        role="option"
+                        aria-selected={form.emoji === em}
+                        onClick={() => {
+                          update('emoji', em);
+                          setEmojiOpen(false);
+                        }}
+                        className={`w-7 h-7 text-base rounded flex items-center justify-center hover:bg-gray-100 transition-colors ${
+                          form.emoji === em ? 'bg-stone-100 ring-1 ring-stone-300' : ''
+                        }`}
+                      >
+                        {em}
+                      </button>
+                    ))}
+                  </div>
+                  {/* Clear selection */}
+                  <button
+                    type="button"
+                    onClick={() => { update('emoji', ''); setEmojiOpen(false); }}
+                    className="mt-2 w-full text-xs text-gray-400 hover:text-gray-600 py-1 border-t border-gray-100"
+                  >
+                    Clear emoji
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
+
+          {/* Name */}
           <div className="flex-1">
             <label htmlFor="item-name" className="block text-sm font-medium text-gray-700 mb-1">
               Name <span className="text-red-500">*</span>
@@ -377,6 +476,59 @@ function ItemModal({ title, initialValues, onSave, onClose }: ItemModalProps) {
           </div>
         </div>
 
+        {/* Photo upload */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Photo <span className="text-gray-400 font-normal">(optional — replaces emoji on display)</span>
+          </label>
+
+          {form.image ? (
+            <div className="flex items-center gap-3">
+              <div className="relative w-16 h-16 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
+                <Image src={form.image} alt="Item" fill className="object-cover" />
+              </div>
+              <div className="flex flex-col gap-1">
+                <label
+                  htmlFor="item-img-upload"
+                  className="cursor-pointer text-xs text-stone-600 hover:text-stone-900 font-medium underline underline-offset-2"
+                >
+                  Replace photo
+                </label>
+                <button
+                  type="button"
+                  onClick={() => update('image', '')}
+                  className="text-xs text-red-400 hover:text-red-600 text-left"
+                >
+                  Remove photo
+                </button>
+              </div>
+            </div>
+          ) : (
+            <label
+              htmlFor="item-img-upload"
+              className={`flex items-center gap-2 w-full px-3 py-2 border border-dashed border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors ${uploading ? 'opacity-50 pointer-events-none' : ''}`}
+            >
+              <span className="text-gray-400 text-lg">📷</span>
+              <span className="text-sm text-gray-500">
+                {uploading ? 'Uploading...' : 'Click to upload a photo'}
+              </span>
+            </label>
+          )}
+
+          <input
+            id="item-img-upload"
+            ref={fileRef}
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+            className="sr-only"
+            onChange={handleImageUpload}
+            disabled={uploading}
+            aria-label="Upload item photo"
+          />
+          {uploadError && <p className="text-xs text-red-600 mt-1">{uploadError}</p>}
+        </div>
+
+        {/* Description */}
         <div>
           <label htmlFor="item-desc" className="block text-sm font-medium text-gray-700 mb-1">
             Description
@@ -391,6 +543,7 @@ function ItemModal({ title, initialValues, onSave, onClose }: ItemModalProps) {
           />
         </div>
 
+        {/* Price + Tag */}
         <div className="flex gap-3">
           <div className="flex-1">
             <label htmlFor="item-price" className="block text-sm font-medium text-gray-700 mb-1">
@@ -421,6 +574,7 @@ function ItemModal({ title, initialValues, onSave, onClose }: ItemModalProps) {
           </div>
         </div>
 
+        {/* Actions */}
         <div className="flex justify-end gap-3 pt-2">
           <button
             type="button"
@@ -431,7 +585,7 @@ function ItemModal({ title, initialValues, onSave, onClose }: ItemModalProps) {
           </button>
           <button
             type="submit"
-            disabled={saving}
+            disabled={saving || uploading}
             className="px-5 py-2 bg-stone-900 text-white text-sm font-medium rounded-lg hover:bg-stone-800 disabled:opacity-50 transition-colors"
           >
             {saving ? 'Saving...' : 'Save item'}
@@ -441,6 +595,8 @@ function ItemModal({ title, initialValues, onSave, onClose }: ItemModalProps) {
     </ModalOverlay>
   );
 }
+
+// ─── Category modal ───────────────────────────────────────────────────────────
 
 type CategoryModalProps = {
   title: string;
@@ -501,6 +657,8 @@ function CategoryModal({ title, initialName, onSave, onClose }: CategoryModalPro
   );
 }
 
+// ─── Modal overlay ────────────────────────────────────────────────────────────
+
 type ModalOverlayProps = { onClose: () => void; children: React.ReactNode };
 
 function ModalOverlay({ onClose, children }: ModalOverlayProps) {
@@ -510,9 +668,8 @@ function ModalOverlay({ onClose, children }: ModalOverlayProps) {
       role="dialog"
       aria-modal="true"
     >
-      {/* Backdrop click to close */}
       <div className="absolute inset-0" onClick={onClose} aria-hidden="true" />
-      <div className="relative bg-white rounded-2xl p-6 w-full max-w-md shadow-xl">
+      <div className="relative bg-white rounded-2xl p-6 w-full max-w-md shadow-xl max-h-[90vh] overflow-y-auto">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"

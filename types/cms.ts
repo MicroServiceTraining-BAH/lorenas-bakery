@@ -29,6 +29,7 @@ export type MenuItem = {
   price: string;
   tag: string;
   emoji: string;
+  image?: string;
 };
 
 export type MenuCategory = {
