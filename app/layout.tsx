@@ -1,9 +1,6 @@
 import type { Metadata } from 'next';
 import { Playfair_Display, DM_Sans, Dancing_Script } from 'next/font/google';
 import './globals.css';
-import { LanguageProvider } from '@/lib/language-context';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -73,13 +70,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${dmSans.variable} ${dancing.variable}`}>
-      <body className="bg-cream font-sans antialiased">
-        <LanguageProvider>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-        </LanguageProvider>
-      </body>
+      <body className="bg-cream font-sans antialiased">{children}</body>
     </html>
   );
 }

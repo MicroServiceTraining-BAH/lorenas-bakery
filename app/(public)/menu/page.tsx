@@ -1,157 +1,18 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+import { readData } from '@/lib/data';
+import type { MenuData } from '@/types/cms';
+
 export const metadata: Metadata = {
   title: 'Menu',
   description:
     "Explore Lorena's Bakery full menu — authentic Salvadoran pan dulce, conchas, pastelitos, empanadas, quesadilla salvadoreña, custom cakes, and specialty coffee in Manassas, VA.",
 };
 
-type MenuCategory = {
-  id: string;
-  name: string;
-  items: {
-    name: string;
-    description: string;
-    price: string;
-    tag?: string;
-    emoji: string;
-  }[];
-};
-
-const MENU: MenuCategory[] = [
-  {
-    id: 'pan-dulce',
-    name: 'Pan Dulce & Sweet Bread',
-    items: [
-      {
-        name: 'Conchas',
-        description: 'Classic Mexican sweet bread with a crumbly sugar shell in vanilla, chocolate, or strawberry.',
-        price: '$2.50',
-        tag: 'Fan Favorite',
-        emoji: '🍞',
-      },
-      {
-        name: 'Semitas',
-        description: 'Dense, sweet bread made with piloncillo and anise seeds. A traditional Salvadoran staple.',
-        price: '$2.75',
-        emoji: '🥖',
-      },
-      {
-        name: 'Pan de Yema',
-        description: 'Egg-enriched sweet rolls with a golden crust, pillowy interior, and hint of orange zest.',
-        price: '$2.50',
-        emoji: '🫓',
-      },
-      {
-        name: 'Cuernos',
-        description: 'Horn-shaped pastry with a flaky exterior and sweet cream or chocolate filling.',
-        price: '$3.00',
-        tag: 'New',
-        emoji: '🥐',
-      },
-    ],
-  },
-  {
-    id: 'pastries',
-    name: 'Savory & Sweet Pastries',
-    items: [
-      {
-        name: 'Pastelitos de Carne',
-        description: 'Flaky hand pies filled with seasoned ground beef, potatoes, and spices. Baked golden.',
-        price: '$3.00',
-        tag: 'Bestseller',
-        emoji: '🥙',
-      },
-      {
-        name: 'Pastelitos de Queso',
-        description: 'Hand pies filled with cream cheese and jalapeño. Crispy exterior, melty center.',
-        price: '$3.00',
-        emoji: '🫔',
-      },
-      {
-        name: 'Empanadas de Leche',
-        description: 'Fried dough filled with sweet vanilla custard and rolled in cinnamon sugar.',
-        price: '$2.75',
-        tag: 'Sweet',
-        emoji: '🧁',
-      },
-      {
-        name: 'Empanadas de Loroco',
-        description: 'Savory Salvadoran empanadas filled with loroco flower and cheese. Authentically ours.',
-        price: '$3.50',
-        tag: 'Signature',
-        emoji: '🌿',
-      },
-    ],
-  },
-  {
-    id: 'cakes',
-    name: 'Cakes & Specialty Items',
-    items: [
-      {
-        name: 'Quesadilla Salvadoreña',
-        description: 'Rice flour cake with parmesan, sesame seeds, and sour cream. Sweet, savory, and spongy.',
-        price: '$4.00',
-        tag: 'Must Try',
-        emoji: '🍰',
-      },
-      {
-        name: 'Tres Leches Cake',
-        description: 'Classic tres leches soaked in three milks with fresh whipped cream and cinnamon topping.',
-        price: 'from $28 (6")',
-        emoji: '🎂',
-      },
-      {
-        name: 'Quinceañera Cakes',
-        description: 'Custom tiered cakes designed for your special day. Consult with Lorena for your vision.',
-        price: 'Custom pricing',
-        tag: 'Custom Order',
-        emoji: '👑',
-      },
-      {
-        name: 'Birthday Cakes',
-        description: 'Fully custom cakes in your choice of flavor, filling, and decoration. Order 72hrs in advance.',
-        price: 'from $45',
-        emoji: '🎉',
-      },
-    ],
-  },
-  {
-    id: 'drinks',
-    name: 'Coffee & Drinks',
-    items: [
-      {
-        name: 'Café de Olla',
-        description: 'Traditional Mexican coffee brewed with cinnamon and piloncillo in a clay pot.',
-        price: '$3.00',
-        tag: 'Morning Must',
-        emoji: '☕',
-      },
-      {
-        name: 'Horchata de Morro',
-        description: 'Authentic Salvadoran horchata made with morro seeds, cinnamon, and sesame. Refreshingly different.',
-        price: '$4.00',
-        tag: 'Signature',
-        emoji: '🥛',
-      },
-      {
-        name: 'Atol de Elote',
-        description: 'Sweet corn drink made the traditional way — warm, thick, and utterly comforting.',
-        price: '$3.50',
-        emoji: '🌽',
-      },
-      {
-        name: 'Fresh Licuados',
-        description: 'Blended fresh fruit drinks with milk or water. Ask about today\'s seasonal fruits.',
-        price: 'from $4.00',
-        emoji: '🍓',
-      },
-    ],
-  },
-];
-
 export default function MenuPage() {
+  const { categories } = readData<MenuData>('menu.json');
+
   return (
     <>
       {/* Hero */}
@@ -186,7 +47,7 @@ export default function MenuPage() {
       <section className="section-padding bg-white" aria-label="Full menu">
         <div className="max-w-7xl mx-auto container-padding">
           <div className="space-y-20">
-            {MENU.map((category) => (
+            {categories.map((category) => (
               <div key={category.id} id={category.id}>
                 <h2 className="font-serif text-3xl md:text-4xl font-bold text-stone-900 mb-8 pb-4 border-b border-stone-100">
                   {category.name}
@@ -194,7 +55,7 @@ export default function MenuPage() {
                 <div className="grid sm:grid-cols-2 gap-5">
                   {category.items.map((item) => (
                     <article
-                      key={item.name}
+                      key={item.id}
                       className="flex items-start gap-5 p-6 rounded-2xl bg-cream hover:bg-rose-pale/40 transition-colors duration-200"
                     >
                       <div className="text-3xl flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-2xl bg-white shadow-card">
@@ -231,7 +92,10 @@ export default function MenuPage() {
       <section className="py-20 bg-warm-gradient" aria-labelledby="menu-cta-heading">
         <div className="max-w-3xl mx-auto container-padding text-center">
           <div className="section-label justify-center mb-6">Special Occasions</div>
-          <h2 id="menu-cta-heading" className="font-serif text-4xl md:text-5xl font-bold text-stone-900 leading-tight">
+          <h2
+            id="menu-cta-heading"
+            className="font-serif text-4xl md:text-5xl font-bold text-stone-900 leading-tight"
+          >
             Custom Orders Welcome
           </h2>
           <p className="mt-5 font-sans text-stone-600 leading-relaxed text-lg max-w-xl mx-auto">

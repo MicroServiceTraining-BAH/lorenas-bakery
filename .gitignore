@@ -34,3 +34,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# CMS — sessions are runtime state, not source code
+/data/sessions.json
+
+# Uploaded user images
+/public/uploads/*
+!/public/uploads/.gitkeep
