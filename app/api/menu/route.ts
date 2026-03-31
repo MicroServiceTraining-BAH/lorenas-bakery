@@ -1,15 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
 
+import { requireAuth } from '@/lib/api-auth';
 import { readData, writeData } from '@/lib/data';
 import type { MenuData } from '@/types/cms';
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const auth = requireAuth(req);
+  if (auth instanceof NextResponse) return auth;
+
   const data = readData<MenuData>('menu.json');
   return NextResponse.json(data);
 }
 
 export async function POST(req: NextRequest) {
+  const auth = requireAuth(req);
+  if (auth instanceof NextResponse) return auth;
+
   const body = (await req.json()) as { name: string };
   const { name } = body;
 

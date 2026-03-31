@@ -57,39 +57,65 @@ export default function MenuPage() {
                   {category.items.map((item) => (
                     <article
                       key={item.id}
-                      className="flex items-start gap-5 p-6 rounded-2xl bg-cream hover:bg-rose-pale/40 transition-colors duration-200"
+                      className={`rounded-2xl bg-cream hover:bg-rose-pale/40 transition-colors duration-200 overflow-hidden ${item.image ? '' : 'flex items-start gap-5 p-6'}`}
                     >
-                      <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-white shadow-card overflow-hidden flex items-center justify-center">
-                        {item.image ? (
-                          <Image
-                            src={item.image}
-                            alt={item.name}
-                            width={48}
-                            height={48}
-                            className="object-cover w-full h-full"
-                          />
-                        ) : (
-                          <span className="text-3xl" aria-hidden="true">{item.emoji}</span>
-                        )}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-start justify-between gap-3 mb-2">
-                          <h3 className="font-serif text-lg font-bold text-stone-900 leading-snug">
-                            {item.name}
-                          </h3>
-                          {item.tag && (
-                            <span className="inline-flex items-center flex-shrink-0 px-2.5 py-0.5 rounded-full bg-rose-pale text-rose-blush font-sans text-xs font-semibold">
-                              {item.tag}
-                            </span>
-                          )}
-                        </div>
-                        <p className="font-sans text-sm text-stone-600 leading-relaxed mb-3">
-                          {item.description}
-                        </p>
-                        <div className="font-serif text-base font-semibold text-teal-sage">
-                          {item.price}
-                        </div>
-                      </div>
+                      {item.image ? (
+                        /* Photo layout — image on top, text below */
+                        <>
+                          <div className="relative w-full h-48">
+                            <Image
+                              src={item.image}
+                              alt={item.name}
+                              fill
+                              className="object-cover"
+                              sizes="(max-width: 640px) 100vw, 50vw"
+                            />
+                            {item.tag && (
+                              <span className="absolute top-3 right-3 inline-flex items-center px-2.5 py-0.5 rounded-full bg-white/90 backdrop-blur-sm text-rose-blush font-sans text-xs font-semibold shadow-sm">
+                                {item.tag}
+                              </span>
+                            )}
+                          </div>
+                          <div className="p-5">
+                            <div className="flex items-start justify-between gap-3 mb-2">
+                              <h3 className="font-serif text-lg font-bold text-stone-900 leading-snug">
+                                {item.name}
+                              </h3>
+                            </div>
+                            <p className="font-sans text-sm text-stone-600 leading-relaxed mb-3">
+                              {item.description}
+                            </p>
+                            <div className="font-serif text-base font-semibold text-teal-sage">
+                              {item.price}
+                            </div>
+                          </div>
+                        </>
+                      ) : (
+                        /* Emoji layout — original side-by-side */
+                        <>
+                          <div className="text-3xl flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-2xl bg-white shadow-card">
+                            <span aria-hidden="true">{item.emoji}</span>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-start justify-between gap-3 mb-2">
+                              <h3 className="font-serif text-lg font-bold text-stone-900 leading-snug">
+                                {item.name}
+                              </h3>
+                              {item.tag && (
+                                <span className="inline-flex items-center flex-shrink-0 px-2.5 py-0.5 rounded-full bg-rose-pale text-rose-blush font-sans text-xs font-semibold">
+                                  {item.tag}
+                                </span>
+                              )}
+                            </div>
+                            <p className="font-sans text-sm text-stone-600 leading-relaxed mb-3">
+                              {item.description}
+                            </p>
+                            <div className="font-serif text-base font-semibold text-teal-sage">
+                              {item.price}
+                            </div>
+                          </div>
+                        </>
+                      )}
                     </article>
                   ))}
                 </div>

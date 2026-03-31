@@ -1,15 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
 
+import { requireAuth } from '@/lib/api-auth';
 import { readData, writeData } from '@/lib/data';
 import type { MenuData, MenuItem } from '@/types/cms';
 
 type Params = { params: { id: string } };
 
-// PUT handles both category rename and item add/update
-// Body: { type: 'category', name: string }
-//       { type: 'item', item: MenuItem }
 export async function PUT(req: NextRequest, { params }: Params) {
+  const auth = requireAuth(req);
+  if (auth instanceof NextResponse) return auth;
+
   const body = (await req.json()) as
     | { type: 'category'; name: string }
     | { type: 'item'; item: MenuItem };
@@ -24,9 +25,7 @@ export async function PUT(req: NextRequest, { params }: Params) {
     data.categories[catIndex].name = body.name.trim();
   } else if (body.type === 'item') {
     const item = { ...body.item };
-    if (!item.id) {
-      item.id = crypto.randomUUID();
-    }
+    if (!item.id) item.id = crypto.randomUUID();
     const itemIndex = data.categories[catIndex].items.findIndex((i) => i.id === item.id);
     if (itemIndex === -1) {
       data.categories[catIndex].items.push(item);
@@ -39,10 +38,10 @@ export async function PUT(req: NextRequest, { params }: Params) {
   return NextResponse.json({ success: true, data });
 }
 
-// DELETE handles category or item removal
-// Body: { type: 'category' }
-//       { type: 'item', itemId: string }
 export async function DELETE(req: NextRequest, { params }: Params) {
+  const auth = requireAuth(req);
+  if (auth instanceof NextResponse) return auth;
+
   const body = (await req.json()) as { type: 'category' } | { type: 'item'; itemId: string };
 
   const data = readData<MenuData>('menu.json');
