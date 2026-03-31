@@ -5,11 +5,12 @@
       "name": "Pan Dulce & Sweet Bread",
       "items": [
         {
-          "name": "Conchas-edited",
+          "name": "WTF",
           "description": "Classic Mexican sweet bread with a crumbly sugar shell in vanilla, chocolate, or strawberry.",
           "price": "$100",
           "tag": "Fan Favorite",
           "emoji": "",
+          "image": "/uploads/1774995933007-cqy9m3mp5ni.png",
           "id": "conchas"
         },
         {

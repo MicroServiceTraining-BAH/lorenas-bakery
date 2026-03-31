@@ -7,6 +7,14 @@
       "salt": "d3aa6ee591f4fb0c7c67f958aa7e645c",
       "role": "admin",
       "name": "Gabriel"
+    },
+    {
+      "id": "84ada730-dc9a-4fb6-aa67-e3dfc7278d09",
+      "username": "jc",
+      "passwordHash": "4daf5d92bc72aab5300a91b99d684306ebc01c8271ad7781703859b03da25607db9749058e25253f51228da048593707b2b305aeab87f3dc5598169888e112f4",
+      "salt": "0767a101607dd5f28b4fb3d55d61db2f",
+      "role": "admin",
+      "name": "JC"
     }
   ]
 }

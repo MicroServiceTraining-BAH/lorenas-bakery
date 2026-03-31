@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { readData } from '@/lib/data';
@@ -58,8 +59,18 @@ export default function MenuPage() {
                       key={item.id}
                       className="flex items-start gap-5 p-6 rounded-2xl bg-cream hover:bg-rose-pale/40 transition-colors duration-200"
                     >
-                      <div className="text-3xl flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-2xl bg-white shadow-card">
-                        <span aria-hidden="true">{item.emoji}</span>
+                      <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-white shadow-card overflow-hidden flex items-center justify-center">
+                        {item.image ? (
+                          <Image
+                            src={item.image}
+                            alt={item.name}
+                            width={48}
+                            height={48}
+                            className="object-cover w-full h-full"
+                          />
+                        ) : (
+                          <span className="text-3xl" aria-hidden="true">{item.emoji}</span>
+                        )}
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-start justify-between gap-3 mb-2">
