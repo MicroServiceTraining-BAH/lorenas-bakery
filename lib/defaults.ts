@@ -84,4 +84,5 @@ export const DEFAULTS: Record<string, unknown> = {
   } satisfies GalleryData,
 
   users: { users: [] },
+  sessions: { sessions: [] },
 };
