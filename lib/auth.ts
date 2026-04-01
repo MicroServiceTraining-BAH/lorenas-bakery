@@ -25,16 +25,43 @@ export function verifyPassword(password: string, salt: string, storedHash: strin
 }
 
 /**
- * Seeds the first admin user from ADMIN_USERNAME / ADMIN_PASSWORD env vars
- * if no users exist yet. Idempotent — does nothing when users already exist.
+ * Seeds the first admin user from ADMIN_USERNAME / ADMIN_PASSWORD env vars if
+ * no users exist yet. Also syncs the admin password if ADMIN_PASSWORD changed —
+ * this is the recovery path: update the env var in Vercel to reset the password.
  */
 export async function ensureAdminExists(): Promise<void> {
-  const users = await getUsers();
-  if (users.length > 0) return;
   const username = process.env.ADMIN_USERNAME?.trim();
   const password = process.env.ADMIN_PASSWORD?.trim();
   if (!username || !password) return;
-  await createUser(username, password, 'admin', username);
+
+  const data = await readData<{ users: User[] }>('users');
+
+  // First run — no users yet, create the admin
+  if (data.users.length === 0) {
+    const salt = generateSalt();
+    const passwordHash = hashPassword(password, salt);
+    data.users.push({
+      id: crypto.randomUUID(),
+      username,
+      passwordHash,
+      salt,
+      role: 'admin',
+      name: username,
+    });
+    await writeData('users', data);
+    return;
+  }
+
+  // Admin exists — check if ADMIN_PASSWORD changed and sync if so
+  const admin = data.users.find((u) => u.username === username && u.role === 'admin');
+  if (!admin) return;
+  if (verifyPassword(password, admin.salt, admin.passwordHash)) return; // unchanged
+
+  // Password changed in env — update stored hash (password reset recovery)
+  const salt = generateSalt();
+  admin.passwordHash = hashPassword(password, salt);
+  admin.salt = salt;
+  await writeData('users', data);
 }
 
 export async function getUsers(): Promise<User[]> {
