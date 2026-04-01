@@ -8,14 +8,14 @@ import type { MenuData, MenuItem } from '@/types/cms';
 type Params = { params: { id: string } };
 
 export async function PUT(req: NextRequest, { params }: Params) {
-  const auth = requireAuth(req);
+  const auth = await requireAuth(req);
   if (auth instanceof NextResponse) return auth;
 
   const body = (await req.json()) as
     | { type: 'category'; name: string }
     | { type: 'item'; item: MenuItem };
 
-  const data = readData<MenuData>('menu.json');
+  const data = await readData<MenuData>('menu');
   const catIndex = data.categories.findIndex((c) => c.id === params.id);
   if (catIndex === -1) {
     return NextResponse.json({ error: 'Category not found.' }, { status: 404 });
@@ -34,17 +34,17 @@ export async function PUT(req: NextRequest, { params }: Params) {
     }
   }
 
-  writeData('menu.json', data);
+  await writeData('menu', data);
   return NextResponse.json({ success: true, data });
 }
 
 export async function DELETE(req: NextRequest, { params }: Params) {
-  const auth = requireAuth(req);
+  const auth = await requireAuth(req);
   if (auth instanceof NextResponse) return auth;
 
   const body = (await req.json()) as { type: 'category' } | { type: 'item'; itemId: string };
 
-  const data = readData<MenuData>('menu.json');
+  const data = await readData<MenuData>('menu');
   const catIndex = data.categories.findIndex((c) => c.id === params.id);
   if (catIndex === -1) {
     return NextResponse.json({ error: 'Category not found.' }, { status: 404 });
@@ -58,6 +58,6 @@ export async function DELETE(req: NextRequest, { params }: Params) {
     );
   }
 
-  writeData('menu.json', data);
+  await writeData('menu', data);
   return NextResponse.json({ success: true, data });
 }

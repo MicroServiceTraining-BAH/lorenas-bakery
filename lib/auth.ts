@@ -24,24 +24,24 @@ export function verifyPassword(password: string, salt: string, storedHash: strin
   }
 }
 
-export function getUsers(): User[] {
-  return readData<{ users: User[] }>('users.json').users;
+export async function getUsers(): Promise<User[]> {
+  return (await readData<{ users: User[] }>('users')).users;
 }
 
-export function getUserById(userId: string): User | null {
-  return getUsers().find((u) => u.id === userId) ?? null;
+export async function getUserById(userId: string): Promise<User | null> {
+  return (await getUsers()).find((u) => u.id === userId) ?? null;
 }
 
-export function getUserByUsername(username: string): User | null {
-  return getUsers().find((u) => u.username === username) ?? null;
+export async function getUserByUsername(username: string): Promise<User | null> {
+  return (await getUsers()).find((u) => u.username === username) ?? null;
 }
 
-export function createUser(
+export async function createUser(
   username: string,
   password: string,
   role: 'admin' | 'editor',
   name: string
-): User {
+): Promise<User> {
   const salt = generateSalt();
   const passwordHash = hashPassword(password, salt);
   const user: User = {
@@ -52,33 +52,33 @@ export function createUser(
     role,
     name,
   };
-  const data = readData<{ users: User[] }>('users.json');
+  const data = await readData<{ users: User[] }>('users');
   data.users.push(user);
-  writeData('users.json', data);
+  await writeData('users', data);
   return user;
 }
 
-export function createSession(userId: string): string {
+export async function createSession(userId: string): Promise<string> {
   const token = generateToken();
   const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
-  const data = readData<{ sessions: Session[] }>('sessions.json');
+  const data = await readData<{ sessions: Session[] }>('sessions');
   // Purge expired sessions on each login
   data.sessions = data.sessions.filter((s) => new Date(s.expires) > new Date());
   data.sessions.push({ token, userId, expires });
-  writeData('sessions.json', data);
+  await writeData('sessions', data);
   return token;
 }
 
-export function getSession(token: string): Session | null {
-  const data = readData<{ sessions: Session[] }>('sessions.json');
+export async function getSession(token: string): Promise<Session | null> {
+  const data = await readData<{ sessions: Session[] }>('sessions');
   const session = data.sessions.find((s) => s.token === token);
   if (!session) return null;
   if (new Date(session.expires) < new Date()) return null;
   return session;
 }
 
-export function deleteSession(token: string): void {
-  const data = readData<{ sessions: Session[] }>('sessions.json');
+export async function deleteSession(token: string): Promise<void> {
+  const data = await readData<{ sessions: Session[] }>('sessions');
   data.sessions = data.sessions.filter((s) => s.token !== token);
-  writeData('sessions.json', data);
+  await writeData('sessions', data);
 }

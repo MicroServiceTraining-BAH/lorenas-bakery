@@ -11,8 +11,8 @@ export const metadata: Metadata = {
     "Explore Lorena's Bakery full menu — authentic Salvadoran pan dulce, conchas, pastelitos, empanadas, quesadilla salvadoreña, custom cakes, and specialty coffee in Manassas, VA.",
 };
 
-export default function MenuPage() {
-  const { categories } = readData<MenuData>('menu.json');
+export default async function MenuPage() {
+  const { categories } = await readData<MenuData>('menu');
 
   return (
     <>

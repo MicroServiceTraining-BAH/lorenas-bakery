@@ -42,15 +42,17 @@ const SECTIONS = [
   },
 ] as const;
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
   const cookieStore = cookies();
   const token = cookieStore.get('cms-session')?.value ?? '';
-  const session = token ? getSession(token) : null;
-  const user = session ? getUserById(session.userId) : null;
+  const session = token ? await getSession(token) : null;
+  const user = session ? await getUserById(session.userId) : null;
 
-  const menu = readData<MenuData>('menu.json');
-  const business = readData<BusinessData>('business.json');
-  const gallery = readData<GalleryData>('gallery.json');
+  const [menu, business, gallery] = await Promise.all([
+    readData<MenuData>('menu'),
+    readData<BusinessData>('business'),
+    readData<GalleryData>('gallery'),
+  ]);
   const itemCount = menu.categories.reduce((s, c) => s + c.items.length, 0);
 
   const STATS = [

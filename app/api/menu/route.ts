@@ -6,15 +6,15 @@ import { readData, writeData } from '@/lib/data';
 import type { MenuData } from '@/types/cms';
 
 export async function GET(req: NextRequest) {
-  const auth = requireAuth(req);
+  const auth = await requireAuth(req);
   if (auth instanceof NextResponse) return auth;
 
-  const data = readData<MenuData>('menu.json');
+  const data = await readData<MenuData>('menu');
   return NextResponse.json(data);
 }
 
 export async function POST(req: NextRequest) {
-  const auth = requireAuth(req);
+  const auth = await requireAuth(req);
   if (auth instanceof NextResponse) return auth;
 
   const body = (await req.json()) as { name: string };
@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Category name is required.' }, { status: 400 });
   }
 
-  const data = readData<MenuData>('menu.json');
+  const data = await readData<MenuData>('menu');
   const id = name
     .toLowerCase()
     .trim()
@@ -33,6 +33,6 @@ export async function POST(req: NextRequest) {
     .concat('-', crypto.randomUUID().slice(0, 6));
 
   data.categories.push({ id, name: name.trim(), items: [] });
-  writeData('menu.json', data);
+  await writeData('menu', data);
   return NextResponse.json({ success: true, data });
 }

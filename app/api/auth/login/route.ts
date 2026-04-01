@@ -76,12 +76,12 @@ export async function POST(req: NextRequest) {
 
     // First-run setup
     if (setup) {
-      const existing = getUsers();
+      const existing = await getUsers();
       if (existing.length > 0) {
         return NextResponse.json({ error: 'Setup already complete.' }, { status: 409 });
       }
-      const user = createUser(username, password, 'admin', name ?? username);
-      const token = createSession(user.id);
+      const user = await createUser(username, password, 'admin', name ?? username);
+      const token = await createSession(user.id);
       const response = NextResponse.json({
         success: true,
         user: { id: user.id, username: user.username, role: user.role, name: user.name },
@@ -92,14 +92,14 @@ export async function POST(req: NextRequest) {
     }
 
     // Normal login
-    const user = getUserByUsername(username);
+    const user = await getUserByUsername(username);
     if (!user || !verifyPassword(password, user.salt, user.passwordHash)) {
       recordFailure(ip);
       // Same message for both cases — don't leak whether username exists
       return NextResponse.json({ error: 'Invalid username or password.' }, { status: 401 });
     }
 
-    const token = createSession(user.id);
+    const token = await createSession(user.id);
     const response = NextResponse.json({
       success: true,
       user: { id: user.id, username: user.username, role: user.role, name: user.name },

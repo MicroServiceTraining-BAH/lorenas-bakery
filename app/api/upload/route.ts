@@ -1,22 +1,17 @@
+import { put } from '@vercel/blob';
 import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs';
 import path from 'path';
 
 import { requireAuth } from '@/lib/api-auth';
 
-const UPLOAD_DIR = path.join(process.cwd(), 'public', 'uploads');
 const ALLOWED_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif'];
 const MAX_SIZE_BYTES = 5 * 1024 * 1024;
 
 export async function POST(req: NextRequest) {
-  const auth = requireAuth(req);
+  const auth = await requireAuth(req);
   if (auth instanceof NextResponse) return auth;
 
   try {
-    if (!fs.existsSync(UPLOAD_DIR)) {
-      fs.mkdirSync(UPLOAD_DIR, { recursive: true });
-    }
-
     const formData = await req.formData();
     const file = formData.get('file') as File | null;
 
@@ -33,18 +28,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'File too large. Maximum size is 5 MB.' }, { status: 400 });
     }
 
-    // Generate a safe filename — never use the original name
     const ext = path.extname(file.name).toLowerCase() || '.jpg';
-    const safeName = `${Date.now()}-${Math.random().toString(36).slice(2)}${ext}`;
+    const safeName = `uploads/${Date.now()}-${Math.random().toString(36).slice(2)}${ext}`;
 
-    // Prevent path traversal by resolving and verifying the final path
-    const filePath = path.resolve(UPLOAD_DIR, safeName);
-    if (!filePath.startsWith(path.resolve(UPLOAD_DIR))) {
-      return NextResponse.json({ error: 'Invalid file path.' }, { status: 400 });
-    }
+    const blob = await put(safeName, file, { access: 'public' });
 
-    fs.writeFileSync(filePath, Buffer.from(await file.arrayBuffer()));
-    return NextResponse.json({ success: true, url: `/uploads/${safeName}` });
+    return NextResponse.json({ success: true, url: blob.url });
   } catch (err) {
     console.error('Upload error:', err);
     return NextResponse.json({ error: 'Upload failed. Please try again.' }, { status: 500 });

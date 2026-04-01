@@ -1,15 +1,24 @@
-import fs from 'fs';
-import path from 'path';
+import { kv } from '@vercel/kv';
 
-const DATA_DIR = path.join(process.cwd(), 'data');
+import { DEFAULTS } from './defaults';
 
-export function readData<T>(filename: string): T {
-  const filePath = path.join(DATA_DIR, filename);
-  const raw = fs.readFileSync(filePath, 'utf-8');
-  return JSON.parse(raw) as T;
+/**
+ * Read a value from KV. If the key doesn't exist, seed it from DEFAULTS and return that.
+ */
+export async function readData<T>(key: string): Promise<T> {
+  const value = await kv.get<T>(key);
+  if (value !== null && value !== undefined) return value;
+
+  // First-access seed
+  const seed = DEFAULTS[key] as T | undefined;
+  if (seed !== undefined) {
+    await kv.set(key, seed);
+    return seed;
+  }
+
+  throw new Error(`No data found and no default defined for key: ${key}`);
 }
 
-export function writeData<T>(filename: string, data: T): void {
-  const filePath = path.join(DATA_DIR, filename);
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
+export async function writeData<T>(key: string, data: T): Promise<void> {
+  await kv.set(key, data);
 }

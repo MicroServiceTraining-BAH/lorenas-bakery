@@ -6,16 +6,16 @@ import type { User } from '@/types/cms';
 
 type Params = { params: { id: string } };
 
-function getRequestingUser(req: NextRequest) {
+async function getRequestingUser(req: NextRequest) {
   const token = req.cookies.get('cms-session')?.value;
   if (!token) return null;
-  const session = getSession(token);
+  const session = await getSession(token);
   if (!session) return null;
-  return getUserById(session.userId);
+  return await getUserById(session.userId);
 }
 
 export async function DELETE(req: NextRequest, { params }: Params) {
-  const requester = getRequestingUser(req);
+  const requester = await getRequestingUser(req);
   if (!requester || requester.role !== 'admin') {
     return NextResponse.json({ error: 'Forbidden.' }, { status: 403 });
   }
@@ -23,7 +23,7 @@ export async function DELETE(req: NextRequest, { params }: Params) {
     return NextResponse.json({ error: "You can't delete your own account." }, { status: 400 });
   }
 
-  const users = getUsers();
+  const users = await getUsers();
   const adminCount = users.filter((u) => u.role === 'admin').length;
   const target = users.find((u) => u.id === params.id);
   if (!target) {
@@ -33,14 +33,14 @@ export async function DELETE(req: NextRequest, { params }: Params) {
     return NextResponse.json({ error: 'Cannot delete the last admin account.' }, { status: 400 });
   }
 
-  const data = readData<{ users: User[] }>('users.json');
+  const data = await readData<{ users: User[] }>('users');
   data.users = data.users.filter((u) => u.id !== params.id);
-  writeData('users.json', data);
+  await writeData('users', data);
   return NextResponse.json({ success: true });
 }
 
 export async function PUT(req: NextRequest, { params }: Params) {
-  const requester = getRequestingUser(req);
+  const requester = await getRequestingUser(req);
   if (!requester || requester.role !== 'admin') {
     return NextResponse.json({ error: 'Forbidden.' }, { status: 403 });
   }
@@ -53,11 +53,11 @@ export async function PUT(req: NextRequest, { params }: Params) {
     );
   }
 
-  const data = readData<{ users: User[] }>('users.json');
+  const data = await readData<{ users: User[] }>('users');
   const idx = data.users.findIndex((u) => u.id === params.id);
   if (idx === -1) return NextResponse.json({ error: 'User not found.' }, { status: 404 });
 
   data.users[idx].passwordHash = hashPassword(body.password, data.users[idx].salt);
-  writeData('users.json', data);
+  await writeData('users', data);
   return NextResponse.json({ success: true });
 }
