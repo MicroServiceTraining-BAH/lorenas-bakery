@@ -3,14 +3,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-type LoginFormProps = {
-  isFirstRun: boolean;
-};
-
-export default function LoginForm({ isFirstRun }: LoginFormProps) {
+export default function LoginForm() {
   const router = useRouter();
-  const [setupMode, setSetupMode] = useState(isFirstRun);
-  const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -25,25 +19,17 @@ export default function LoginForm({ isFirstRun }: LoginFormProps) {
       const res = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(
-          setupMode ? { username, password, name, setup: true } : { username, password }
-        ),
+        body: JSON.stringify({ username, password }),
       });
       const data = (await res.json()) as { error?: string };
       if (!res.ok) {
-        // Setup already done — switch to sign-in mode
-        if (res.status === 409) {
-          setSetupMode(false);
-          setError('Account already exists. Sign in below.');
-          return;
-        }
         setError(data.error ?? 'Something went wrong. Please try again.');
         return;
       }
       router.push('/admin');
       router.refresh();
     } catch {
-      setError('Could not connect. Make sure the app is running.');
+      setError('Could not connect. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -52,43 +38,15 @@ export default function LoginForm({ isFirstRun }: LoginFormProps) {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <div className="w-full max-w-sm">
-        {/* Logo */}
         <div className="text-center mb-8">
           <div className="font-serif text-2xl font-bold text-stone-900">Lorena&apos;s Bakery</div>
           <div className="text-sm text-gray-500 mt-1">Content Manager</div>
         </div>
 
         <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
-          <h1 className="font-semibold text-gray-900 text-lg mb-1">
-            {setupMode ? 'Create admin account' : 'Sign in'}
-          </h1>
-          {setupMode && (
-            <p className="text-sm text-gray-500 mb-6">
-              First time setup. Create your admin account to get started.
-            </p>
-          )}
+          <h1 className="font-semibold text-gray-900 text-lg mb-6">Sign in</h1>
 
-          <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-            {setupMode && (
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Display name
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Lorena"
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-rose-300 focus:border-transparent"
-                />
-              </div>
-            )}
-
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">
                 Username
@@ -116,7 +74,7 @@ export default function LoginForm({ isFirstRun }: LoginFormProps) {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 required
-                autoComplete={setupMode ? 'new-password' : 'current-password'}
+                autoComplete="current-password"
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-rose-300 focus:border-transparent"
               />
             </div>
@@ -132,13 +90,7 @@ export default function LoginForm({ isFirstRun }: LoginFormProps) {
               disabled={loading}
               className="w-full py-2.5 px-4 bg-stone-900 text-white text-sm font-medium rounded-lg hover:bg-stone-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
-              {loading
-                ? setupMode
-                  ? 'Creating account...'
-                  : 'Signing in...'
-                : setupMode
-                  ? 'Create account & sign in'
-                  : 'Sign in'}
+              {loading ? 'Signing in...' : 'Sign in'}
             </button>
           </form>
         </div>

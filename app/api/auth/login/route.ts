@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { createSession, createUser, getUserByUsername, getUsers, verifyPassword } from '@/lib/auth';
+import { createSession, ensureAdminExists, getUserByUsername, verifyPassword } from '@/lib/auth';
 
 // ─── Simple in-memory rate limiter ───────────────────────────────────────────
 // Resets on server restart. Good enough for a local CMS.
@@ -62,36 +62,16 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const body = (await req.json()) as {
-      username?: string;
-      password?: string;
-      name?: string;
-      setup?: boolean;
-    };
-    const { username, password, name, setup } = body;
+    const body = (await req.json()) as { username?: string; password?: string };
+    const { username, password } = body;
 
     if (!username || !password) {
       return NextResponse.json({ error: 'Username and password are required.' }, { status: 400 });
     }
 
-    // First-run setup
-    if (setup) {
-      const existing = await getUsers();
-      if (existing.length > 0) {
-        return NextResponse.json({ error: 'Setup already complete.' }, { status: 409 });
-      }
-      const user = await createUser(username, password, 'admin', name ?? username);
-      const token = await createSession(user.id);
-      const response = NextResponse.json({
-        success: true,
-        user: { id: user.id, username: user.username, role: user.role, name: user.name },
-      });
-      setSessionCookie(response, token);
-      clearAttempts(ip);
-      return response;
-    }
+    // Seed first admin from env vars if no users exist yet
+    await ensureAdminExists();
 
-    // Normal login
     const user = await getUserByUsername(username);
     if (!user || !verifyPassword(password, user.salt, user.passwordHash)) {
       recordFailure(ip);

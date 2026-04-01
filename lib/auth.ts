@@ -24,6 +24,19 @@ export function verifyPassword(password: string, salt: string, storedHash: strin
   }
 }
 
+/**
+ * Seeds the first admin user from ADMIN_USERNAME / ADMIN_PASSWORD env vars
+ * if no users exist yet. Idempotent — does nothing when users already exist.
+ */
+export async function ensureAdminExists(): Promise<void> {
+  const users = await getUsers();
+  if (users.length > 0) return;
+  const username = process.env.ADMIN_USERNAME?.trim();
+  const password = process.env.ADMIN_PASSWORD?.trim();
+  if (!username || !password) return;
+  await createUser(username, password, 'admin', username);
+}
+
 export async function getUsers(): Promise<User[]> {
   return (await readData<{ users: User[] }>('users')).users;
 }
