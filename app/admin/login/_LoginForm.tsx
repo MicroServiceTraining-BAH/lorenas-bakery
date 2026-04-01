@@ -9,6 +9,7 @@ type LoginFormProps = {
 
 export default function LoginForm({ isFirstRun }: LoginFormProps) {
   const router = useRouter();
+  const [setupMode, setSetupMode] = useState(isFirstRun);
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -25,11 +26,17 @@ export default function LoginForm({ isFirstRun }: LoginFormProps) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(
-          isFirstRun ? { username, password, name, setup: true } : { username, password }
+          setupMode ? { username, password, name, setup: true } : { username, password }
         ),
       });
       const data = (await res.json()) as { error?: string };
       if (!res.ok) {
+        // Setup already done — switch to sign-in mode
+        if (res.status === 409) {
+          setSetupMode(false);
+          setError('Account already exists. Sign in below.');
+          return;
+        }
         setError(data.error ?? 'Something went wrong. Please try again.');
         return;
       }
@@ -53,16 +60,16 @@ export default function LoginForm({ isFirstRun }: LoginFormProps) {
 
         <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
           <h1 className="font-semibold text-gray-900 text-lg mb-1">
-            {isFirstRun ? 'Create admin account' : 'Sign in'}
+            {setupMode ? 'Create admin account' : 'Sign in'}
           </h1>
-          {isFirstRun && (
+          {setupMode && (
             <p className="text-sm text-gray-500 mb-6">
               First time setup. Create your admin account to get started.
             </p>
           )}
 
           <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-            {isFirstRun && (
+            {setupMode && (
               <div>
                 <label
                   htmlFor="name"
@@ -109,7 +116,7 @@ export default function LoginForm({ isFirstRun }: LoginFormProps) {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 required
-                autoComplete={isFirstRun ? 'new-password' : 'current-password'}
+                autoComplete={setupMode ? 'new-password' : 'current-password'}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-rose-300 focus:border-transparent"
               />
             </div>
@@ -126,10 +133,10 @@ export default function LoginForm({ isFirstRun }: LoginFormProps) {
               className="w-full py-2.5 px-4 bg-stone-900 text-white text-sm font-medium rounded-lg hover:bg-stone-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               {loading
-                ? isFirstRun
+                ? setupMode
                   ? 'Creating account...'
                   : 'Signing in...'
-                : isFirstRun
+                : setupMode
                   ? 'Create account & sign in'
                   : 'Sign in'}
             </button>
