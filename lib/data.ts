@@ -1,33 +1,21 @@
-import Redis from 'ioredis';
+import { Redis } from '@upstash/redis';
 
 import { DEFAULTS } from './defaults';
 
-// Singleton — reuse connection across serverless invocations in the same warm instance
-const getRedis = (() => {
-  let client: Redis | null = null;
-  return () => {
-    if (!client) {
-      const url = process.env.REDIS_URL;
-      if (!url) throw new Error('REDIS_URL environment variable is not set.');
-      client = new Redis(url, { lazyConnect: false, maxRetriesPerRequest: 3 });
-    }
-    return client;
-  };
-})();
+// Upstash Redis client — reads UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN from env
+const redis = Redis.fromEnv();
 
 /**
  * Read a value from Redis. If the key doesn't exist, seed it from DEFAULTS and return that.
  */
 export async function readData<T>(key: string): Promise<T> {
-  const redis = getRedis();
-  const raw = await redis.get(key);
-
-  if (raw !== null) return JSON.parse(raw) as T;
+  const value = await redis.get<T>(key);
+  if (value !== null && value !== undefined) return value;
 
   // First-access seed
   const seed = DEFAULTS[key] as T | undefined;
   if (seed !== undefined) {
-    await redis.set(key, JSON.stringify(seed));
+    await redis.set(key, seed);
     return seed;
   }
 
@@ -35,6 +23,5 @@ export async function readData<T>(key: string): Promise<T> {
 }
 
 export async function writeData<T>(key: string, data: T): Promise<void> {
-  const redis = getRedis();
-  await redis.set(key, JSON.stringify(data));
+  await redis.set(key, data);
 }

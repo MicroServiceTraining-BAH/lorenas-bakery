@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { readData } from '@/lib/data';
 import type { MenuData } from '@/types/cms';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Menu',
   description:
