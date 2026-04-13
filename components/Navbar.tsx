@@ -54,7 +54,7 @@ export default function Navbar() {
               alt="Lorena's Bakery"
               width={110}
               height={55}
-              className="h-12 w-auto"
+              className="h-12 w-auto mix-blend-multiply"
               priority
             />
           </Link>
