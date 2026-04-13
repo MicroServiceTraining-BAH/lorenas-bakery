@@ -25,13 +25,15 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" className="inline-flex mb-4" aria-label="Lorena's Bakery home">
-              <Image
-                src="/lorenas-logo.png"
-                alt="Lorena's Bakery"
-                width={120}
-                height={60}
-                className="h-14 w-auto"
-              />
+              <div className="bg-cream rounded-2xl px-4 py-2.5 inline-flex">
+                <Image
+                  src="/lorenas-logo.png"
+                  alt="Lorena's Bakery"
+                  width={120}
+                  height={60}
+                  className="h-12 w-auto"
+                />
+              </div>
             </Link>
             <p className="font-sans text-sm text-stone-400 leading-relaxed max-w-xs mt-4">
               {f.tagline}
