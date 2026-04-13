@@ -41,7 +41,7 @@ const config: Config = {
       },
       fontFamily: {
         serif: ['var(--font-playfair)', 'Georgia', 'serif'],
-        sans: ['var(--font-dm-sans)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-outfit)', 'system-ui', 'sans-serif'],
         script: ['var(--font-dancing)', 'cursive'],
       },
       borderRadius: {

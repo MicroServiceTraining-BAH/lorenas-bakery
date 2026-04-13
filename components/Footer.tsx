@@ -26,7 +26,7 @@ export default function Footer() {
           <div>
             <Link href="/" className="inline-flex mb-4" aria-label="Lorena's Bakery home">
               <Image
-                src="/lorenas-logo.webp"
+                src="/lorenas-logo.png"
                 alt="Lorena's Bakery"
                 width={120}
                 height={60}

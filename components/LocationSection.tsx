@@ -9,17 +9,21 @@ export default function LocationSection() {
   return (
     <section className="section-padding bg-warm-gradient" aria-labelledby="location-heading">
       <div className="max-w-7xl mx-auto container-padding">
-        {/* Header */}
-        <div className="text-center max-w-xl mx-auto mb-14">
-          <div className="section-label justify-center mb-5">{l.label}</div>
-          <h2
-            id="location-heading"
-            className="font-serif text-4xl md:text-5xl font-bold text-stone-900 leading-tight"
-          >
-            {l.heading1}{' '}
-            <span className="italic text-rose-blush">{l.heading2}</span>
-          </h2>
-          <p className="mt-4 font-sans text-stone-600 leading-relaxed">{l.body}</p>
+        {/* Header — left aligned */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
+          <div>
+            <div className="section-label mb-5">{l.label}</div>
+            <h2
+              id="location-heading"
+              className="font-serif text-4xl md:text-5xl font-bold text-stone-900 leading-tight"
+            >
+              {l.heading1}{' '}
+              <span className="italic text-rose-blush">{l.heading2}</span>
+            </h2>
+          </div>
+          <p className="font-sans text-stone-500 max-w-xs leading-relaxed sm:text-right text-sm">
+            {l.body}
+          </p>
         </div>
 
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-10 items-start">

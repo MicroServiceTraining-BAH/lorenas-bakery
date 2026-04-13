@@ -10,7 +10,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative min-h-screen flex items-center overflow-hidden bg-hero-gradient"
+      className="relative min-h-[100dvh] flex items-center overflow-hidden bg-hero-gradient"
       aria-label="Hero section"
     >
       {/* Decorative background elements */}
