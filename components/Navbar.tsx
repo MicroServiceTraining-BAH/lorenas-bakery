@@ -50,11 +50,11 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center" aria-label="Lorena's Bakery home">
             <Image
-              src="/lorenas-logo.webp"
+              src="/lorenas-logo.png"
               alt="Lorena's Bakery"
               width={110}
               height={55}
-              className="h-12 w-auto mix-blend-multiply"
+              className="h-12 w-auto"
               priority
             />
           </Link>
