@@ -2,15 +2,20 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import Breadcrumb from '@/components/Breadcrumb';
+
 import { readData } from '@/lib/data';
 import type { MenuData } from '@/types/cms';
 
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Menu',
+  title: "Menu — Pan Dulce, Pastries & Custom Cakes in Manassas, VA",
   description:
-    "Explore Lorena's Bakery full menu — authentic Salvadoran pan dulce, conchas, pastelitos, empanadas, quesadilla salvadoreña, custom cakes, and specialty coffee in Manassas, VA.",
+    "Full menu at Lorena's Bakery — fresh conchas, quesadilla salvadoreña, pastelitos, empanadas de leche, café de olla, and custom celebration cakes. Made from scratch daily in Manassas, VA.",
+  alternates: {
+    canonical: 'https://lorenasbakery.com/menu',
+  },
 };
 
 export default async function MenuPage() {
@@ -18,6 +23,7 @@ export default async function MenuPage() {
 
   return (
     <>
+      <Breadcrumb items={[{ label: 'Menu', href: '/menu' }]} />
       {/* Hero */}
       <section
         className="relative pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden"

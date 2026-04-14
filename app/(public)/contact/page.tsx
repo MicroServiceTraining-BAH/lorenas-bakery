@@ -1,15 +1,21 @@
 import type { Metadata } from 'next';
 import ContactForm from '@/components/ContactForm';
 
+import Breadcrumb from '@/components/Breadcrumb';
+
 export const metadata: Metadata = {
-  title: 'Contact & Orders',
+  title: "Contact & Custom Orders — Lorena's Bakery Manassas, VA",
   description:
-    "Contact Lorena's Bakery in Manassas, VA. Place a custom order, ask about our menu, or just say hello. Call (703) 928-0838 or send us a message.",
+    "Contact Lorena's Bakery in Manassas, VA to place a custom order, book a celebration cake, or ask about our menu. Call (703) 928-0838 or send a message. We reply within one business day.",
+  alternates: {
+    canonical: 'https://lorenasbakery.com/contact',
+  },
 };
 
 export default function ContactPage() {
   return (
     <>
+      <Breadcrumb items={[{ label: 'Contact', href: '/contact' }]} />
       {/* Hero */}
       <section
         className="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden"

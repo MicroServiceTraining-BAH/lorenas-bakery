@@ -2,10 +2,15 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import Breadcrumb from '@/components/Breadcrumb';
+
 export const metadata: Metadata = {
-  title: 'Gallery',
+  title: "Photo Gallery — Fresh Pan Dulce & Pastries at Lorena's Bakery",
   description:
-    "See what's fresh at Lorena's Bakery — photos of our Salvadoran pan dulce, pastries, cakes, and coffee in Manassas, VA.",
+    "See what comes out of our kitchen every day — photos of fresh pan dulce, conchas, fruit tarts, custom cakes, and pastries from Lorena's Bakery in Manassas, VA.",
+  alternates: {
+    canonical: 'https://lorenasbakery.com/gallery',
+  },
 };
 
 type GalleryItem = {
@@ -49,6 +54,7 @@ const GALLERY: GalleryItem[] = [
 export default function GalleryPage() {
   return (
     <>
+      <Breadcrumb items={[{ label: 'Gallery', href: '/gallery' }]} />
       {/* Hero */}
       <section
         className="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden"

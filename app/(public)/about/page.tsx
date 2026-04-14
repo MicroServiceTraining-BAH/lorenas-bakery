@@ -1,10 +1,15 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+import Breadcrumb from '@/components/Breadcrumb';
+
 export const metadata: Metadata = {
-  title: 'About Us',
+  title: "About Lorena's Bakery — Salvadoran Family Bakery in Manassas, VA",
   description:
-    "Meet the family behind Lorena's Bakery — a family-owned Salvadoran bakery in Manassas, VA, serving the community with authentic pan dulce and pastries since 2010.",
+    "Meet Lorena, Miguel, and Sofia — the family behind Lorena's Bakery in Manassas, VA. Authentic Salvadoran recipes, real ingredients, and 15+ years serving Northern Virginia. Open daily.",
+  alternates: {
+    canonical: 'https://lorenasbakery.com/about',
+  },
 };
 
 const TEAM = [
@@ -61,6 +66,7 @@ const VALUES = [
 export default function AboutPage() {
   return (
     <>
+      <Breadcrumb items={[{ label: 'About Us', href: '/about' }]} />
       {/* Hero */}
       <section
         className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden"
@@ -220,6 +226,12 @@ export default function AboutPage() {
               className="inline-flex items-center px-8 py-4 rounded-full border-2 border-white text-white font-semibold text-sm font-sans hover:bg-white/10 transition-all duration-300"
             >
               See Our Menu
+            </Link>
+            <Link
+              href="/services"
+              className="inline-flex items-center px-8 py-4 rounded-full border-2 border-white/60 text-white font-semibold text-sm font-sans hover:bg-white/10 transition-all duration-300"
+            >
+              Custom Orders &amp; Catering
             </Link>
           </div>
         </div>

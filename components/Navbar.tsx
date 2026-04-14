@@ -17,7 +17,9 @@ export default function Navbar() {
     { href: '/', label: t.nav.home },
     { href: '/about', label: t.nav.about },
     { href: '/menu', label: t.nav.menu },
+    { href: '/services', label: t.nav.services },
     { href: '/gallery', label: t.nav.gallery },
+    { href: '/blog', label: t.nav.blog },
     { href: '/contact', label: t.nav.contact },
   ];
 
@@ -60,7 +62,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <ul className="hidden md:flex items-center gap-8" role="list">
+          <ul className="hidden md:flex items-center gap-5" role="list">
             {NAV_LINKS.map(({ href, label }) => (
               <li key={href}>
                 <Link

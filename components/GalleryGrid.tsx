@@ -11,11 +11,28 @@ type GalleryCell = {
 };
 
 const GALLERY_CELLS: GalleryCell[] = [
-  { label: 'Pan Dulce & Pastries', src: '/bakery-full.jpg', span: 'col-span-2 row-span-2' },
-  { label: 'Fruit Tarts', src: '/fruit-tarts-closeup.jpg' },
-  { label: 'Fresh Display', src: '/bakery-display.jpg' },
-  { label: 'Conchas & Cookies', src: '/conchas-display.jpg', span: 'col-span-2' },
-  { label: 'Fruit Tarts & Desserts', src: '/fruit-tarts-case.jpg' },
+  {
+    label: "Full spread of fresh pan dulce and Salvadoran pastries at Lorena's Bakery in Manassas, VA",
+    src: '/bakery-full.jpg',
+    span: 'col-span-2 row-span-2',
+  },
+  {
+    label: 'Fresh custard fruit tarts topped with strawberries, kiwi, and blueberries',
+    src: '/fruit-tarts-closeup.jpg',
+  },
+  {
+    label: "Daily selection of flaky pastries, cakes, and breads in Lorena's Bakery display case",
+    src: '/bakery-display.jpg',
+  },
+  {
+    label: 'Freshly baked conchas and butter cookies with colorful sprinkles — a Salvadoran bakery staple',
+    src: '/conchas-display.jpg',
+    span: 'col-span-2',
+  },
+  {
+    label: 'Individual fruit tarts and cream desserts made fresh daily at Lorena\'s Bakery',
+    src: '/fruit-tarts-case.jpg',
+  },
 ];
 
 export default function GalleryGrid() {

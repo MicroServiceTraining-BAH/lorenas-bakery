@@ -13,7 +13,9 @@ export default function Footer() {
     { href: '/', label: nav.home },
     { href: '/about', label: nav.about },
     { href: '/menu', label: nav.menu },
+    { href: '/services', label: nav.services },
     { href: '/gallery', label: nav.gallery },
+    { href: '/blog', label: nav.blog },
     { href: '/contact', label: nav.contact },
   ];
 
