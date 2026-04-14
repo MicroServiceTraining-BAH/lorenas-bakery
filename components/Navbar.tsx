@@ -19,7 +19,6 @@ export default function Navbar() {
     { href: '/menu', label: t.nav.menu },
     { href: '/services', label: t.nav.services },
     { href: '/gallery', label: t.nav.gallery },
-    { href: '/blog', label: t.nav.blog },
     { href: '/contact', label: t.nav.contact },
   ];
 

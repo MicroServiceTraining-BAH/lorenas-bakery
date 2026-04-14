@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 
 import AboutSection from '@/components/AboutSection';
 import FaqSection from '@/components/FaqSection';
@@ -8,7 +7,6 @@ import Hero from '@/components/Hero';
 import LocationSection from '@/components/LocationSection';
 import MenuPreview from '@/components/MenuPreview';
 import TestimonialsSection from '@/components/TestimonialsSection';
-import { getBlogPosts } from '@/data/blog';
 
 export const metadata: Metadata = {
   title: "Lorena's Bakery | Fresh Pan Dulce & Salvadoran Pastries — Manassas, VA",
@@ -58,17 +56,7 @@ const faqSchema = {
   ],
 };
 
-function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-}
-
 export default function HomePage() {
-  const recentPosts = getBlogPosts().slice(0, 3);
-
   return (
     <>
       <script
@@ -80,74 +68,6 @@ export default function HomePage() {
       <AboutSection />
       <MenuPreview />
       <GalleryGrid />
-
-      {/* Blog teaser */}
-      <section className="section-padding bg-white" aria-labelledby="blog-teaser-heading">
-        <div className="max-w-7xl mx-auto container-padding">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
-            <div>
-              <div className="section-label mb-5">From the Kitchen</div>
-              <h2
-                id="blog-teaser-heading"
-                className="font-serif text-4xl md:text-5xl font-bold text-stone-900 leading-tight"
-              >
-                Stories &amp;{' '}
-                <span className="italic text-rose-blush">Baking Guides</span>
-              </h2>
-            </div>
-            <Link
-              href="/blog"
-              className="font-sans text-sm font-semibold text-teal-sage hover:text-teal-700 transition-colors duration-200 flex-shrink-0"
-            >
-              View all posts →
-            </Link>
-          </div>
-
-          <div className="grid sm:grid-cols-3 gap-6">
-            {recentPosts.map((post) => (
-              <article
-                key={post.slug}
-                className="card-base overflow-hidden flex flex-col"
-                aria-label={post.title}
-              >
-                <div
-                  className="h-40 flex items-center justify-center"
-                  style={{ background: post.coverGradient }}
-                  role="img"
-                  aria-label={`Cover for ${post.title}`}
-                >
-                  <div className="font-script text-white/60 text-3xl">Lorena&apos;s</div>
-                </div>
-                <div className="p-6 flex flex-col flex-1">
-                  <span className="font-sans text-xs font-semibold px-3 py-1 rounded-full bg-rose-pale text-rose-blush self-start mb-3">
-                    {post.category}
-                  </span>
-                  <h3 className="font-serif text-base font-bold text-stone-900 leading-snug mb-2 flex-1">
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="hover:text-rose-blush transition-colors duration-200"
-                    >
-                      {post.title}
-                    </Link>
-                  </h3>
-                  <div className="mt-4 flex items-center justify-between">
-                    <time dateTime={post.publishedAt} className="font-sans text-xs text-stone-400">
-                      {formatDate(post.publishedAt)}
-                    </time>
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="font-sans text-xs font-semibold text-teal-sage hover:text-teal-700 transition-colors duration-200"
-                      aria-label={`Read ${post.title}`}
-                    >
-                      Read →
-                    </Link>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <TestimonialsSection />
       <FaqSection />
