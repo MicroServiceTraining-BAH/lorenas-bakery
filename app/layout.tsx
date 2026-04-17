@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | Lorena's Bakery — Manassas, VA",
   },
   description:
-    "Family-owned Salvadoran bakery in Manassas, VA. Fresh-baked pan dulce, conchas, pastelitos, empanadas, and custom cakes made daily. Authentic flavors, warm community. Serving Northern Virginia since 2010.",
+    "Family-owned Salvadoran bakery in Manassas, VA. Fresh-baked pan dulce, conchas, pastelitos, empanadas, and custom cakes made daily. Authentic flavors, warm community. Serving Northern Virginia since 2026.",
   keywords: [
     'bakery Manassas VA',
     'Salvadoran bakery Virginia',
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     siteName: "Lorena's Bakery",
     title: "Lorena's Bakery | Fresh Pan Dulce & Salvadoran Pastries in Manassas, VA",
     description:
-      "Family-owned Salvadoran bakery in Manassas, VA. Authentic pan dulce, pastries, and custom cakes made fresh daily. Serving the Northern Virginia community since 2010.",
+      "Family-owned Salvadoran bakery in Manassas, VA. Authentic pan dulce, pastries, and custom cakes made fresh daily. Serving the Northern Virginia community since 2026.",
     images: [
       {
         url: '/bakery-full.jpg',
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "Lorena's Bakery — Authentic Salvadoran Pastries in Manassas, VA",
     description:
-      'Fresh pan dulce, conchas, pastelitos & custom cakes. Family-owned since 2010. Open daily in Manassas, VA.',
+      'Fresh pan dulce, conchas, pastelitos & custom cakes. Family-owned since 2026. Open daily in Manassas, VA.',
     images: ['/bakery-full.jpg'],
   },
   robots: {

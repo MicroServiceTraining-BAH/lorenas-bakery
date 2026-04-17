@@ -54,7 +54,7 @@ export default function GalleryGrid() {
               <span className="italic text-rose-blush">{g.heading2}</span>
             </h2>
           </div>
-          <p className="font-sans text-stone-600 max-w-xs leading-relaxed sm:text-right">
+          <p className="font-sans text-stone-600 max-w-xs leading-relaxed sm:text-right text-balance">
             {g.followText}{' '}
             <a
               href="https://www.instagram.com/lorenasbakery.us/"

@@ -22,7 +22,7 @@ const POSTS: BlogPost[] = [
     slug: 'best-salvadoran-pan-dulce-northern-virginia',
     title: 'A Guide to Authentic Salvadoran Pan Dulce in Northern Virginia',
     excerpt:
-      "Pan dulce is more than a pastry — it's a piece of home. Here's what makes authentic Salvadoran sweet bread unique, and where to find it in Manassas and the surrounding Northern Virginia area.",
+      "Pan dulce means something different depending on who you ask. Here is what makes Salvadoran pan dulce its own thing, and where to find the real version in Manassas.",
     publishedAt: '2025-11-10',
     readingTime: '6 min read',
     category: 'Our Baked Goods',
@@ -30,7 +30,7 @@ const POSTS: BlogPost[] = [
     content: [
       {
         type: 'p',
-        text: "If you've ever walked into a Salvadoran bakery and been hit by the warm smell of cinnamon, vanilla, and freshly baked bread, you already know that pan dulce is something special. It's not quite a croissant, not quite a doughnut — it sits in its own category, a staple of Central American kitchens that carries generations of memory in every bite.",
+        text: "If you have been to a Salvadoran bakery, you already know pan dulce is different. It is not a croissant, not a doughnut — it has its own thing going on. Soft, lightly sweet, with toppings and fillings that vary by family and region. It is the bread people grew up eating, and the thing they miss most when they move somewhere new.",
       },
       {
         type: 'h2',
@@ -42,7 +42,7 @@ const POSTS: BlogPost[] = [
       },
       {
         type: 'p',
-        text: "In El Salvador, pan dulce is eaten at breakfast with café de olla or hot chocolate, and again in the late afternoon during merienda — the beloved mid-day snack. For families who have emigrated to Northern Virginia, pan dulce is a direct line to home. It tastes like Sunday mornings, like abuela's kitchen, like belonging.",
+        text: "In El Salvador, pan dulce shows up twice a day — at breakfast with café de olla or hot chocolate, and again in the late afternoon during merienda. For families who moved to Northern Virginia, finding a bakery that gets it right matters more than most people outside that community would realize.",
       },
       {
         type: 'h2',
@@ -115,7 +115,7 @@ const POSTS: BlogPost[] = [
     slug: 'custom-celebration-cakes-manassas-va',
     title: 'Custom Celebration Cakes in Manassas, VA: Quinceañeras, Birthdays & Weddings',
     excerpt:
-      "From quinceañera cakes to wedding pastries to corporate dessert trays — Lorena's Bakery has been creating custom celebration cakes for Northern Virginia families since 2010. Here's how our custom order process works.",
+      "Lorena's Bakery has been making custom cakes for Northern Virginia families since we opened — quinceañeras, weddings, birthdays, corporate events. Here is how the order process works and what to expect.",
     publishedAt: '2025-12-05',
     readingTime: '7 min read',
     category: 'Custom Orders',
@@ -123,7 +123,7 @@ const POSTS: BlogPost[] = [
     content: [
       {
         type: 'p',
-        text: "When it comes to life's biggest moments — a quinceañera, a wedding, a baby shower, a milestone birthday — the cake isn't just dessert. It's a centerpiece, a statement, and often a memory that outlasts the party itself. At Lorena's Bakery, we take custom orders seriously.",
+        text: "For a quinceañera, a wedding, or a milestone birthday, the cake is not just dessert. It needs to work — look right, taste right, feed the right number of people. At Lorena's Bakery, we have been doing custom orders long enough to know what makes them go smoothly and what does not.",
       },
       {
         type: 'h2',
@@ -131,7 +131,7 @@ const POSTS: BlogPost[] = [
       },
       {
         type: 'p',
-        text: "Every custom cake we make starts with a conversation. We want to understand the person being celebrated, the aesthetic of the event, any flavors that hold meaning, and the size needed. We don't have a catalog — we build from scratch.",
+        text: "Every custom cake starts with a conversation. We want to know who is being celebrated, the vibe of the event, what flavors matter, and how many people need to eat. We do not have a catalog. We figure out what you need and build it.",
       },
       {
         type: 'p',
@@ -206,7 +206,7 @@ const POSTS: BlogPost[] = [
     slug: 'how-conchas-are-made-traditional-salvadoran-recipe',
     title: "How We Make Our Conchas: A Look Inside Lorena's Bakery Kitchen",
     excerpt:
-      "Every morning before sunrise, the conchas go in the oven. Here's a behind-the-scenes look at how we make our most popular pan dulce — from mixing the dough to painting on the sugar crust — the way Abuela Carmen taught us.",
+      "Every morning before sunrise, the conchas go in the oven. Here is a look at how we actually make them — from mixing the dough the night before to scoring the sugar crust — the way Abuela Carmen taught Lorena to do it.",
     publishedAt: '2026-01-20',
     readingTime: '5 min read',
     category: 'Behind the Scenes',

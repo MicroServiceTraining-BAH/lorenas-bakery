@@ -107,7 +107,7 @@ export default function HomePage() {
               type="text"
               value={data.label}
               onChange={(e) => set('label', e.target.value)}
-              placeholder="Manassas, Virginia · Since 2010"
+              placeholder="Manassas, Virginia · Since 2026"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-stone-300"
             />
           </div>

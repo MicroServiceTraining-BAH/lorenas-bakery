@@ -40,7 +40,7 @@ export default function AboutSection() {
 
               {/* Accent card */}
               <div className="absolute -bottom-8 -right-6 lg:-right-10 bg-teal-sage rounded-2xl px-6 py-5 shadow-float text-white">
-                <div className="font-script text-3xl mb-1">15+</div>
+                <div className="font-script text-3xl mb-1">2026</div>
                 <div className="font-sans text-xs opacity-80 leading-snug">{a.yearsCaption}</div>
               </div>
 
@@ -74,7 +74,7 @@ export default function AboutSection() {
 
             <div className="mt-10 grid grid-cols-2 gap-6">
               {[
-                { value: '15+', label: a.stat1, color: 'bg-rose-pale' },
+                { value: '2026', label: a.stat1, color: 'bg-rose-pale' },
                 { value: '30+', label: a.stat2, color: 'bg-teal-pale' },
                 { value: '200+', label: a.stat3, color: 'bg-gold-light' },
                 { value: '100%', label: a.stat4, color: 'bg-rose-pale' },

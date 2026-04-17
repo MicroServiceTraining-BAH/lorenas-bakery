@@ -11,7 +11,7 @@ import TestimonialsSection from '@/components/TestimonialsSection';
 export const metadata: Metadata = {
   title: "Lorena's Bakery | Fresh Pan Dulce & Salvadoran Pastries — Manassas, VA",
   description:
-    "Family-owned Salvadoran bakery in Manassas, VA. Fresh-baked pan dulce, conchas, pastelitos, and custom cakes made daily. Serving Northern Virginia since 2010. Visit us at 5443 Wellington Rd.",
+    "Family-owned Salvadoran bakery in Manassas, VA. Fresh-baked pan dulce, conchas, pastelitos, and custom cakes made daily. Serving Northern Virginia since 2026. Visit us at 5443 Wellington Rd.",
   alternates: {
     canonical: 'https://lorenasbakery.com',
   },

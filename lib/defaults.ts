@@ -65,7 +65,7 @@ export const DEFAULTS: Record<string, unknown> = {
   } satisfies BusinessData,
 
   home: {
-    label: 'Manassas, Virginia · Since 2010',
+    label: 'Manassas, Virginia · Since 2026',
     heading1: 'Fresh Pan Dulce',
     heading2: '& Pastries',
     heading3: 'Made Daily',

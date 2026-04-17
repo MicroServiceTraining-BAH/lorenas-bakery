@@ -5,7 +5,7 @@ import ServicesPageContent from '@/components/ServicesPageContent';
 export const metadata: Metadata = {
   title: "Custom Cakes, Catering & Bakery Services in Manassas, VA",
   description:
-    "Lorena's Bakery offers custom celebration cakes, quinceañera pastries, catering trays, and bulk pan dulce orders in Manassas, VA. Serving Northern Virginia since 2010. Request a quote today.",
+    "Lorena's Bakery offers custom celebration cakes, quinceañera pastries, catering trays, and bulk pan dulce orders in Manassas, VA. Serving Northern Virginia since 2026. Request a quote today.",
   alternates: {
     canonical: 'https://lorenasbakery.com/services',
   },
