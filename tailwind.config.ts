@@ -10,16 +10,16 @@ const config: Config = {
     extend: {
       colors: {
         rose: {
-          blush: '#E88FA3',
-          light: '#F5C5D0',
-          pale: '#FFF0F3',
+          blush: '#E87BA1',
+          light: '#F2B8CE',
+          pale: '#FEF0F5',
         },
         teal: {
-          sage: '#5F8F8A',
-          light: '#A8C5C2',
-          pale: '#EDF5F4',
+          sage: '#6080A8',
+          light: '#9AB8D4',
+          pale: '#EBF3FA',
         },
-        cream: '#FFF6F8',
+        cream: '#FFF6F9',
         gold: '#F4C27A',
         'gold-light': '#FAE4B8',
         brown: {
@@ -50,17 +50,17 @@ const config: Config = {
         '4xl': '2rem',
       },
       boxShadow: {
-        soft: '0 4px 24px rgba(232, 143, 163, 0.12)',
-        warm: '0 8px 40px rgba(107, 66, 38, 0.10)',
-        card: '0 2px 16px rgba(107, 66, 38, 0.08)',
-        'card-hover': '0 8px 32px rgba(107, 66, 38, 0.14)',
-        float: '0 16px 64px rgba(107, 66, 38, 0.12)',
+        soft: '0 4px 24px rgba(232, 123, 161, 0.14)',
+        warm: '0 8px 40px rgba(96, 128, 168, 0.10)',
+        card: '0 2px 16px rgba(96, 128, 168, 0.08)',
+        'card-hover': '0 8px 32px rgba(96, 128, 168, 0.14)',
+        float: '0 16px 64px rgba(96, 128, 168, 0.12)',
       },
       backgroundImage: {
-        'warm-gradient': 'linear-gradient(135deg, #FFF6F8 0%, #FFF0F3 50%, #FFF9F0 100%)',
-        'hero-gradient': 'linear-gradient(160deg, #FFF6F8 0%, #FDE8EE 40%, #FFF3E8 100%)',
-        'rose-gradient': 'linear-gradient(135deg, #E88FA3 0%, #F5B8C8 100%)',
-        'teal-gradient': 'linear-gradient(135deg, #5F8F8A 0%, #7AADA8 100%)',
+        'warm-gradient': 'linear-gradient(135deg, #FFF6F9 0%, #FEF0F5 50%, #EBF3FA 100%)',
+        'hero-gradient': 'linear-gradient(160deg, #FFF6F9 0%, #FDE8EE 40%, #EBF3FA 100%)',
+        'rose-gradient': 'linear-gradient(135deg, #E87BA1 0%, #F2B8CE 100%)',
+        'teal-gradient': 'linear-gradient(135deg, #6080A8 0%, #7A98C0 100%)',
         'gold-gradient': 'linear-gradient(135deg, #F4C27A 0%, #F9D99B 100%)',
       },
       animation: {

@@ -1,51 +1,51 @@
 const REVIEWS = [
   {
-    name: 'Maria T.',
+    name: 'Alexa Martinez',
+    location: 'Google Review',
+    rating: 5,
+    text: "Lorena's Bakery is an absolute gem! This Salvadoran bakery brings the rich flavors and traditions of El Salvador to every bite. From the moment you walk in, you're greeted with the warm, comforting aroma of freshly baked goods and a welcoming atmosphere.",
+    avatar: 'AM',
+    gradient: 'linear-gradient(135deg, #E87BA1 0%, #F5B8C8 100%)',
+  },
+  {
+    name: 'Josue Sanchez',
     location: 'Manassas, VA',
     rating: 5,
-    text: "Lorena's has been my family's Saturday morning tradition for 6 years. The conchas are the real thing — nothing like them anywhere else in Northern Virginia. My kids refuse to eat any other pan dulce now.",
-    avatar: 'MT',
-    gradient: 'linear-gradient(135deg, #E88FA3 0%, #F5B8C8 100%)',
+    text: "I'm so glad I found this spot in Manassas — it instantly gave me that authentic Salvadoran vibe. Everything tastes homemade and full of tradition. The donuts and cakequitos are next level, literally the best I've ever had.",
+    avatar: 'JS',
+    gradient: 'linear-gradient(135deg, #6080A8 0%, #7A98C0 100%)',
   },
   {
-    name: 'Carlos R.',
-    location: 'Gainesville, VA',
+    name: 'Luis Munoz',
+    location: 'Google Review',
     rating: 5,
-    text: 'Had Lorena make my daughter\'s quinceañera cake and dessert table. Everyone at the party kept asking who made the cake — it was absolutely stunning and tasted even better than it looked. Will be back for every celebration.',
-    avatar: 'CR',
-    gradient: 'linear-gradient(135deg, #5F8F8A 0%, #7AADA8 100%)',
-  },
-  {
-    name: 'Jennifer M.',
-    location: 'Woodbridge, VA',
-    rating: 5,
-    text: 'Drive 35 minutes from Woodbridge every weekend because nothing compares. The quesadilla salvadoreña alone is worth the trip. Staff is warm, the bakery smells incredible, and the prices are fair. Genuine gem.',
-    avatar: 'JM',
+    text: "If you haven't been to Lorena's Bakery yet, you're missing out. This place is the real deal. The pan dulce is fresh, soft, and made with the kind of care and tradition you just can't fake.",
+    avatar: 'LM',
     gradient: 'linear-gradient(135deg, #F4C27A 0%, #F9D99B 100%)',
   },
   {
-    name: 'Alejandro V.',
-    location: 'Centreville, VA',
+    name: 'Orling & Cristina Guardado',
+    location: 'Maryland',
     rating: 5,
-    text: "We ordered catering trays for our company holiday party — three dozen pastelitos and two trays of assorted pan dulce. Everything was perfect. Arrived on time, looked beautiful, disappeared in 20 minutes. Will order again.",
-    avatar: 'AV',
-    gradient: 'linear-gradient(135deg, #E88FA3 0%, #D4A0C8 100%)',
+    text: "We drove from Maryland to check it out — not disappointed at all! Their bread is very delicious, the wait was very short, and the staff is very friendly. This is why you should always try a place for yourself.",
+    avatar: 'OG',
+    gradient: 'linear-gradient(135deg, #E87BA1 0%, #D4A0C8 100%)',
   },
   {
-    name: 'Rosa G.',
-    location: 'Dale City, VA',
+    name: 'Chris Jarian',
+    location: 'Google Review',
     rating: 5,
-    text: "I grew up in El Salvador and haven't found a bakery outside of home that gets it right — until this one. The empanadas de leche taste exactly like my grandmother's. I brought my mother to visit and she cried.",
-    avatar: 'RG',
-    gradient: 'linear-gradient(135deg, #5F8F8A 0%, #A8C5C2 100%)',
+    text: "The food and desserts at Lorena's Bakery were phenomenal. Drove 45 minutes and it was absolutely worth it. Amazing customer service and food — will definitely be back very soon.",
+    avatar: 'CJ',
+    gradient: 'linear-gradient(135deg, #6080A8 0%, #9AB8D4 100%)',
   },
   {
-    name: 'David K.',
-    location: 'Haymarket, VA',
+    name: 'Batael Emeshwu',
+    location: 'Google Review',
     rating: 5,
-    text: 'Called in a birthday cake order with 4 days notice and they delivered exactly what I described — tres leches with fresh flowers, feeds 30 people. My whole family is still talking about it. These people are professionals.',
-    avatar: 'DK',
-    gradient: 'linear-gradient(135deg, #F4C27A 0%, #E88FA3 100%)',
+    text: "This bakery is so good!! Super affordable, delicious, and amazing customer service. I love this bakery so much — I highly recommend it to everyone.",
+    avatar: 'BE',
+    gradient: 'linear-gradient(135deg, #F4C27A 0%, #E87BA1 100%)',
   },
 ];
 
@@ -63,7 +63,7 @@ function Stars({ count }: { count: number }) {
 
 export default function TestimonialsSection() {
   return (
-    <section className="section-padding bg-warm-gradient" aria-labelledby="reviews-heading">
+    <section id="reviews" className="section-padding bg-warm-gradient" aria-labelledby="reviews-heading">
       <div className="max-w-7xl mx-auto container-padding">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
@@ -81,7 +81,7 @@ export default function TestimonialsSection() {
             <div className="text-right">
               <div className="font-serif text-3xl font-bold text-stone-900">4.9</div>
               <Stars count={5} />
-              <div className="font-sans text-xs text-stone-500 mt-1">200+ Google Reviews</div>
+              <div className="font-sans text-xs text-stone-500 mt-1">Google Reviews</div>
             </div>
           </div>
         </div>
@@ -148,7 +148,7 @@ export default function TestimonialsSection() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href="https://maps.google.com/?q=5443+Wellington+Rd+Manassas+VA+20110"
+              href="https://maps.google.com/?q=10750+Sudley+Manor+Dr+Manassas+VA+20109"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-teal text-sm px-7 py-3"
@@ -157,11 +157,11 @@ export default function TestimonialsSection() {
               Get Directions
             </a>
             <a
-              href="tel:7039280838"
+              href="tel:7037898919"
               className="btn-outline text-sm px-7 py-3"
-              aria-label="Call us at (703) 928-0838"
+              aria-label="Call us at (703) 789-8919"
             >
-              Call (703) 928-0838
+              Call (703) 789-8919
             </a>
           </div>
         </div>

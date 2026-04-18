@@ -123,7 +123,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       name: "Lorena's Bakery",
       logo: {
         '@type': 'ImageObject',
-        url: 'https://lorenasbakery.com/lorenas-logo.png',
+        url: 'https://lorenasbakery.com/lorenas-logo.jpg',
       },
     },
     mainEntityOfPage: {

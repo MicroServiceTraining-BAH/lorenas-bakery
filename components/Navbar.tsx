@@ -33,8 +33,26 @@ export default function Navbar() {
   }, [pathname]);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    if (menuOpen) {
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+    } else {
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      if (scrollY) window.scrollTo(0, -parseInt(scrollY));
+    }
+    return () => {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+    };
   }, [menuOpen]);
 
   return (
@@ -51,11 +69,14 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center" aria-label="Lorena's Bakery home">
             <Image
-              src="/lorenas-logo.png"
+              src="/lorenas-logo.jpg"
               alt="Lorena's Bakery"
-              width={110}
-              height={55}
-              className="h-12 w-auto"
+              width={80}
+              height={80}
+              className={cn(
+                'rounded-full object-cover transition-all duration-500',
+                scrolled ? 'h-10 w-10' : 'h-20 w-20 mt-3'
+              )}
               priority
             />
           </Link>
@@ -70,7 +91,9 @@ export default function Navbar() {
                     'font-sans text-sm font-medium tracking-wide transition-colors duration-200 relative group',
                     pathname === href
                       ? 'text-rose-blush'
-                      : 'text-stone-700 hover:text-rose-blush'
+                      : !scrolled && pathname === '/'
+                        ? 'text-white/90 hover:text-white'
+                        : 'text-stone-700 hover:text-rose-blush'
                   )}
                   aria-current={pathname === href ? 'page' : undefined}
                 >
@@ -100,11 +123,14 @@ export default function Navbar() {
             </button>
 
             <a
-              href="tel:7039280838"
-              className="font-sans text-sm text-stone-600 hover:text-rose-blush transition-colors duration-200"
-              aria-label="Call us at (703) 928-0838"
+              href="tel:7037898919"
+              className={cn(
+                'font-sans text-sm transition-colors duration-200 hover:text-rose-blush',
+                !scrolled && pathname === '/' ? 'text-white/80' : 'text-stone-600'
+              )}
+              aria-label="Call us at (703) 789-8919"
             >
-              (703) 928-0838
+              (703) 789-8919
             </a>
             <Link href="/contact" className="btn-primary text-sm px-5 py-2.5">
               {t.nav.orderNow}
@@ -145,19 +171,22 @@ export default function Navbar() {
       <div
         id="mobile-menu"
         className={cn(
-          'md:hidden fixed inset-0 top-16 bg-white z-40 transition-all duration-400 flex flex-col',
-          menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          'md:hidden fixed inset-x-0 bottom-0 bg-white z-[999] transition-all duration-300 flex flex-col',
+          menuOpen ? 'top-16 opacity-100 pointer-events-auto' : 'top-full opacity-0 pointer-events-none'
         )}
         aria-hidden={!menuOpen}
+        style={{ WebkitOverflowScrolling: 'touch' }}
       >
-        <div className="flex-1 overflow-y-auto px-5 pt-8 pb-10">
+        <div className="flex-1 overflow-y-auto overscroll-contain px-5 pt-8 pb-10"
+          style={{ WebkitOverflowScrolling: 'touch' }}
+        >
           <ul className="flex flex-col gap-1" role="list">
             {NAV_LINKS.map(({ href, label }, i) => (
               <li key={href}>
                 <Link
                   href={href}
                   className={cn(
-                    'flex items-center justify-between py-4 px-4 rounded-2xl font-serif text-2xl transition-all duration-200',
+                    'flex items-center justify-between py-3.5 px-4 rounded-2xl font-serif text-xl transition-all duration-200',
                     pathname === href
                       ? 'text-rose-blush bg-rose-pale'
                       : 'text-stone-800 hover:text-rose-blush hover:bg-rose-pale/60',
@@ -178,11 +207,11 @@ export default function Navbar() {
               {t.nav.orderNow}
             </Link>
             <a
-              href="tel:7039280838"
+              href="tel:7037898919"
               className="btn-outline justify-center text-base py-4"
               aria-label="Call us"
             >
-              {t.nav.call} (703) 928-0838
+              {t.nav.call} (703) 789-8919
             </a>
             {/* Language toggle mobile */}
             <button

@@ -21,7 +21,7 @@ export default function ContactPageContent() {
       {/* Hero */}
       <section
         className="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden"
-        style={{ background: 'linear-gradient(160deg, #FFF6F8 0%, #EDF5F4 50%, #FFF3E8 100%)' }}
+        style={{ background: 'linear-gradient(160deg, #FFF6F9 0%, #EBF3FA 50%, #FFF3E8 100%)' }}
         aria-label="Contact page header"
       >
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -30,7 +30,7 @@ export default function ContactPageContent() {
         </div>
         <div className="relative max-w-7xl mx-auto container-padding text-center">
           <div className="section-label justify-center mb-6">{pg.hero.label}</div>
-          <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl font-bold text-stone-900 leading-tight">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl font-bold text-stone-900 leading-tight">
             {pg.hero.heading.split(' ').slice(0, -1).join(' ')}{' '}
             <span className="italic text-rose-blush">{pg.hero.heading.split(' ').slice(-1)[0]}</span>
           </h1>
@@ -51,9 +51,9 @@ export default function ContactPageContent() {
               <div className="space-y-5">
                 {/* Phone */}
                 <a
-                  href="tel:7039280838"
+                  href="tel:7037898919"
                   className="flex items-start gap-4 p-6 rounded-3xl bg-cream hover:shadow-card transition-shadow duration-200 group"
-                  aria-label="Call us at (703) 928-0838"
+                  aria-label="Call us at (703) 789-8919"
                 >
                   <div className="w-12 h-12 rounded-2xl bg-rose-blush flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-200">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -64,7 +64,7 @@ export default function ContactPageContent() {
                     <div className="font-sans text-xs font-semibold text-stone-500 tracking-wide uppercase mb-1">
                       {pg.info.phone.label}
                     </div>
-                    <div className="font-serif text-xl font-bold text-stone-900">(703) 928-0838</div>
+                    <div className="font-serif text-xl font-bold text-stone-900">(703) 789-8919</div>
                     <div className="font-sans text-sm text-stone-500 mt-0.5">{pg.info.phone.subtitle}</div>
                   </div>
                 </a>
@@ -92,7 +92,7 @@ export default function ContactPageContent() {
 
                 {/* Address */}
                 <a
-                  href="https://maps.google.com/?q=5443+Wellington+Rd+Manassas+VA+20110"
+                  href="https://maps.google.com/?q=10750+Sudley+Manor+Dr+Manassas+VA+20109"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-start gap-4 p-6 rounded-3xl bg-cream hover:shadow-card transition-shadow duration-200 group"
@@ -109,8 +109,8 @@ export default function ContactPageContent() {
                       {pg.info.location.label}
                     </div>
                     <address className="not-italic font-serif text-lg font-bold text-stone-900 leading-snug">
-                      5443 Wellington Rd<br />
-                      Manassas, VA 20110
+                      10750 Sudley Manor Dr<br />
+                      Manassas, VA 20109
                     </address>
                     <div className="font-sans text-sm text-teal-sage font-medium mt-1">
                       {pg.info.location.directions}
@@ -158,14 +158,14 @@ export default function ContactPageContent() {
             {pg.quickCta.heading}
           </h2>
           <a
-            href="tel:7039280838"
+            href="tel:7037898919"
             className="btn-primary text-base px-10 py-4"
-            aria-label="Call Lorena's Bakery at (703) 928-0838"
+            aria-label="Call Lorena's Bakery at (703) 789-8919"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 12 19.79 19.79 0 011.61 3.4 2 2 0 013.6 1.22h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 8.77a16 16 0 006.32 6.32l.97-1.97a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" strokeWidth="2" />
             </svg>
-            (703) 928-0838
+            (703) 789-8919
           </a>
         </div>
       </section>

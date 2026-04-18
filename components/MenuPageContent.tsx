@@ -20,7 +20,7 @@ export default function MenuPageContent({ categories }: Props) {
       {/* Hero */}
       <section
         className="relative pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden"
-        style={{ background: 'linear-gradient(160deg, #FFF6F8 0%, #FFF3E8 60%, #FDE8EE 100%)' }}
+        style={{ background: 'linear-gradient(160deg, #FFF6F9 0%, #FFF3E8 60%, #FDE8EE 100%)' }}
         aria-label="Menu page header"
       >
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -29,7 +29,7 @@ export default function MenuPageContent({ categories }: Props) {
         </div>
         <div className="relative max-w-7xl mx-auto container-padding text-center">
           <div className="section-label justify-center mb-6">{pg.hero.label}</div>
-          <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl font-bold text-stone-900 leading-tight">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl font-bold text-stone-900 leading-tight">
             {pg.hero.heading.split(' ').slice(0, -1).join(' ')}{' '}
             <span className="italic text-rose-blush">{pg.hero.heading.split(' ').slice(-1)[0]}</span>
           </h1>
@@ -38,8 +38,8 @@ export default function MenuPageContent({ categories }: Props) {
           </p>
           <p className="mt-3 font-sans text-sm text-stone-500">
             {pg.hero.customOrdersNote}{' '}
-            <a href="tel:7039280838" className="text-rose-blush hover:underline font-medium">
-              (703) 928-0838
+            <a href="tel:7037898919" className="text-rose-blush hover:underline font-medium">
+              (703) 789-8919
             </a>{' '}
             {pg.hero.advance}
           </p>
@@ -142,7 +142,7 @@ export default function MenuPageContent({ categories }: Props) {
             <Link href="/contact" className="btn-primary text-base px-8 py-4">
               {pg.cta.requestOrder}
             </Link>
-            <a href="tel:7039280838" className="btn-outline text-base px-8 py-4">
+            <a href="tel:7037898919" className="btn-outline text-base px-8 py-4">
               {pg.cta.call}
             </a>
           </div>

@@ -19,7 +19,7 @@
           "description": "Dense, sweet bread made with piloncillo and anise seeds. A traditional Salvadoran staple.",
           "price": "$2.75",
           "tag": "",
-          "emoji": "🥖"
+          "emoji": ""
         },
         {
           "id": "pan-de-yema",
@@ -27,7 +27,7 @@
           "description": "Egg-enriched sweet rolls with a golden crust, pillowy interior, and hint of orange zest.",
           "price": "$2.50",
           "tag": "",
-          "emoji": "🫓"
+          "emoji": ""
         },
         {
           "id": "cuernos",
@@ -35,7 +35,7 @@
           "description": "Horn-shaped pastry with a flaky exterior and sweet cream or chocolate filling.",
           "price": "$3.00",
           "tag": "New",
-          "emoji": "🥐"
+          "emoji": ""
         }
       ]
     },
@@ -49,7 +49,7 @@
           "description": "Flaky hand pies filled with seasoned ground beef, potatoes, and spices. Baked golden.",
           "price": "$3.00",
           "tag": "Bestseller",
-          "emoji": "🥙"
+          "emoji": ""
         },
         {
           "id": "pastelitos-queso",
@@ -57,7 +57,7 @@
           "description": "Hand pies filled with cream cheese and jalapeño. Crispy exterior, melty center.",
           "price": "$3.00",
           "tag": "",
-          "emoji": "🫔"
+          "emoji": ""
         },
         {
           "id": "empanadas-leche",
@@ -65,15 +65,15 @@
           "description": "Fried dough filled with sweet vanilla custard and rolled in cinnamon sugar.",
           "price": "$2.75",
           "tag": "Sweet",
-          "emoji": "🧁"
+          "emoji": ""
         },
         {
           "id": "empanadas-loroco",
           "name": "Empanadas de Loroco",
-          "description": "Savory Salvadoran empanadas filled with loroco flower and cheese. Authentically ours.",
+          "description": "Savory Salvadoran empanadas filled with loroco flower and cheese. Order them if you see them.",
           "price": "$3.50",
           "tag": "Signature",
-          "emoji": "🌿"
+          "emoji": ""
         }
       ]
     },
@@ -87,7 +87,7 @@
           "description": "Rice flour cake with parmesan, sesame seeds, and sour cream. Sweet, savory, and spongy.",
           "price": "$4.00",
           "tag": "Must Try",
-          "emoji": "🍰"
+          "emoji": ""
         },
         {
           "id": "tres-leches",
@@ -95,15 +95,15 @@
           "description": "Classic tres leches soaked in three milks with fresh whipped cream and cinnamon topping.",
           "price": "from $28 (6\")",
           "tag": "",
-          "emoji": "🎂"
+          "emoji": ""
         },
         {
           "id": "quinceanera-cakes",
           "name": "Quinceañera Cakes",
-          "description": "Custom tiered cakes designed for your special day. Consult with Lorena for your vision.",
+          "description": "Custom tiered cakes for quinceañeras. Call to talk through the details.",
           "price": "Custom pricing",
           "tag": "Custom Order",
-          "emoji": "👑"
+          "emoji": ""
         },
         {
           "id": "birthday-cakes",
@@ -111,7 +111,7 @@
           "description": "Fully custom cakes in your choice of flavor, filling, and decoration. Order 72hrs in advance.",
           "price": "from $45",
           "tag": "",
-          "emoji": "🎉"
+          "emoji": ""
         }
       ]
     },
@@ -125,23 +125,23 @@
           "description": "Traditional Mexican coffee brewed with cinnamon and piloncillo in a clay pot.",
           "price": "$3.00",
           "tag": "Morning Must",
-          "emoji": "☕"
+          "emoji": ""
         },
         {
           "id": "horchata",
           "name": "Horchata de Morro",
-          "description": "Authentic Salvadoran horchata made with morro seeds, cinnamon, and sesame. Refreshingly different.",
+          "description": "Salvadoran horchata made with morro seeds, cinnamon, and sesame. Not the rice kind.",
           "price": "$4.00",
           "tag": "Signature",
-          "emoji": "🥛"
+          "emoji": ""
         },
         {
           "id": "atol-de-elote",
           "name": "Atol de Elote",
-          "description": "Sweet corn drink made the traditional way — warm, thick, and utterly comforting.",
+          "description": "Sweet corn drink made the traditional way. Warm, thick, and good.",
           "price": "$3.50",
           "tag": "",
-          "emoji": "🌽"
+          "emoji": ""
         },
         {
           "id": "licuados",
@@ -149,7 +149,7 @@
           "description": "Blended fresh fruit drinks with milk or water. Ask about today's seasonal fruits.",
           "price": "from $4.00",
           "tag": "",
-          "emoji": "🍓"
+          "emoji": ""
         }
       ]
     }

@@ -16,12 +16,12 @@ const FAQS: FaqItem[] = [
   {
     question: 'Do you make custom cakes and celebration orders?',
     answer:
-      'Yes! We create custom cakes for quinceañeras, weddings, birthdays, baby showers, and corporate events. Our pastry chef Sofia trained in Washington, DC and specializes in combining modern cake design with traditional Salvadoran flavors. Custom orders require at least 72 hours notice — call (703) 928-0838 or use our contact form.',
+      'Yes! We create custom cakes for quinceañeras, weddings, birthdays, baby showers, and corporate events. Our pastry chef Sofia trained in Washington, DC and specializes in combining modern cake design with traditional Salvadoran flavors. Custom orders require at least 72 hours notice — call (703) 789-8919 or use our contact form.',
   },
   {
     question: 'What are your hours and location?',
     answer:
-      "We're located at 5443 Wellington Rd, Manassas, VA 20110. Monday through Friday we're open 7:00 AM to 7:00 PM. Saturday 6:00 AM to 8:00 PM. Sunday 7:00 AM to 5:00 PM. We recommend arriving early — our most popular items often sell out before noon.",
+      "We're located at 10750 Sudley Manor Dr, Manassas, VA 20109. Monday through Friday we're open 7:00 AM to 7:00 PM. Saturday 6:00 AM to 8:00 PM. Sunday 7:00 AM to 5:00 PM. We recommend arriving early — our most popular items often sell out before noon.",
   },
   {
     question: "Do I need to order in advance or can I just walk in?",
@@ -59,10 +59,10 @@ export default function FaqSection() {
             </h2>
             <p className="mt-5 font-sans text-stone-500 leading-relaxed">
               Still have questions? Call us at{' '}
-              <a href="tel:7039280838" className="text-rose-blush font-medium hover:underline">
-                (703) 928-0838
+              <a href="tel:7037898919" className="text-rose-blush font-medium hover:underline">
+                (703) 789-8919
               </a>{' '}
-              or visit us at 5443 Wellington Rd, Manassas, VA.
+              or visit us at 10750 Sudley Manor Dr, Manassas, VA.
             </p>
           </div>
 

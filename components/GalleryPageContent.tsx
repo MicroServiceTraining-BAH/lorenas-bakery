@@ -25,7 +25,7 @@ export default function GalleryPageContent() {
       {/* Hero */}
       <section
         className="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden"
-        style={{ background: 'linear-gradient(160deg, #FFF6F8 0%, #FDE8EE 50%, #E8F5F4 100%)' }}
+        style={{ background: 'linear-gradient(160deg, #FFF6F9 0%, #FDE8EE 50%, #EBF3FA 100%)' }}
         aria-label="Gallery page header"
       >
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -34,7 +34,7 @@ export default function GalleryPageContent() {
         </div>
         <div className="relative max-w-7xl mx-auto container-padding text-center">
           <div className="section-label justify-center mb-6">{pg.hero.label}</div>
-          <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl font-bold text-stone-900 leading-tight">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl font-bold text-stone-900 leading-tight">
             {pg.hero.heading.split(' ').slice(0, -1).join(' ')}{' '}
             <span className="italic text-rose-blush">{pg.hero.heading.split(' ').slice(-1)[0]}</span>
           </h1>
@@ -98,9 +98,9 @@ export default function GalleryPageContent() {
         <div className="max-w-3xl mx-auto container-padding text-center">
           <div className="w-16 h-16 rounded-2xl bg-rose-blush/10 flex items-center justify-center mx-auto mb-6" aria-hidden="true">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="#E88FA3" strokeWidth="2" />
-              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" stroke="#E88FA3" strokeWidth="2" />
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="#E88FA3" strokeWidth="2" strokeLinecap="round" />
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="#E87BA1" strokeWidth="2" />
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" stroke="#E87BA1" strokeWidth="2" />
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="#E87BA1" strokeWidth="2" strokeLinecap="round" />
             </svg>
           </div>
           <h2 id="gallery-cta-heading" className="font-serif text-4xl md:text-5xl font-bold text-stone-900 leading-tight">

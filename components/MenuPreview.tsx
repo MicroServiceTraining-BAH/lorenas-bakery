@@ -1,6 +1,8 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
+
 import { useLanguage } from '@/lib/language-context';
 
 type MenuItem = {
@@ -8,6 +10,7 @@ type MenuItem = {
   description: string;
   price: string;
   tag: string;
+  image?: string;
   gradient: string;
 };
 
@@ -21,6 +24,7 @@ export default function MenuPreview() {
       description: m.items.conchas.description,
       price: 'from $2.50',
       tag: m.items.conchas.tag,
+      image: '/conchas-display.jpg',
       gradient: 'linear-gradient(145deg, #F9E3C7 0%, #F5C99A 50%, #F0AE70 100%)',
     },
     {
@@ -28,7 +32,8 @@ export default function MenuPreview() {
       description: m.items.quesadilla.description,
       price: 'from $3.50',
       tag: m.items.quesadilla.tag,
-      gradient: 'linear-gradient(145deg, #E8F5F4 0%, #A8C5C2 50%, #5F8F8A 100%)',
+      image: '/fruit-tarts-closeup.jpg',
+      gradient: 'linear-gradient(145deg, #EBF3FA 0%, #9AB8D4 50%, #6080A8 100%)',
     },
   ];
 
@@ -38,7 +43,7 @@ export default function MenuPreview() {
       description: m.items.pastelitos.description,
       price: 'from $3.00',
       tag: m.items.pastelitos.tag,
-      gradient: 'linear-gradient(145deg, #FDE8EE 0%, #F5C5D0 50%, #E88FA3 100%)',
+      gradient: 'linear-gradient(145deg, #FDE8EE 0%, #F2B8CE 50%, #E87BA1 100%)',
     },
     {
       name: 'Empanadas de Leche',
@@ -92,21 +97,34 @@ export default function MenuPreview() {
                 i === 0 ? 'lg:col-span-3' : 'lg:col-span-2'
               }`}
             >
-              <div
-                className="h-56 lg:h-72 flex flex-col justify-end p-7 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.01]"
-                style={{ background: item.gradient }}
-              >
-                <span className="inline-flex self-start items-center px-3 py-1 mb-3 rounded-full bg-white/70 backdrop-blur-sm font-sans text-xs font-semibold text-stone-700">
-                  {item.tag}
-                </span>
-                <h3 className="font-serif text-2xl font-bold text-stone-900 leading-tight mb-1">
-                  {item.name}
-                </h3>
-                <p className="font-sans text-sm text-stone-700 leading-relaxed line-clamp-2 max-w-sm">
-                  {item.description}
-                </p>
-                <div className="mt-3 font-sans text-sm font-semibold text-stone-800">
-                  {item.price}
+              <div className="relative h-56 lg:h-80">
+                {item.image ? (
+                  <>
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                      sizes="(max-width: 1024px) 100vw, 60vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-950/20 to-transparent" aria-hidden="true" />
+                  </>
+                ) : (
+                  <div className="h-full" style={{ background: item.gradient }} />
+                )}
+                <div className="absolute bottom-0 left-0 right-0 p-7">
+                  <span className="inline-flex self-start items-center px-3 py-1 mb-3 rounded-full bg-white/20 backdrop-blur-sm font-sans text-xs font-semibold text-white">
+                    {item.tag}
+                  </span>
+                  <h3 className="font-serif text-2xl font-bold text-white leading-tight mb-1">
+                    {item.name}
+                  </h3>
+                  <p className="font-sans text-sm text-white/80 leading-relaxed line-clamp-2 max-w-sm">
+                    {item.description}
+                  </p>
+                  <div className="mt-3 font-sans text-sm font-semibold text-gold">
+                    {item.price}
+                  </div>
                 </div>
               </div>
             </article>
@@ -151,8 +169,8 @@ export default function MenuPreview() {
           </Link>
           <p className="font-sans text-sm text-stone-500">
             {m.customOrders}{' '}
-            <a href="tel:7039280838" className="text-rose-blush hover:underline">
-              (703) 928-0838
+            <a href="tel:7037898919" className="text-rose-blush hover:underline">
+              (703) 789-8919
             </a>
           </p>
         </div>

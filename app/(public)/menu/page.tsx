@@ -1,10 +1,8 @@
 import type { Metadata } from 'next';
 
 import MenuPageContent from '@/components/MenuPageContent';
-import { readData } from '@/lib/data';
+import { DEFAULTS } from '@/lib/defaults';
 import type { MenuData } from '@/types/cms';
-
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: "Menu — Pan Dulce, Pastries & Custom Cakes in Manassas, VA",
@@ -15,7 +13,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function MenuPage() {
-  const { categories } = await readData<MenuData>('menu');
+export default function MenuPage() {
+  const { categories } = DEFAULTS.menu as MenuData;
   return <MenuPageContent categories={categories} />;
 }

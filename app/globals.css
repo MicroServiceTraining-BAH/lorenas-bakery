@@ -4,9 +4,9 @@
 
 @layer base {
   :root {
-    --primary: #E88FA3;
-    --secondary: #5F8F8A;
-    --background: #FFF6F8;
+    --primary: #E87BA1;
+    --secondary: #6080A8;
+    --background: #FFF6F9;
     --accent: #F4C27A;
     --foreground: #2D2320;
   }
@@ -16,7 +16,7 @@
   }
 
   body {
-    background-color: #FFF6F8;
+    background-color: #FFF6F9;
     color: #2D2320;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

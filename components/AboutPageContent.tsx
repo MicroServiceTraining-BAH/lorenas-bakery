@@ -6,9 +6,9 @@ import Breadcrumb from '@/components/Breadcrumb';
 import { useLanguage } from '@/lib/language-context';
 
 const TEAM_VISUALS = [
-  { emoji: '👩‍🍳', gradient: 'linear-gradient(145deg, #FDE8EE 0%, #E88FA3 100%)' },
-  { emoji: '☕', gradient: 'linear-gradient(145deg, #F5E8D6 0%, #A0704A 100%)' },
-  { emoji: '🎂', gradient: 'linear-gradient(145deg, #E8F5F4 0%, #5F8F8A 100%)' },
+  { gradient: 'linear-gradient(145deg, #FEF0F5 0%, #E87BA1 100%)' },
+  { gradient: 'linear-gradient(145deg, #F5E8D6 0%, #A0704A 100%)' },
+  { gradient: 'linear-gradient(145deg, #EBF3FA 0%, #6080A8 100%)' },
 ];
 
 function LastWordItalic({ text, className }: { text: string; className: string }) {
@@ -32,7 +32,7 @@ export default function AboutPageContent() {
       {/* Hero */}
       <section
         className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden"
-        style={{ background: 'linear-gradient(160deg, #FFF6F8 0%, #FDE8EE 50%, #FFF3E8 100%)' }}
+        style={{ background: 'linear-gradient(160deg, #FFF6F9 0%, #FDE8EE 50%, #FFF3E8 100%)' }}
         aria-label="About page hero"
       >
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -41,7 +41,7 @@ export default function AboutPageContent() {
         </div>
         <div className="relative max-w-7xl mx-auto container-padding text-center">
           <div className="section-label justify-center mb-6">{pg.hero.label}</div>
-          <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl font-bold text-stone-900 leading-tight">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl font-bold text-stone-900 leading-tight">
             {pg.hero.headingPre}{' '}
             <span className="italic text-rose-blush">{pg.hero.headingItalic}</span><br />
             {pg.hero.headingPost}
@@ -118,7 +118,6 @@ export default function AboutPageContent() {
                   role="img"
                   aria-label={`${member.name}, ${member.role}`}
                 >
-                  <span aria-hidden="true">{TEAM_VISUALS[i].emoji}</span>
                 </div>
                 <div className="p-6">
                   <h3 className="font-serif text-2xl font-bold text-stone-900">{member.name}</h3>
@@ -148,7 +147,6 @@ export default function AboutPageContent() {
                 key={title}
                 className="bg-cream rounded-3xl p-7 hover:shadow-card transition-shadow duration-300"
               >
-                <div className="text-4xl mb-5" aria-hidden="true">{icon}</div>
                 <h3 className="font-serif text-xl font-bold text-stone-900 mb-3">{title}</h3>
                 <p className="font-sans text-sm text-stone-600 leading-relaxed">{description}</p>
               </div>

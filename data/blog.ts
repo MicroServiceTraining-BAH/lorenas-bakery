@@ -98,11 +98,11 @@ const POSTS: BlogPost[] = [
       },
       {
         type: 'p',
-        text: "Lorena's Bakery is located at 5443 Wellington Rd in Manassas, VA 20110. We open at 7am Monday through Friday and at 6am on Saturdays. Sunday hours are 7am to 5pm. We're conveniently located for residents across Northern Virginia — Centreville, Gainesville, Woodbridge, Dale City, and Bristow are all within a 20–30 minute drive.",
+        text: "Lorena's Bakery is located at 10750 Sudley Manor Dr in Manassas, VA 20109. We open at 7am Monday through Friday and at 6am on Saturdays. Sunday hours are 7am to 5pm. We're conveniently located for residents across Northern Virginia — Centreville, Gainesville, Woodbridge, Dale City, and Bristow are all within a 20–30 minute drive.",
       },
       {
         type: 'p',
-        text: "We recommend arriving early, especially on weekends. Our conchas and quesadillas typically sell out before noon. If you want to guarantee a specific item, call ahead at (703) 928-0838 and we'll set it aside.",
+        text: "We recommend arriving early, especially on weekends. Our conchas and quesadillas typically sell out before noon. If you want to guarantee a specific item, call ahead at (703) 789-8919 and we'll set it aside.",
       },
       {
         type: 'cta',
@@ -180,7 +180,7 @@ const POSTS: BlogPost[] = [
       {
         type: 'ul',
         items: [
-          'Call us at (703) 928-0838 or submit our contact form with your event date and details',
+          'Call us at (703) 789-8919 or submit our contact form with your event date and details',
           "We'll follow up within one business day to discuss design, flavors, and sizing",
           'A 50% deposit is required to confirm your order',
           'Final balance is due at pickup or delivery',
@@ -270,7 +270,7 @@ const POSTS: BlogPost[] = [
       },
       {
         type: 'p',
-        text: "Our conchas come out fresh every morning and we typically sell out before noon — especially on Saturdays. If you want to guarantee a batch, call us the day before at (703) 928-0838 and we'll set them aside for you. We're located at 5443 Wellington Rd, Manassas, VA 20110.",
+        text: "Our conchas come out fresh every morning and we typically sell out before noon — especially on Saturdays. If you want to guarantee a batch, call us the day before at (703) 789-8919 and we'll set them aside for you. We're located at 10750 Sudley Manor Dr, Manassas, VA 20109.",
       },
       {
         type: 'cta',

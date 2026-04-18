@@ -13,7 +13,7 @@ const t = {
       contact: 'Contact',
       orderNow: 'Order Now',
       call: 'Call',
-      address: '5443 Wellington Rd, Manassas, VA 20110',
+      address: '10750 Sudley Manor Dr, Manassas, VA 20109',
     },
     // Hero
     hero: {
@@ -24,14 +24,14 @@ const t = {
       body: 'Conchas, pastelitos, quesadilla salvadoreña, and café de olla — baked fresh every morning using the same recipes Lorena learned from her grandmother in El Salvador.',
       viewMenu: 'View Our Menu',
       orderNow: 'Order Now',
-      rating: '4.9 Rating',
-      ratingDesc: '200+ Google Reviews',
+      rating: 'Google Reviews',
+      ratingDesc: 'See what people are saying',
       familyOwned: 'Family Owned',
       familyDesc: 'Open in Manassas since 2026',
       bakedFresh: 'Baked Fresh',
-      bakedDesc: 'Every morning by 7am',
+      bakedDesc: 'Every morning by 6:30am',
       freshToday: 'Fresh Today',
-      readyBy: 'Ready by 7am',
+      readyBy: 'Ready by 6:30am',
     },
     // About
     about: {
@@ -83,6 +83,14 @@ const t = {
         },
       },
     },
+    // Food Showcase (homepage grid)
+    foodShowcase: {
+      photos: [
+        { label: 'Pan Dulce', alt: 'Conchas and butter cookies fresh from the oven' },
+        { label: 'Fruit Tarts', alt: 'Fresh custard fruit tarts with berries and kiwi' },
+        { label: 'Pastries & Cakes', alt: 'Daily selection of pastries, cakes, and breads' },
+      ],
+    },
     // Gallery
     gallery: {
       label: 'Instagram Gallery',
@@ -97,7 +105,7 @@ const t = {
       label: 'Find Us',
       heading1: 'Come Visit',
       heading2: 'Our Bakery',
-      body: '5443 Wellington Rd, Manassas. Park out front, come in.',
+      body: '10750 Sudley Manor Dr, Manassas. Park out front, come in.',
       address: 'Address',
       getDirections: 'Get Directions',
       hours: 'Hours',
@@ -109,7 +117,7 @@ const t = {
       contact: 'Contact',
       cantMakeIt: "Can't make it in? We take orders.",
       cantMakeItDesc: 'Call ahead or use our contact form for custom orders and pickups.',
-      callUs: 'Call (703) 928-0838',
+      callUs: 'Call (703) 789-8919',
     },
     // Footer
     footer: {
@@ -117,7 +125,7 @@ const t = {
       navigation: 'Navigation',
       visitUs: 'Visit Us',
       hours: 'Hours',
-      hoursValue: 'Mon – Fri: 7am – 7pm\nSat: 6am – 8pm · Sun: 7am – 5pm',
+      hoursValue: 'Mon – Fri: 6:30am – 8pm\nSat: 8am – 8pm · Sun: 8am – 7pm',
       rights: 'All rights reserved.',
       websiteBy: 'Website by',
     },
@@ -128,14 +136,14 @@ const t = {
         headingPre: 'Family,',
         headingItalic: 'Tradition,',
         headingPost: 'and Fresh Bread',
-        body: 'Lorena opened the Manassas location in 2026 with her husband Miguel. The recipes came from her grandmother in El Salvador.',
+        body: 'Lorena and Felipe opened the Manassas location in 2026. The recipes came from her grandmother in El Salvador.',
       },
       story: {
         labelPre: 'From San Salvador',
         labelItalic: 'to Manassas',
         p1: "It started with Lorena's grandmother Carmen, who baked conchas and quesadillas every morning in San Salvador. None of the recipes were written down. Lorena learned them by watching.",
         p2: "When Lorena moved to Virginia in 2005, she kept baking for friends, neighbors, anyone who wanted to try. Eventually enough people said she should open a shop that she actually did.",
-        p3: 'In 2026, she and Miguel opened the Manassas location on Wellington Road.',
+        p3: 'In 2026, she and Felipe opened the Manassas location on Sudley Manor Dr.',
         p4: "The recipes haven't changed. Same conchas, same quesadilla, same coffee. Just more people who know about it now.",
         cta: 'Visit Us Today',
       },
@@ -144,23 +152,23 @@ const t = {
         heading: 'Meet the Bakers',
         members: [
           { name: 'Lorena', role: 'Founder & Head Baker', bio: 'Grew up baking with her grandmother in El Salvador starting at age seven. Moved to Virginia in 2005, opened the Manassas location in 2026. Still in the kitchen before 5am every day.' },
-          { name: 'Miguel', role: 'Co-owner & Coffee', bio: "Handles the coffee and runs the floor. He has been serious about coffee for over 20 years — you'll know it from the first sip." },
-          { name: 'Sofia', role: 'Pastry Chef', bio: 'Trained at a culinary school in DC, then came back to work with her parents. She handles most of the custom cake work and has a knack for making traditional Salvadoran pastries look stunning.' },
+          { name: 'Felipe', role: 'Founder & Operations', bio: 'Co-founded the bakery with Lorena in 2026. Runs the floor and handles everything that keeps the doors open. Regulars know him by name.' },
+          { name: 'Sofia', role: 'Pastry Chef', bio: 'Trained at a culinary school in DC, then came back to work with her parents. She handles all the custom cake work and does all the decorating.' },
         ],
       },
       values: {
-        label: 'What We Stand For',
+        label: 'What We Care About',
         heading: 'Our Values',
         items: [
-          { icon: '🤝', title: 'Community First', description: 'We host neighborhood events, support local schools, and donate fresh bread to food banks every week. This neighborhood showed up for us from day one — we try to show up back.' },
-          { icon: '🌿', title: 'Real Ingredients', description: 'No preservatives, no pre-made mixes. We source traditional Salvadoran ingredients directly and work with local suppliers where we can. It shows in the taste.' },
-          { icon: '❤️', title: 'Made by Hand', description: 'Everything is handmade. Every concha shaped, every pastelito rolled. No industrial equipment, no shortcuts.' },
-          { icon: '🎉', title: 'Here for Your Moments', description: 'Birthday cakes, quinceañera pasteles, wedding cookies — we have made them all. Tell us what you need and we will figure it out.' },
+          { icon: '', title: 'Community First', description: 'We host neighborhood events, support local schools, and donate fresh bread to food banks every week. This neighborhood showed up for us from day one — we try to show up back.' },
+          { icon: '', title: 'Real Ingredients', description: 'No preservatives, no pre-made mixes. We buy traditional Salvadoran ingredients directly and work with local suppliers where we can. It shows in the taste.' },
+          { icon: '', title: 'Made by Hand', description: 'Everything is handmade. Every concha shaped, every pastelito rolled. No industrial equipment, no shortcuts.' },
+          { icon: '', title: 'For the Big Days', description: 'Birthday cakes, quinceañera pasteles, wedding cookies — we have made them all. Tell us what you need and we will figure it out.' },
         ],
       },
       cta: {
         heading: 'Come say hello.\nThe bread is warm.',
-        address: '5443 Wellington Rd, Manassas, VA · Open daily · (703) 928-0838',
+        address: '10750 Sudley Manor Dr, Manassas, VA · Open daily · (703) 789-8919',
         orderNow: 'Order Now',
         seeMenu: 'See Our Menu',
         customOrders: 'Custom Orders & Catering',
@@ -180,7 +188,7 @@ const t = {
         heading: 'Custom Orders Welcome',
         body: 'Quinceañera cakes, wedding pastries, corporate trays — call us with what you need.',
         requestOrder: 'Request a Custom Order',
-        call: 'Call (703) 928-0838',
+        call: 'Call (703) 789-8919',
       },
     },
     // Services page (/services)
@@ -190,7 +198,7 @@ const t = {
         heading: 'Bakery Services',
         body: 'Custom cakes, catering trays, and reserved pickup orders. All made from scratch out of our Manassas kitchen.',
         requestQuote: 'Request a Quote',
-        call: 'Call (703) 928-0838',
+        call: 'Call (703) 789-8919',
       },
       services: [
         {
@@ -224,13 +232,13 @@ const t = {
         {
           title: 'Custom Pan Dulce Orders',
           tagline: 'Reserved Pickup · Bulk Orders · Weekly Standing Orders',
-          description: "If you do not want to risk showing up and finding us sold out, call the day before and we will set your order aside. Everything is baked fresh and ready by 7am. Bulk orders for families, restaurants, and resellers are welcome.",
+          description: "If you do not want to risk showing up and finding us sold out, call the day before and we will set your order aside. Everything is baked fresh and ready by 6:30am. Bulk orders for families, restaurants, and resellers are welcome.",
           details: [
-            'Reserve specific items the day before — call (703) 928-0838',
+            'Reserve specific items the day before — call (703) 789-8919',
             'Bulk orders available (dozen pricing on most items)',
             'Weekly standing orders for restaurants and local resellers',
             'Items available: conchas, quesadilla salvadoreña, pastelitos, empanadas de leche, semitas, polvorosas',
-            'Pickup at 5443 Wellington Rd, Manassas, VA — available from open',
+            'Pickup at 10750 Sudley Manor Dr, Manassas, VA — available from open',
           ],
           cta: 'Place a Pickup Order',
         },
@@ -238,7 +246,7 @@ const t = {
       trust: {
         items: [
           { value: '2026', label: 'Manassas, VA', color: 'text-rose-blush' },
-          { value: '200+', label: 'Five-star Google reviews', color: 'text-teal-sage' },
+          { value: '5★', label: 'Rated on Google', color: 'text-teal-sage' },
           { value: '30+', label: 'Fresh items baked daily', color: 'text-gold' },
           { value: '100%', label: 'Made from scratch', color: 'text-rose-blush' },
         ],
@@ -257,7 +265,7 @@ const t = {
         heading: 'Ready to place your order?',
         body: 'Call us, send a message, or stop by.',
         sendMessage: 'Send Us a Message',
-        phone: '(703) 928-0838',
+        phone: '(703) 789-8919',
       },
     },
     // Contact page (/contact)
@@ -275,7 +283,7 @@ const t = {
           label: 'Hours',
           note: 'Best selection is in the morning. If you are coming after noon, call ahead to make sure we still have what you want.',
           days: { weekdays: 'Monday – Friday', saturday: 'Saturday', sunday: 'Sunday' },
-          times: { weekdays: '7:00 AM – 7:00 PM', saturday: '6:00 AM – 8:00 PM', sunday: '7:00 AM – 5:00 PM' },
+          times: { weekdays: '6:30 AM – 8:00 PM', saturday: '8:00 AM – 8:00 PM', sunday: '8:00 AM – 7:00 PM' },
         },
       },
       form: {
@@ -317,7 +325,7 @@ const t = {
       cta: {
         heading: 'Come try it',
         headingEmphasis: 'for yourself.',
-        body: 'Open daily at 5443 Wellington Rd, Manassas, VA. Pan dulce ready by 7am.',
+        body: 'Open daily at 10750 Sudley Manor Dr, Manassas, VA. Pan dulce ready by 6:30am.',
         viewMenu: 'View Our Menu',
         placeOrder: 'Place an Order',
       },
@@ -335,7 +343,7 @@ const t = {
       contact: 'Contacto',
       orderNow: 'Ordenar',
       call: 'Llamar',
-      address: '5443 Wellington Rd, Manassas, VA 20110',
+      address: '10750 Sudley Manor Dr, Manassas, VA 20109',
     },
     // Hero
     hero: {
@@ -346,14 +354,14 @@ const t = {
       body: 'Conchas, pastelitos, quesadilla salvadoreña y café de olla — horneados cada mañana con las mismas recetas que Lorena aprendió de su abuela en El Salvador.',
       viewMenu: 'Ver Menú',
       orderNow: 'Ordenar',
-      rating: 'Calificación 4.9',
-      ratingDesc: '+200 Reseñas en Google',
+      rating: 'Reseñas de Google',
+      ratingDesc: 'Lee lo que dicen nuestros clientes',
       familyOwned: 'Negocio Familiar',
       familyDesc: 'Abiertos en Manassas desde 2026',
       bakedFresh: 'Horneado Fresco',
-      bakedDesc: 'Cada mañana antes de las 7am',
+      bakedDesc: 'Cada mañana antes de las 6:30am',
       freshToday: 'Fresco Hoy',
-      readyBy: 'Listo a las 7am',
+      readyBy: 'Listo a las 6:30am',
     },
     // About
     about: {
@@ -405,6 +413,14 @@ const t = {
         },
       },
     },
+    // Food Showcase (homepage grid)
+    foodShowcase: {
+      photos: [
+        { label: 'Pan Dulce', alt: 'Conchas y galletas de mantequilla recién salidas del horno' },
+        { label: 'Tartas de Frutas', alt: 'Tartas de crema con fresas frescas, kiwi y arándanos' },
+        { label: 'Pasteles y Panes', alt: 'Selección diaria de pasteles hojaldrados y panes' },
+      ],
+    },
     // Gallery
     gallery: {
       label: 'Galería de Instagram',
@@ -419,7 +435,7 @@ const t = {
       label: 'Encuéntranos',
       heading1: 'Visítanos en',
       heading2: 'Nuestra Panadería',
-      body: '5443 Wellington Rd, Manassas. Estaciona enfrente y entra.',
+      body: '10750 Sudley Manor Dr, Manassas. Estaciona enfrente y entra.',
       address: 'Dirección',
       getDirections: 'Cómo llegar',
       hours: 'Horario',
@@ -431,7 +447,7 @@ const t = {
       contact: 'Contacto',
       cantMakeIt: '¿No puedes venir? Hacemos pedidos.',
       cantMakeItDesc: 'Llama con anticipación o usa nuestro formulario para pedidos y recogidas.',
-      callUs: 'Llama al (703) 928-0838',
+      callUs: 'Llama al (703) 789-8919',
     },
     // Footer
     footer: {
@@ -439,7 +455,7 @@ const t = {
       navigation: 'Navegación',
       visitUs: 'Visítanos',
       hours: 'Horario',
-      hoursValue: 'Lun – Vie: 7am – 7pm\nSáb: 6am – 8pm · Dom: 7am – 5pm',
+      hoursValue: 'Lun – Vie: 6:30am – 8pm\nSáb: 8am – 8pm · Dom: 8am – 7pm',
       rights: 'Todos los derechos reservados.',
       websiteBy: 'Sitio web por',
     },
@@ -450,14 +466,14 @@ const t = {
         headingPre: 'Familia,',
         headingItalic: 'Tradición,',
         headingPost: 'y Pan Fresco',
-        body: 'Lorena abrió el local de Manassas en 2026 con su esposo Miguel. Las recetas vienen de su abuela en El Salvador.',
+        body: 'Lorena y Felipe abrieron el local de Manassas en 2026. Las recetas vienen de su abuela en El Salvador.',
       },
       story: {
         labelPre: 'De San Salvador',
         labelItalic: 'a Manassas',
         p1: 'Todo empieza con la abuela Carmen, que horneaba conchas y quesadillas cada mañana en San Salvador. Ninguna receta estaba escrita. Lorena las aprendió mirando.',
         p2: 'Cuando Lorena llegó a Virginia en 2005, siguió horneando para amigos, vecinos y quien quisiera probar. Con el tiempo, suficiente gente le dijo que abriera una tienda como para que lo hiciera.',
-        p3: 'En 2026, ella y Miguel abrieron el local de Manassas en Wellington Road.',
+        p3: 'En 2026, ella y Felipe abrieron el local de Manassas en Sudley Manor Dr.',
         p4: 'Las recetas no han cambiado. Mismas conchas, misma quesadilla, mismo café. Solo más gente que lo sabe ahora.',
         cta: 'Visítanos Hoy',
       },
@@ -466,23 +482,23 @@ const t = {
         heading: 'Conoce a los Panaderos',
         members: [
           { name: 'Lorena', role: 'Fundadora y Panadera Principal', bio: 'Creció horneando con su abuela en El Salvador desde los siete años. Se mudó a Virginia en 2005 y abrió el local de Manassas en 2026. Sigue en la cocina antes de las 5am todos los días.' },
-          { name: 'Miguel', role: 'Copropietario y Café', bio: 'Se encarga del café y del salón. Lleva más de 20 años tomando el café en serio — se nota desde el primer sorbo.' },
-          { name: 'Sofia', role: 'Pastelera', bio: 'Se formó en una escuela culinaria en DC y regresó a trabajar con sus padres. Maneja la mayoría de los pedidos de pasteles y tiene un don para hacer que los dulces salvadoreños tradicionales se vean impresionantes.' },
+          { name: 'Felipe', role: 'Fundador y Operaciones', bio: 'Cofundó la panadería con Lorena en 2026. Maneja el salón y todo lo que mantiene las puertas abiertas. Los clientes habituales lo conocen por nombre.' },
+          { name: 'Sofia', role: 'Pastelera', bio: 'Se formó en una escuela culinaria en DC y regresó a trabajar con sus padres. Maneja todos los pedidos de pasteles personalizados y hace todo el decorado.' },
         ],
       },
       values: {
         label: 'Lo Que Nos Importa',
         heading: 'Nuestros Valores',
         items: [
-          { icon: '🤝', title: 'Comunidad Primero', description: 'Organizamos eventos vecinales, apoyamos escuelas locales y donamos pan fresco a bancos de alimentos cada semana. Este vecindario estuvo con nosotros desde el primer día.' },
-          { icon: '🌿', title: 'Ingredientes Reales', description: 'Sin conservantes, sin mezclas preparadas. Usamos ingredientes salvadoreños tradicionales importados directamente y trabajamos con proveedores locales cuando podemos.' },
-          { icon: '❤️', title: 'Hecho a Mano', description: 'Todo es artesanal. Cada concha formada, cada pastelito enrollado. Sin maquinaria industrial, sin atajos.' },
-          { icon: '🎉', title: 'Para Tus Momentos', description: 'Pasteles de cumpleaños, pasteles de quinceañera, galletas de boda — los hemos hecho todos. Dinos qué necesitas y lo resolvemos.' },
+          { icon: '', title: 'Comunidad Primero', description: 'Organizamos eventos vecinales, apoyamos escuelas locales y donamos pan fresco a bancos de alimentos cada semana. Este vecindario estuvo con nosotros desde el primer día.' },
+          { icon: '', title: 'Ingredientes Reales', description: 'Sin conservantes, sin mezclas preparadas. Compramos ingredientes salvadoreños tradicionales directamente y trabajamos con proveedores locales cuando podemos.' },
+          { icon: '', title: 'Hecho a Mano', description: 'Todo es artesanal. Cada concha formada, cada pastelito enrollado. Sin maquinaria industrial, sin atajos.' },
+          { icon: '', title: 'Para los Días Grandes', description: 'Pasteles de cumpleaños, pasteles de quinceañera, galletas de boda — los hemos hecho todos. Dinos qué necesitas y lo resolvemos.' },
         ],
       },
       cta: {
         heading: 'Ven a saludar.\nEl pan está caliente.',
-        address: '5443 Wellington Rd, Manassas, VA · Abierto a diario · (703) 928-0838',
+        address: '10750 Sudley Manor Dr, Manassas, VA · Abierto a diario · (703) 789-8919',
         orderNow: 'Ordenar',
         seeMenu: 'Ver Menú',
         customOrders: 'Pedidos y Catering',
@@ -502,7 +518,7 @@ const t = {
         heading: 'Pedidos Personalizados Bienvenidos',
         body: 'Pasteles de quinceañera, pasteles de boda, bandejas para eventos — llámanos con lo que necesitas.',
         requestOrder: 'Solicitar un Pedido Personalizado',
-        call: 'Llamar al (703) 928-0838',
+        call: 'Llamar al (703) 789-8919',
       },
     },
     // Services page (/services)
@@ -512,7 +528,7 @@ const t = {
         heading: 'Servicios de Panadería',
         body: 'Pasteles personalizados, bandejas de catering y pedidos con recogida reservada. Todo hecho desde cero en nuestra cocina de Manassas.',
         requestQuote: 'Solicitar Cotización',
-        call: 'Llamar al (703) 928-0838',
+        call: 'Llamar al (703) 789-8919',
       },
       services: [
         {
@@ -546,13 +562,13 @@ const t = {
         {
           title: 'Pedidos Personalizados de Pan Dulce',
           tagline: 'Recogida Reservada · Pedidos al Por Mayor · Pedidos Fijos Semanales',
-          description: 'Si no quieres arriesgarte a llegar y encontrarnos agotados, llama el día anterior y apartamos tu pedido. Todo se hornea fresco y está listo a las 7am. Pedidos al por mayor para familias, restaurantes y revendedores son bienvenidos.',
+          description: 'Si no quieres arriesgarte a llegar y encontrarnos agotados, llama el día anterior y apartamos tu pedido. Todo se hornea fresco y está listo a las 6:30am. Pedidos al por mayor para familias, restaurantes y revendedores son bienvenidos.',
           details: [
-            'Reserva artículos el día anterior — llama al (703) 928-0838',
+            'Reserva artículos el día anterior — llama al (703) 789-8919',
             'Pedidos al por mayor disponibles (precios por docena en la mayoría de artículos)',
             'Pedidos fijos semanales para restaurantes y revendedores locales',
             'Artículos: conchas, quesadilla salvadoreña, pastelitos, empanadas de leche, semitas, polvorosas',
-            'Recogida en 5443 Wellington Rd, Manassas, VA — desde la apertura',
+            'Recogida en 10750 Sudley Manor Dr, Manassas, VA — desde la apertura',
           ],
           cta: 'Hacer un Pedido',
         },
@@ -560,7 +576,7 @@ const t = {
       trust: {
         items: [
           { value: '2026', label: 'Manassas, VA', color: 'text-rose-blush' },
-          { value: '200+', label: 'Reseñas cinco estrellas en Google', color: 'text-teal-sage' },
+          { value: '5★', label: 'Valorados en Google', color: 'text-teal-sage' },
           { value: '30+', label: 'Productos frescos horneados a diario', color: 'text-gold' },
           { value: '100%', label: 'Hecho desde cero', color: 'text-rose-blush' },
         ],
@@ -579,7 +595,7 @@ const t = {
         heading: '¿Listo para hacer tu pedido?',
         body: 'Llámanos, mándanos un mensaje o pasa por la panadería.',
         sendMessage: 'Envíanos un Mensaje',
-        phone: '(703) 928-0838',
+        phone: '(703) 789-8919',
       },
     },
     // Contact page (/contact)
@@ -597,7 +613,7 @@ const t = {
           label: 'Horario',
           note: 'La mejor selección es por la mañana. Si llegas después del mediodía, llama antes para asegurarte de que tengamos lo que buscas.',
           days: { weekdays: 'Lunes – Viernes', saturday: 'Sábado', sunday: 'Domingo' },
-          times: { weekdays: '7:00 AM – 7:00 PM', saturday: '6:00 AM – 8:00 PM', sunday: '7:00 AM – 5:00 PM' },
+          times: { weekdays: '6:30 AM – 8:00 PM', saturday: '8:00 AM – 8:00 PM', sunday: '8:00 AM – 7:00 PM' },
         },
       },
       form: {
@@ -639,7 +655,7 @@ const t = {
       cta: {
         heading: 'Ven a probarlo',
         headingEmphasis: 'por ti mismo.',
-        body: 'Abierto a diario en 5443 Wellington Rd, Manassas, VA. Pan dulce listo a las 7am.',
+        body: 'Abierto a diario en 10750 Sudley Manor Dr, Manassas, VA. Pan dulce listo a las 6:30am.',
         viewMenu: 'Ver Nuestro Menú',
         placeOrder: 'Hacer un Pedido',
       },

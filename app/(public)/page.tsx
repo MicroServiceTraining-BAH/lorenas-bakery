@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 
 import AboutSection from '@/components/AboutSection';
 import FaqSection from '@/components/FaqSection';
+import FoodShowcase from '@/components/FoodShowcase';
 import GalleryGrid from '@/components/GalleryGrid';
 import Hero from '@/components/Hero';
 import LocationSection from '@/components/LocationSection';
@@ -11,7 +12,7 @@ import TestimonialsSection from '@/components/TestimonialsSection';
 export const metadata: Metadata = {
   title: "Lorena's Bakery | Fresh Pan Dulce & Salvadoran Pastries — Manassas, VA",
   description:
-    "Family-owned Salvadoran bakery in Manassas, VA. Fresh-baked pan dulce, conchas, pastelitos, and custom cakes made daily. Serving Northern Virginia since 2026. Visit us at 5443 Wellington Rd.",
+    "Family-owned Salvadoran bakery in Manassas, VA. Fresh-baked pan dulce, conchas, pastelitos, and custom cakes made daily. Serving Northern Virginia since 2026. Visit us at 10750 Sudley Manor Dr.",
   alternates: {
     canonical: 'https://lorenasbakery.com',
   },
@@ -34,7 +35,7 @@ const faqSchema = {
       name: 'Do you make custom cakes and celebration orders?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Yes. Lorena's Bakery creates custom cakes for quinceañeras, weddings, birthdays, and corporate events. Custom orders require at least 72 hours notice. Call (703) 928-0838.",
+        text: "Yes. Lorena's Bakery creates custom cakes for quinceañeras, weddings, birthdays, and corporate events. Custom orders require at least 72 hours notice. Call (703) 789-8919.",
       },
     },
     {
@@ -42,7 +43,7 @@ const faqSchema = {
       name: "What are Lorena's Bakery hours and location?",
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Located at 5443 Wellington Rd, Manassas, VA 20110. Monday–Friday 7:00 AM–7:00 PM, Saturday 6:00 AM–8:00 PM, Sunday 7:00 AM–5:00 PM.",
+        text: "Located at 10750 Sudley Manor Dr, Manassas, VA 20109. Monday–Friday 6:30 AM–8:00 PM, Saturday 8:00 AM–8:00 PM, Sunday 8:00 AM–7:00 PM.",
       },
     },
     {
@@ -65,6 +66,7 @@ export default function HomePage() {
       />
 
       <Hero />
+      <FoodShowcase />
       <AboutSection />
       <MenuPreview />
       <GalleryGrid />

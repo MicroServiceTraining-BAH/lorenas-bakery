@@ -1,13 +1,13 @@
 {
-  "phone": "(703) 928-0838",
+  "phone": "(703) 789-8919",
   "email": "contact@lorenasbakery.com",
-  "address": "5443 Wellington Rd",
+  "address": "10750 Sudley Manor Dr",
   "city": "Manassas",
   "state": "VA",
-  "zip": "20110",
+  "zip": "20109",
   "hours": {
-    "weekdays": "7:00 AM – 7:00 PM",
-    "saturday": "6:00 AM – 8:00 PM",
-    "sunday": "7:00 AM – 5:00 PM"
+    "weekdays": "6:30 AM – 8:00 PM",
+    "saturday": "8:00 AM – 8:00 PM",
+    "sunday": "8:00 AM – 7:00 PM"
   }
 }

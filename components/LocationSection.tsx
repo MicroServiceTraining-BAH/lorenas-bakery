@@ -34,18 +34,18 @@ export default function LocationSection() {
               <div className="flex items-start gap-4">
                 <div className="w-11 h-11 rounded-2xl bg-rose-pale flex items-center justify-center flex-shrink-0">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="#E88FA3" strokeWidth="2" />
-                    <circle cx="12" cy="10" r="3" stroke="#E88FA3" strokeWidth="2" />
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="#E87BA1" strokeWidth="2" />
+                    <circle cx="12" cy="10" r="3" stroke="#E87BA1" strokeWidth="2" />
                   </svg>
                 </div>
                 <div>
                   <h3 className="font-serif text-lg font-bold text-stone-900 mb-1">{l.address}</h3>
                   <address className="not-italic font-sans text-stone-600 leading-relaxed text-sm">
-                    5443 Wellington Rd<br />
-                    Manassas, VA 20110
+                    10750 Sudley Manor Dr<br />
+                    Manassas, VA 20109
                   </address>
                   <a
-                    href="https://maps.google.com/?q=5443+Wellington+Rd+Manassas+VA+20110"
+                    href="https://maps.google.com/?q=10750+Sudley+Manor+Dr+Manassas+VA+20109"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-2 inline-block font-sans text-sm text-teal-sage font-medium hover:underline"
@@ -70,9 +70,9 @@ export default function LocationSection() {
                   <h3 className="font-serif text-lg font-bold text-stone-900 mb-3">{l.hours}</h3>
                   <dl className="space-y-1.5">
                     {[
-                      { day: l.days.weekdays, hours: '7:00 AM – 7:00 PM' },
-                      { day: l.days.saturday, hours: '6:00 AM – 8:00 PM' },
-                      { day: l.days.sunday, hours: '7:00 AM – 5:00 PM' },
+                      { day: l.days.weekdays, hours: '6:30 AM – 8:00 PM' },
+                      { day: l.days.saturday, hours: '8:00 AM – 8:00 PM' },
+                      { day: l.days.sunday, hours: '8:00 AM – 7:00 PM' },
                     ].map(({ day, hours }) => (
                       <div key={day} className="flex justify-between gap-4">
                         <dt className="font-sans text-sm text-stone-600">{day}</dt>
@@ -89,17 +89,17 @@ export default function LocationSection() {
               <div className="flex items-start gap-4">
                 <div className="w-11 h-11 rounded-2xl bg-teal-pale flex items-center justify-center flex-shrink-0">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 12 19.79 19.79 0 011.61 3.4 2 2 0 013.6 1.22h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 8.77a16 16 0 006.32 6.32l.97-1.97a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="#5F8F8A" strokeWidth="2" />
+                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 12 19.79 19.79 0 011.61 3.4 2 2 0 013.6 1.22h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 8.77a16 16 0 006.32 6.32l.97-1.97a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="#6080A8" strokeWidth="2" />
                   </svg>
                 </div>
                 <div>
                   <h3 className="font-serif text-lg font-bold text-stone-900 mb-2">{l.contact}</h3>
                   <a
-                    href="tel:7039280838"
+                    href="tel:7037898919"
                     className="block font-sans text-sm text-stone-600 hover:text-rose-blush transition-colors"
-                    aria-label="Call us at (703) 928-0838"
+                    aria-label="Call us at (703) 789-8919"
                   >
-                    (703) 928-0838
+                    (703) 789-8919
                   </a>
                   <a
                     href="mailto:contact@lorenasbakery.com"
@@ -116,14 +116,14 @@ export default function LocationSection() {
           {/* Map embed */}
           <div className="lg:col-span-3 rounded-3xl overflow-hidden shadow-warm h-[400px] lg:h-full min-h-[400px]">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3108.3!2d-77.4759!3d38.7509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b6481b3c2d3e35%3A0x123456789!2s5443+Wellington+Rd%2C+Manassas%2C+VA+20110!5e0!3m2!1sen!2sus!4v1234567890"
+              src="https://www.google.com/maps?q=10750+Sudley+Manor+Dr,+Manassas,+VA+20109&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0, minHeight: '400px' }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Lorena's Bakery location on Google Maps — 5443 Wellington Rd, Manassas, VA 20110"
+              title="Lorena's Bakery location on Google Maps — 10750 Sudley Manor Dr, Manassas, VA 20109"
             />
           </div>
         </div>
@@ -135,12 +135,12 @@ export default function LocationSection() {
             <p className="font-sans text-rose-light/90 text-sm mt-1">{l.cantMakeItDesc}</p>
           </div>
           <a
-            href="tel:7039280838"
+            href="tel:7037898919"
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white text-rose-blush font-semibold text-sm font-sans tracking-wide transition-all duration-300 hover:bg-rose-pale hover:shadow-soft flex-shrink-0"
             aria-label="Call us to place an order"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 12 19.79 19.79 0 011.61 3.4 2 2 0 013.6 1.22h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 8.77a16 16 0 006.32 6.32l.97-1.97a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="#E88FA3" strokeWidth="2" />
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 12 19.79 19.79 0 011.61 3.4 2 2 0 013.6 1.22h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 8.77a16 16 0 006.32 6.32l.97-1.97a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="#E87BA1" strokeWidth="2" />
             </svg>
             {l.callUs}
           </a>

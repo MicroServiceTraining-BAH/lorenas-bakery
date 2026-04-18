@@ -26,15 +26,13 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" className="inline-flex mb-4" aria-label="Lorena's Bakery home">
-              <div className="bg-cream rounded-2xl px-4 py-2.5 inline-flex">
-                <Image
-                  src="/lorenas-logo.png"
-                  alt="Lorena's Bakery"
-                  width={120}
-                  height={60}
-                  className="h-12 w-auto"
-                />
-              </div>
+              <Image
+                src="/lorenas-logo.jpg"
+                alt="Lorena's Bakery"
+                width={64}
+                height={64}
+                className="h-16 w-16 rounded-full object-cover"
+              />
             </Link>
             <p className="font-sans text-sm text-stone-400 leading-relaxed max-w-xs mt-4">
               {f.tagline}
@@ -95,19 +93,19 @@ export default function Footer() {
               <div>
                 <dt className="sr-only">Address</dt>
                 <dd className="font-sans text-sm text-stone-300 leading-relaxed">
-                  5443 Wellington Rd<br />
-                  Manassas, VA 20110
+                  10750 Sudley Manor Dr<br />
+                  Manassas, VA 20109
                 </dd>
               </div>
               <div>
                 <dt className="sr-only">Phone</dt>
                 <dd>
                   <a
-                    href="tel:7039280838"
+                    href="tel:7037898919"
                     className="font-sans text-sm text-stone-300 hover:text-rose-blush transition-colors duration-200"
-                    aria-label="Call us at (703) 928-0838"
+                    aria-label="Call us at (703) 789-8919"
                   >
-                    (703) 928-0838
+                    (703) 789-8919
                   </a>
                 </dd>
               </div>

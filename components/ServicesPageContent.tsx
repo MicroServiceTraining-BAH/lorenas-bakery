@@ -6,9 +6,9 @@ import Breadcrumb from '@/components/Breadcrumb';
 import { useLanguage } from '@/lib/language-context';
 
 const SERVICE_STRUCTURE = [
-  { id: 'custom-cakes', icon: '🎂', gradient: 'linear-gradient(145deg, #F9E8F5 0%, #E8C5E0 50%, #D4A0C8 100%)', href: '/contact' },
-  { id: 'catering', icon: '🫘', gradient: 'linear-gradient(145deg, #E8F5F4 0%, #A8C5C2 50%, #5F8F8A 100%)', href: '/contact' },
-  { id: 'custom-orders', icon: '🥐', gradient: 'linear-gradient(145deg, #F9E3C7 0%, #F5C99A 50%, #F0AE70 100%)', href: '/contact' },
+  { id: 'custom-cakes', gradient: 'linear-gradient(145deg, #FEF0F5 0%, #F2B8CE 50%, #E87BA1 100%)', href: '/contact' },
+  { id: 'catering', gradient: 'linear-gradient(145deg, #EBF3FA 0%, #9AB8D4 50%, #6080A8 100%)', href: '/contact' },
+  { id: 'custom-orders', gradient: 'linear-gradient(145deg, #F9E3C7 0%, #F5C99A 50%, #F0AE70 100%)', href: '/contact' },
 ];
 
 export default function ServicesPageContent() {
@@ -22,7 +22,7 @@ export default function ServicesPageContent() {
       {/* Hero */}
       <section
         className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden"
-        style={{ background: 'linear-gradient(160deg, #FFF6F8 0%, #FFF3E8 50%, #EDF5F4 100%)' }}
+        style={{ background: 'linear-gradient(160deg, #FFF6F9 0%, #FFF3E8 50%, #EBF3FA 100%)' }}
         aria-label="Services page header"
       >
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -31,7 +31,7 @@ export default function ServicesPageContent() {
         </div>
         <div className="relative max-w-7xl mx-auto container-padding text-center">
           <div className="section-label justify-center mb-6">{pg.hero.label}</div>
-          <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl font-bold text-stone-900 leading-tight">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl font-bold text-stone-900 leading-tight">
             {pg.hero.heading.split(' ').slice(0, -1).join(' ')}{' '}
             <span className="italic text-rose-blush">{pg.hero.heading.split(' ').slice(-1)[0]}</span>
           </h1>
@@ -42,7 +42,7 @@ export default function ServicesPageContent() {
             <Link href="/contact" className="btn-primary text-base px-8 py-4">
               {pg.hero.requestQuote}
             </Link>
-            <a href="tel:7039280838" className="btn-outline text-base px-8 py-4">
+            <a href="tel:7037898919" className="btn-outline text-base px-8 py-4">
               {pg.hero.call}
             </a>
           </div>
@@ -51,7 +51,7 @@ export default function ServicesPageContent() {
 
       {/* Services */}
       <section className="section-padding bg-white" aria-label="Our bakery services">
-        <div className="max-w-7xl mx-auto container-padding space-y-24">
+        <div className="max-w-7xl mx-auto container-padding space-y-16 lg:space-y-24">
           {pg.services.map((service, index) => {
             const structure = SERVICE_STRUCTURE[index];
             return (
@@ -70,7 +70,6 @@ export default function ServicesPageContent() {
                   aria-label={service.title}
                 >
                   <div className="text-center">
-                    <div className="text-7xl mb-4" aria-hidden="true">{structure.icon}</div>
                     <div className="font-script text-4xl text-white/70">{service.title.split(' ')[0]}</div>
                   </div>
                 </div>
@@ -93,7 +92,7 @@ export default function ServicesPageContent() {
                           aria-hidden="true"
                         >
                           <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                            <path d="M2 5l2.5 2.5L8 2.5" stroke="#5F8F8A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M2 5l2.5 2.5L8 2.5" stroke="#6080A8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                           </svg>
                         </span>
                         {detail}
@@ -170,7 +169,7 @@ export default function ServicesPageContent() {
               {pg.cta.sendMessage}
             </Link>
             <a
-              href="tel:7039280838"
+              href="tel:7037898919"
               className="inline-flex items-center px-8 py-4 rounded-full border-2 border-white text-white font-semibold text-sm font-sans hover:bg-white/10 transition-all duration-300"
               aria-label={`Call ${pg.cta.phone}`}
             >

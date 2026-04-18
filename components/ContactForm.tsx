@@ -145,7 +145,7 @@ export default function ContactForm() {
       >
         <div className="w-16 h-16 rounded-full bg-teal-pale flex items-center justify-center mx-auto mb-6">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M20 6L9 17l-5-5" stroke="#5F8F8A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M20 6L9 17l-5-5" stroke="#6080A8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
         <h3 className="font-serif text-2xl font-bold text-stone-900 mb-3">
@@ -154,8 +154,8 @@ export default function ContactForm() {
         <p className="font-sans text-stone-600 leading-relaxed max-w-sm mx-auto">
           Thank you for reaching out! We&apos;ll get back to you within 24 hours. You can also
           call us at{' '}
-          <a href="tel:7039280838" className="text-rose-blush font-medium hover:underline">
-            (703) 928-0838
+          <a href="tel:7037898919" className="text-rose-blush font-medium hover:underline">
+            (703) 789-8919
           </a>{' '}
           for faster service.
         </p>

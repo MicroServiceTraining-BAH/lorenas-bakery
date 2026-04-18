@@ -27,7 +27,7 @@ export default function BlogPageContent({ posts }: Props) {
       {/* Hero */}
       <section
         className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden"
-        style={{ background: 'linear-gradient(160deg, #FFF6F8 0%, #FFF3E8 60%, #EDF5F4 100%)' }}
+        style={{ background: 'linear-gradient(160deg, #FFF6F9 0%, #FFF3E8 60%, #EBF3FA 100%)' }}
         aria-label="Blog page header"
       >
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -36,7 +36,7 @@ export default function BlogPageContent({ posts }: Props) {
         </div>
         <div className="relative max-w-7xl mx-auto container-padding text-center">
           <div className="section-label justify-center mb-6">{pg.hero.label}</div>
-          <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl font-bold text-stone-900 leading-tight">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl font-bold text-stone-900 leading-tight">
             {pg.hero.heading.split(' ').slice(0, -1).join(' ')}{' '}
             <span className="italic text-rose-blush">{pg.hero.heading.split(' ').slice(-1)[0]}</span>
           </h1>
