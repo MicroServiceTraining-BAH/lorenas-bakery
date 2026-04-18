@@ -142,7 +142,7 @@ export default function AboutPageContent() {
             </h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {pg.values.items.map(({ icon, title, description }) => (
+            {pg.values.items.map(({ title, description }) => (
               <div
                 key={title}
                 className="bg-cream rounded-3xl p-7 hover:shadow-card transition-shadow duration-300"
